@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'VisionUIKit_Example' do
+    #pod 'VisionUIKit', :path => '../'
+    pod 'CustomIOSAlertView', '~> 0.9.5'
+  
+  target 'VisionUIKit_Tests' do
+    inherit! :search_paths
+    
+  end
+end
