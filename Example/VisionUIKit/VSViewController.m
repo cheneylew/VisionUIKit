@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
+    self.view.backgroundColor = [UIColor blueColor];
     
 }
 
@@ -29,7 +29,7 @@
 }
 
 - (void)show {
-    [VSAlertView AlertWithTitle:@"111" message:@"msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg" buttonTitles:[NSArray arrayWithObjects:@"a",@"b", nil] callBlock:^(NSInteger buttonIndex) {
+    [VSAlertView AlertWithTitle:@"111" message:@"msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg msg" buttonTitles:[NSArray arrayWithObjects:@"取消",@"实名认证", nil] callBlock:^(NSInteger buttonIndex) {
         //
     }];
 }

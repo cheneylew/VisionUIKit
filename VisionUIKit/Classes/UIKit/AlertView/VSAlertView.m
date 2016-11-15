@@ -11,7 +11,13 @@
 #define VSSCREEN_SIZE [[UIScreen mainScreen] bounds]
 #define VSSCREEN_WIDTH VSSCREEN_SIZE.size.width
 #define VSSCREEN_HEIGHT VSSCREEN_SIZE.size.height
-#define VSBUTTON_HEIGHT 40.0f
+
+#define kFit5(x) ((x)/640.0f)*VSSCREEN_WIDTH
+#define kFit6(x) ((x)/750.0f)*VSSCREEN_WIDTH
+#define kFit6p(x) ((x)/1242.0f)*VSSCREEN_WIDTH
+#define kFit1024(x) ((x)/1024.0f)*VSSCREEN_WIDTH
+#define kFitRect6(x,y,w,h) CGRectMake(fit6(x), fit6(y), fit6(w), fit6(h))
+#define kFitRect1024(x,y,w,h) CGRectMake(fit1024(x), fit1024(y), fit1024(w), fit1024(h))
 
 @interface VSAlertView()
 
@@ -62,29 +68,36 @@
 }
 
 - (void)makeLayout {
-    UIFont *msgFont = [UIFont systemFontOfSize:14];
+    CGFloat topBottomSpace = kFit6(44);
+    CGFloat leftRightSpace = kFit6(34);
     
-    CGFloat dWidth = VSSCREEN_WIDTH*4/5;
+    UIFont *msgFont = [UIFont systemFontOfSize:kFit6(24)];
+    
+    CGFloat dWidth = kFit6(545);
+    CGFloat mWidth = dWidth - 2*leftRightSpace;
     CGFloat mHeight = [self heightWithString:self.message
                                         Font:msgFont
-                          constrainedToWidth:dWidth];
+                          constrainedToWidth:mWidth];
+    
+    CGFloat btnHeight = kFit6(90);
     if (mHeight < 50) {
         mHeight = 50;
     }
-    CGFloat dHeight = mHeight+VSBUTTON_HEIGHT;
+    CGFloat dHeight = topBottomSpace*2+mHeight+btnHeight;
     
     UIView *dialogView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight)];
     dialogView.backgroundColor = [UIColor whiteColor];
-    dialogView.layer.cornerRadius = 4.0f;
+    dialogView.layer.cornerRadius = 6.0f;
     dialogView.center = self.center;
     [self addSubview:dialogView];
     self.dialogView = dialogView;
 
     
     //buttons
-    if (self.buttonTitles.count) {
+    NSInteger count = self.buttonTitles.count;
+    if (count) {
         CGFloat btnWidth = dWidth/self.buttonTitles.count;
-        CGFloat btnY = dHeight-VSBUTTON_HEIGHT;
+        CGFloat btnY = dHeight-btnHeight;
         [self.buttonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *btnTitle = obj;
             UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -96,19 +109,27 @@
             button.frame = CGRectMake(btnWidth*idx,
                                       btnY,
                                       btnWidth,
-                                      VSBUTTON_HEIGHT);
+                                      btnHeight);
+            button.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+            if (idx != count-1) {
+                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(btnWidth, 0, 0.5, btnHeight)];
+                line.backgroundColor = [UIColor colorWithRed:207/255.0f green:215/255.0f blue:223/255.0f alpha:1];
+                line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+                [button addSubview:line];
+            }
             [dialogView addSubview:button];
         }];
         
         // add button top line
-        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, btnY, dWidth, 1)];
-        line.backgroundColor = [UIColor lightGrayColor];
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, btnY, dWidth, 0.5)];
+        line.backgroundColor = [UIColor colorWithRed:207/255.0f green:215/255.0f blue:223/255.0f alpha:1];
+        line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [dialogView addSubview:line];
     }
     
     //message label
     if (self.message.length) {
-        UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, dWidth, mHeight)];
+        UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftRightSpace, topBottomSpace, mWidth, mHeight)];
         msgLabel.text = self.message;
         msgLabel.font = msgFont;
         msgLabel.numberOfLines = 0;
@@ -119,7 +140,10 @@
 - (void)btnClick:(UIButton *)button {
     if (self.callBack) {
         self.callBack(button.tag);
-        [self closeAlertView];
+        [UIView animateWithDuration:0.35 animations:^{
+            self.layer.opacity = 0.2;
+            [self closeAlertView];
+        }];
     }
 }
 
