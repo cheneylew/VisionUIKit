@@ -20,8 +20,11 @@
 #define kFitRect6(x,y,w,h) CGRectMake(fit6(x), fit6(y), fit6(w), fit6(h))
 #define kFitRect1024(x,y,w,h) CGRectMake(fit1024(x), fit1024(y), fit1024(w), fit1024(h))
 
+DEFINE_KEY_WITH_VALUE(kVSAlertViewTag, "10086")
+
 @interface VSAlertView()
 
+@property (nonatomic, weak) UIView *parentView; //添加到的目标视图，默认Window
 @property (nonatomic, strong) UIView *maskView;
 @property (nonatomic, strong) UIView *dialogView;
 @property (nonatomic, strong) UIView *buttonsView;
@@ -39,6 +42,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.tag = kVSAlertViewTag.integerValue;
+        
         UIView *maskView = [[UIView alloc] initWithFrame:frame];
         maskView.backgroundColor = [UIColor lightGrayColor];
         maskView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
@@ -146,8 +151,25 @@
     alertView.message = message;
     alertView.buttonTitles = btnTitles;
     alertView.callBack = alertViewCallBackBlock;
+    alertView.parentView = keyWindow;
     [alertView makeLayout];
     [keyWindow addSubview:alertView];
+}
+
++ (void)AlertInView:(UIView *)view
+              Title:(NSString *)title
+               message:(NSString *)message
+          buttonTitles:(NSArray *)btnTitles
+             callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    VSAlertView *alertView = [[VSAlertView alloc] initWithFrame:bounds];
+    alertView.title = title;
+    alertView.message = message;
+    alertView.buttonTitles = btnTitles;
+    alertView.callBack = alertViewCallBackBlock;
+    alertView.parentView = view;
+    [alertView makeLayout];
+    [view addSubview:alertView];
 }
 
 @end
