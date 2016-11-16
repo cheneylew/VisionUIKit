@@ -7,6 +7,7 @@
 //
 
 #import "VSAlertView.h"
+#import <KKCategories/KKCategories.h>
 
 #define VSSCREEN_SIZE [[UIScreen mainScreen] bounds]
 #define VSSCREEN_WIDTH VSSCREEN_SIZE.size.width
@@ -35,25 +36,6 @@
 
 @implementation VSAlertView
 
-- (CGFloat)heightWithString:(NSString *)string Font:(UIFont *)font constrainedToWidth:(CGFloat)width
-{
-    UIFont *textFont = font ? font : [UIFont systemFontOfSize:[UIFont systemFontSize]];
-    
-    CGSize textSize;
-    
-    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    NSDictionary *attributes = @{NSFontAttributeName: textFont,
-                                 NSParagraphStyleAttributeName: paragraph};
-    textSize = [string boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
-                                  options:(NSStringDrawingUsesLineFragmentOrigin |
-                                           NSStringDrawingTruncatesLastVisibleLine)
-                               attributes:attributes
-                                  context:nil].size;
-    
-    return ceil(textSize.height);
-}
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -71,13 +53,11 @@
     CGFloat topBottomSpace = kFit6(44);
     CGFloat leftRightSpace = kFit6(34);
     
-    UIFont *msgFont = [UIFont systemFontOfSize:kFit6(24)];
+    UIFont *msgFont = [UIFont systemFontOfSize:14];
     
     CGFloat dWidth = kFit6(545);
     CGFloat mWidth = dWidth - 2*leftRightSpace;
-    CGFloat mHeight = [self heightWithString:self.message
-                                        Font:msgFont
-                          constrainedToWidth:mWidth];
+    CGFloat mHeight = [self.message jk_heightWithFont:msgFont constrainedToWidth:mWidth];
     
     CGFloat btnHeight = kFit6(90);
     if (mHeight < 50) {

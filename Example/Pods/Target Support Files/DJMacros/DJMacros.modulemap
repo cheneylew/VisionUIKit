@@ -1,0 +1,6 @@
+framework module DJMacros {
+  umbrella header "DJMacros-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,12 +1,17 @@
 PODS:
-  - CustomIOSAlertView (0.9.5)
+  - DJMacros (0.7.4):
+    - DJMacros/Extension (= 0.7.4)
+  - DJMacros/Extension (0.7.4)
+  - KKCategories (0.3.2)
 
 DEPENDENCIES:
-  - CustomIOSAlertView (~> 0.9.5)
+  - DJMacros (~> 0.7.4)
+  - KKCategories (~> 0.3.2)
 
 SPEC CHECKSUMS:
-  CustomIOSAlertView: cc4fa8e36219be3fd5ebcd40789f5b4aaae0f38e
+  DJMacros: 6fe6e9d86e3cfb98276c29303b6b75f58124b098
+  KKCategories: 7d83669ac619ca1918be1a3d4cdb5dcd92541696
 
-PODFILE CHECKSUM: 1bedeb89a09c66e845f4f5a301b3113a8745dd54
+PODFILE CHECKSUM: 1c0c145391a1c3d0f6130f760bc94bc179051d38
 
 COCOAPODS: 1.1.1

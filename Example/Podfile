@@ -1,9 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/cheneylew/cocoapods-specs.git'
+
 use_frameworks!
+
+def shared_private_pods
+    pod 'DJMacros', '~> 0.7.4'
+    pod 'KKCategories', '~> 0.3.2'
+end
 
 target 'VisionUIKit_Example' do
     #pod 'VisionUIKit', :path => '../'
-    pod 'CustomIOSAlertView', '~> 0.9.5'
-  
+    shared_private_pods
+    
   target 'VisionUIKit_Tests' do
     inherit! :search_paths
     

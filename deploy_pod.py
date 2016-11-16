@@ -47,7 +47,7 @@ if __name__ == '__main__':
         fileName=fileName.replace('\n','')
         #校验pods描述文件是否正确
         print "2.校验pod文件中"
-        op2=os.popen('pod lib lint --allow-warnings')
+        op2=os.popen('pod lib lint --sources=https://github.com/cheneylew/cocoapods-specs.git,https://github.com/CocoaPods/Specs.git --allow-warnings')
         text1=op2.read()
         print text1
         if 'passed validation' in text1:
