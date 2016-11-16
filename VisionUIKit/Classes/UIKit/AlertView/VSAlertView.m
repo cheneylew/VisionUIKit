@@ -20,7 +20,7 @@
 #define kFitRect6(x,y,w,h) CGRectMake(fit6(x), fit6(y), fit6(w), fit6(h))
 #define kFitRect1024(x,y,w,h) CGRectMake(fit1024(x), fit1024(y), fit1024(w), fit1024(h))
 
-DEFINE_KEY_WITH_VALUE(kVSAlertViewTag, "10086")
+DEFINE_KEY_WITH_VALUE(kVSAlertViewTag, "5858585")
 
 @interface VSAlertView()
 
