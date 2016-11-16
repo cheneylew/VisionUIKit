@@ -20,7 +20,7 @@
 #define kFitRect6(x,y,w,h) CGRectMake(fit6(x), fit6(y), fit6(w), fit6(h))
 #define kFitRect1024(x,y,w,h) CGRectMake(fit1024(x), fit1024(y), fit1024(w), fit1024(h))
 
-DEFINE_KEY_WITH_VALUE(kVSAlertViewTag, "5858585")
+NSInteger const kVSAlertViewTag = 5858585;
 
 @interface VSAlertView()
 
@@ -42,7 +42,7 @@ DEFINE_KEY_WITH_VALUE(kVSAlertViewTag, "5858585")
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        self.tag = kVSAlertViewTag.integerValue;
+        self.tag = kVSAlertViewTag;
         
         UIView *maskView = [[UIView alloc] initWithFrame:frame];
         maskView.backgroundColor = [UIColor lightGrayColor];

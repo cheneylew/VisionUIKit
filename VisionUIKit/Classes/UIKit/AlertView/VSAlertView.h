@@ -11,7 +11,7 @@
 
 typedef void(^VSAlertViewJKCallBackBlock)(NSInteger buttonIndex);
 
-DECLARE_KEY(kVSAlertViewTag)
+FOUNDATION_EXPORT NSInteger const kVSAlertViewTag;
 
 @interface VSAlertView : UIView
 
