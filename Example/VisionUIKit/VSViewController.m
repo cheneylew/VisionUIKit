@@ -23,15 +23,18 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     imageView.image = [UIImage imageNamed:@"launch_640_1136"];
     [self.view addSubview:imageView];
+    [self.view sendSubviewToBack:imageView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self performSelector:@selector(show) withObject:nil afterDelay:0.5];
+    
     
 }
-
-- (void)show {
-    [VSAlertView AlertInView:self.view Title:@"111" message:@"账户页面切换过程中发现有时候会出现遮挡的情况 而且页面回不去。只有切到其他页面再切回来才能恢复账户页面切换过程中发现有时候会出现遮挡的情况 而且页面回不去。只有切到其他页面再切回来才能恢复账户页面切换过程中发现有时候会出现遮挡的情况 而且页面回不去。只有切到其他页面再切回来才能恢复" buttonTitles:[NSArray arrayWithObjects:@"取消",@"实名认证", nil] callBlock:^(NSInteger buttonIndex) {
+- (IBAction)click:(id)sender {
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    customView.backgroundColor = [UIColor redColor];
+    
+    VSAlertView *a = [VSAlertView ShowAlertViewTitle:@"abc" message:@"添加到的目标视图，默认Window添加到的目标视图，默认Window添加到的目标视图，默认Window" buttonTitles:@[@"取消",@"qe"] callBlock:^(NSInteger buttonIndex) {
         //
     }];
 }

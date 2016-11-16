@@ -17,6 +17,8 @@
 #import "UIColor+JKHEX.h"
 #import "UIControl+JKActionBlocks.h"
 #import "UIControl+JKBlock.h"
+#import "UIImage+JKColor.h"
+#import "UIImage+JKOrientation.h"
 #import "UIImage+LXExtension.h"
 #import "UITextField+JKBlocks.h"
 #import "UITextField+JKSelect.h"

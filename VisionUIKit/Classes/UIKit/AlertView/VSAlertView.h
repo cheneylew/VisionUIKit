@@ -15,15 +15,25 @@ FOUNDATION_EXPORT NSInteger const kVSAlertViewTag;
 
 @interface VSAlertView : UIView
 
-+ (void)AlertWithTitle:(NSString *)title
+@property (nonatomic, assign) NSTextAlignment titleTextAlignment;
+@property (nonatomic, assign) NSTextAlignment messageTextAlignment;
+
+- (void)showCloseButton:(BOOL)isShow;
+
++ (VSAlertView *)ShowAlertViewTitle:(NSString *)title
                message:(NSString *)message
           buttonTitles:(NSArray *)btnTitles
              callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock;
 
-+ (void)AlertInView:(UIView *)view
++ (VSAlertView *)ShowAlertViewInView:(UIView *)view
               Title:(NSString *)title
             message:(NSString *)message
        buttonTitles:(NSArray *)btnTitles
           callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock;
+
++ (VSAlertView *)ShowAlertViewInView:(UIView *)view
+                          customView:(UIView *)customView
+                        buttonTitles:(NSArray *)btnTitles
+                           callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock;
 
 @end

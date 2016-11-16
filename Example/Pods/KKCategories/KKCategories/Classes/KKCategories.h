@@ -33,5 +33,7 @@
 #import "UIView+Screenshot.h"
 #import "UIView+Debug.h"
 #import "UIView+Nib.h"
+#import "UIImage+JKColor.h"
+#import "UIImage+JKOrientation.h"
 
 #endif /* JKCategories_h */

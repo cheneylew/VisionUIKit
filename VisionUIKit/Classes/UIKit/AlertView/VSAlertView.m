@@ -8,6 +8,7 @@
 
 #import "VSAlertView.h"
 #import <KKCategories/KKCategories.h>
+#import <JHChainableAnimations/JHChainableAnimations.h>
 
 #define VSSCREEN_SIZE [[UIScreen mainScreen] bounds]
 #define VSSCREEN_WIDTH VSSCREEN_SIZE.size.width
@@ -24,16 +25,22 @@ NSInteger const kVSAlertViewTag = 5858585;
 
 @interface VSAlertView()
 
-@property (nonatomic, weak) UIView *parentView; //添加到的目标视图，默认Window
-@property (nonatomic, strong) UIView *maskView;
-@property (nonatomic, strong) UIView *dialogView;
-@property (nonatomic, strong) UIView *buttonsView;
+@property (nonatomic, weak)     UIView *parentView;         //添加到的目标视图，默认Window
+@property (nonatomic, strong)   UIView *maskView;           //背景蒙版
+@property (nonatomic, strong)   UIView *dialogView;         //中间弹出框区域
+@property (nonatomic, strong)   UIView *buttonsView;        //底部按钮区域
+@property (nonatomic, strong)   UIView *customView;         //定制视图，默认为nil
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *message;
-@property (nonatomic, strong) NSArray *buttonTitles;
+@property (nonatomic, strong)   NSString *title;            //标题
+@property (nonatomic, strong)   NSString *message;          //消息内容
+@property (nonatomic, strong)   NSArray *buttonTitles;      //按钮标题
 
-@property (nonatomic, copy) VSAlertViewJKCallBackBlock callBack;
+@property (nonatomic, strong)   UILabel *titleLabel;
+@property (nonatomic, strong)   UILabel *messageLabel;
+
+@property (nonatomic, strong)   UIButton *closeButton;
+
+@property (nonatomic, copy)     VSAlertViewJKCallBackBlock callBack;    //完成回调
 
 @end
 
@@ -43,40 +50,152 @@ NSInteger const kVSAlertViewTag = 5858585;
     self = [super initWithFrame:frame];
     if (self) {
         self.tag = kVSAlertViewTag;
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         
         UIView *maskView = [[UIView alloc] initWithFrame:frame];
-        maskView.backgroundColor = [UIColor lightGrayColor];
+        maskView.backgroundColor = [UIColor blackColor];
         maskView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-        maskView.layer.opacity = 0.2;
+        maskView.layer.opacity = 0.4;
         self.maskView = maskView;
         [self addSubview:self.maskView];
     }
     return self;
 }
 
+- (instancetype)initWithParentView:(UIView *)parentView
+                        customView:(UIView *)customView
+                             Title:(NSString *)title
+                           message:(NSString *)message
+                      buttonTitles:(NSArray *)buttonTitles
+                         callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock
+{
+    if (parentView == nil) {
+        parentView = [[UIApplication sharedApplication] keyWindow];
+    }
+    
+    VSAlertView *alertView  = [[VSAlertView alloc] initWithFrame:parentView.bounds];
+    alertView.customView    = customView;
+    alertView.title         = title;
+    alertView.message       = message;
+    alertView.buttonTitles  = buttonTitles;
+    alertView.callBack      = alertViewCallBackBlock;
+    alertView.parentView    = parentView;
+    [alertView makeLayout];
+    [alertView showAlertView];
+    [parentView addSubview:alertView];
+    
+    return alertView;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.closeButton.centerX = self.dialogView.right;
+    self.closeButton.centerY = self.dialogView.top;
+}
+
+- (UIButton *)closeButton {
+    if (_closeButton == nil) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0, 0, kFit6(60), kFit6(60));
+        btn.layer.cornerRadius = btn.height/2;
+        btn.clipsToBounds = YES;
+        btn.hidden = YES;
+        [btn setTitle:@"X" forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage jk_imageWithColor:HEX(0xaaaaaa)]
+                       forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage jk_imageWithColor:HEX(0xbbbbbb)]
+                       forState:UIControlStateHighlighted];
+        _closeButton = btn;
+        
+        WEAK_SELF;
+        [btn jk_addActionHandler:^(NSInteger tag) {
+            [weakself closeAlertView];
+        }];
+        
+        [self addSubview:_closeButton];
+    }
+    return _closeButton;
+}
+
 - (void)makeLayout {
-    CGFloat topBottomSpace = kFit6(44);
-    CGFloat leftRightSpace = kFit6(34);
+    BOOL haveTitle = self.title.length>0?YES:NO;
+    BOOL haveCustomView = self.customView!=nil?YES:NO;
+    BOOL haveButtons = self.buttonTitles.count;
     
-    UIFont *msgFont = [UIFont systemFontOfSize:14];
+    CGFloat topBottomSpace = haveButtons?kFit6(44):kFit6(30);
+    CGFloat leftRightSpace = haveButtons?kFit6(34):topBottomSpace;
+    CGFloat titleAndMessageSpace = haveTitle?kFit6(30):0;
     
-    CGFloat dWidth = kFit6(545);
+    UIFont *messageFont = [UIFont systemFontOfSize:14];
+    UIFont *titleFont = [UIFont systemFontOfSize:16];
+    
+    CGFloat dWidth = haveCustomView?leftRightSpace+self.customView.width+leftRightSpace:kFit6(600);
+    
     CGFloat mWidth = dWidth - 2*leftRightSpace;
-    CGFloat mHeight = [self.message jk_heightWithFont:msgFont constrainedToWidth:mWidth];
+    CGFloat mHeight = [self.message jk_heightWithFont:messageFont constrainedToWidth:mWidth];
+    
+    CGFloat tWidth  = mWidth;
+    CGFloat tHeight = haveTitle?[self.title jk_heightWithFont:titleFont constrainedToWidth:tWidth]:0;
+    
     
     CGFloat btnHeight = kFit6(90);
     if (mHeight < 50) {
         mHeight = 50;
     }
-    CGFloat dHeight = topBottomSpace*2+mHeight+btnHeight;
+    btnHeight = haveButtons?btnHeight:0;
     
-    UIView *dialogView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight)];
-    dialogView.backgroundColor = [UIColor whiteColor];
-    dialogView.layer.cornerRadius = 6.0f;
-    dialogView.center = self.center;
+    //dHeight = 上边距+标题高度+标题与内容边距+内容高度+内容下边距+按钮高度
+    CGFloat dHeight = topBottomSpace+tHeight+titleAndMessageSpace+mHeight+topBottomSpace+btnHeight;
+    dHeight = haveCustomView?topBottomSpace+self.customView.height+topBottomSpace+btnHeight:dHeight;
+    
+    UIView *dialogView              = [[UIView alloc] initWithFrame:CGRectMake(0, 0, dWidth, dHeight)];
+    dialogView.backgroundColor      = HEX(0xf9f9f9);
+    dialogView.layer.cornerRadius   = 6.0f;
+    dialogView.center               = self.center;
+    dialogView.clipsToBounds        = YES;
+    dialogView.autoresizingMask     =   UIViewAutoresizingFlexibleLeftMargin|
+                                    UIViewAutoresizingFlexibleRightMargin|
+                                    UIViewAutoresizingFlexibleTopMargin|
+                                    UIViewAutoresizingFlexibleBottomMargin;
     [self addSubview:dialogView];
     self.dialogView = dialogView;
-
+    
+    //标题
+    if (haveTitle) {
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftRightSpace,
+                                                                        topBottomSpace,
+                                                                        tWidth,
+                                                                        tHeight)];
+        titleLabel.text = self.title;
+        titleLabel.font = titleFont;
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.numberOfLines = 0;
+        [dialogView addSubview:titleLabel];
+        
+        self.titleLabel = titleLabel;
+    }
+    
+    //消息
+    if (!haveCustomView) {
+        CGFloat top = topBottomSpace+tHeight+titleAndMessageSpace;
+        if (!haveTitle) {
+            top = topBottomSpace;
+        }
+        UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftRightSpace,
+                                                                      top,
+                                                                      mWidth,
+                                                                      mHeight)];
+        msgLabel.text = self.message;
+        msgLabel.font = messageFont;
+        msgLabel.numberOfLines = 0;
+        [dialogView addSubview:msgLabel];
+        
+        self.messageLabel = msgLabel;
+    }else {
+        self.customView.top = topBottomSpace;
+        self.customView.left = leftRightSpace;
+        [dialogView addSubview:self.customView];
+    }
     
     //buttons
     NSInteger count = self.buttonTitles.count;
@@ -85,9 +204,10 @@ NSInteger const kVSAlertViewTag = 5858585;
         CGFloat btnY = dHeight-btnHeight;
         [self.buttonTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *btnTitle = obj;
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.tag = idx;
             [button setTitle:btnTitle forState:UIControlStateNormal];
+            button.titleLabel.adjustsFontSizeToFitWidth = YES;
             [button addTarget:self
                        action:@selector(btnClick:)
              forControlEvents:UIControlEventTouchUpInside];
@@ -96,6 +216,11 @@ NSInteger const kVSAlertViewTag = 5858585;
                                       btnWidth,
                                       btnHeight);
             button.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+            [button setBackgroundImage:[UIImage jk_imageWithColor:HEX(0xebebeb)]
+                              forState:UIControlStateHighlighted];
+            [button setTitleColor:HEX(0x007aff)
+                         forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:15];
             if (idx != count-1) {
                 UIView *line = [[UIView alloc] initWithFrame:CGRectMake(btnWidth, 0, 0.5, btnHeight)];
                 line.backgroundColor = [UIColor colorWithRed:207/255.0f green:215/255.0f blue:223/255.0f alpha:1];
@@ -112,64 +237,100 @@ NSInteger const kVSAlertViewTag = 5858585;
         [dialogView addSubview:line];
     }
     
-    //message label
-    if (self.message.length) {
-        UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftRightSpace, topBottomSpace, mWidth, mHeight)];
-        msgLabel.text = self.message;
-        msgLabel.font = msgFont;
-        msgLabel.numberOfLines = 0;
-        [dialogView addSubview:msgLabel];
+    // 关闭按钮
+    if (!haveButtons) {
+        self.closeButton.hidden = NO;
     }
 }
 
 - (void)btnClick:(UIButton *)button {
     if (self.callBack) {
         self.callBack(button.tag);
-        [UIView animateWithDuration:0.35 animations:^{
-            self.layer.opacity = 0.2;
-            [self closeAlertView];
-        }];
+        [self closeAlertView];
     }
 }
 
+- (void)showAlertView {
+    WEAK_SELF;
+    self.maskView.layer.opacity = 0;
+    self.dialogView.hidden = YES;
+    self.dialogView.transformScale(0.01).animate(0.01).animationCompletion = ^(){
+        weakself.dialogView.hidden = NO;
+        weakself.dialogView.transformScale(100).easeOut.animate(0.15);
+    };
+    self.maskView.makeOpacity(0.4).easeOut.animate(0.25);
+    
+}
+
 - (void)closeAlertView {
-    [self removeFromSuperview];
+    WEAK_SELF;
+    self.closeButton.hidden = YES;
+    self.maskView.makeOpacity(0).easeOut.animate(0.25);
+    self.dialogView.transformScale(0.01).easeOut.animate(0.25).animationCompletion = ^() {
+        [weakself removeFromSuperview];
+    };
+    
+//    [UIView animateWithDuration:0.35 animations:^{
+//        
+//    } completion:^(BOOL finished) {
+//        [self removeFromSuperview];
+//    }];
+}
+
+- (void)showCloseButton:(BOOL)isShow {
+    self.closeButton.hidden = !isShow;
 }
 
 - (void)dealloc {
     NSLog(@"VSAlertView 销毁了");
 }
 
-+ (void)AlertWithTitle:(NSString *)title
-                message:(NSString *)message
-           buttonTitles:(NSArray *)btnTitles
-              callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
-    CGRect bounds = [[UIScreen mainScreen] bounds];
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    VSAlertView *alertView = [[VSAlertView alloc] initWithFrame:bounds];
-    alertView.title = title;
-    alertView.message = message;
-    alertView.buttonTitles = btnTitles;
-    alertView.callBack = alertViewCallBackBlock;
-    alertView.parentView = keyWindow;
-    [alertView makeLayout];
-    [keyWindow addSubview:alertView];
+- (void)setTitleTextAlignment:(NSTextAlignment)titleTextAlignment {
+    if (self.titleLabel) {
+        self.titleLabel.textAlignment = titleTextAlignment;
+    }
 }
 
-+ (void)AlertInView:(UIView *)view
+- (void)setMessageTextAlignment:(NSTextAlignment)messageTextAlignment {
+    if (self.messageLabel) {
+        self.messageLabel.textAlignment = messageTextAlignment;
+    }
+}
+
++ (VSAlertView *)ShowAlertViewTitle:(NSString *)title
+                            message:(NSString *)message
+                       buttonTitles:(NSArray *)btnTitles
+                          callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
+    
+    return [[VSAlertView alloc] initWithParentView:[[UIApplication sharedApplication] keyWindow]
+                                        customView:nil
+                                             Title:title message:message
+                                      buttonTitles:btnTitles
+                                         callBlock:alertViewCallBackBlock];
+}
+
++ (VSAlertView *)ShowAlertViewInView:(UIView *)view
               Title:(NSString *)title
                message:(NSString *)message
           buttonTitles:(NSArray *)btnTitles
              callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
-    CGRect bounds = [[UIScreen mainScreen] bounds];
-    VSAlertView *alertView = [[VSAlertView alloc] initWithFrame:bounds];
-    alertView.title = title;
-    alertView.message = message;
-    alertView.buttonTitles = btnTitles;
-    alertView.callBack = alertViewCallBackBlock;
-    alertView.parentView = view;
-    [alertView makeLayout];
-    [view addSubview:alertView];
+    return [[VSAlertView alloc] initWithParentView:view
+                                        customView:nil
+                                             Title:title message:message
+                                      buttonTitles:btnTitles
+                                         callBlock:alertViewCallBackBlock];
+}
+
++ (VSAlertView *)ShowAlertViewInView:(UIView *)view
+                          customView:(UIView *)customView
+                        buttonTitles:(NSArray *)btnTitles
+                           callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
+    return [[VSAlertView alloc] initWithParentView:view
+                                        customView:customView
+                                             Title:@""
+                                           message:@""
+                                      buttonTitles:btnTitles
+                                         callBlock:alertViewCallBackBlock];
 }
 
 @end
