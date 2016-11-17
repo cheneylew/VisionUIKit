@@ -188,6 +188,7 @@ NSInteger const kVSAlertViewTag = 5858585;
         msgLabel.text = self.message;
         msgLabel.font = messageFont;
         msgLabel.numberOfLines = 0;
+        msgLabel.textAlignment = NSTextAlignmentCenter;
         [dialogView addSubview:msgLabel];
         
         self.messageLabel = msgLabel;
@@ -254,11 +255,11 @@ NSInteger const kVSAlertViewTag = 5858585;
     WEAK_SELF;
     self.maskView.layer.opacity = 0;
     self.dialogView.hidden = YES;
-    self.dialogView.transformScale(0.01).animate(0.01).animationCompletion = ^(){
+    self.dialogView.transformScale(0.2).animate(0.01).animationCompletion = ^(){
         weakself.dialogView.hidden = NO;
-        weakself.dialogView.transformScale(100).easeOut.animate(0.15);
+        weakself.dialogView.transformScale(5).easeOutBack.animate(0.26);
     };
-    self.maskView.makeOpacity(0.4).easeOut.animate(0.25);
+    self.maskView.makeOpacity(0.4).easeOutBack.animate(0.25);
     
 }
 
@@ -266,19 +267,20 @@ NSInteger const kVSAlertViewTag = 5858585;
     WEAK_SELF;
     self.closeButton.hidden = YES;
     self.maskView.makeOpacity(0).easeOut.animate(0.25);
-    self.dialogView.transformScale(0.01).easeOut.animate(0.25).animationCompletion = ^() {
+    self.dialogView.transformScale(0.2).makeOpacity(0).easeInBack.animate(0.25).animationCompletion = ^() {
         [weakself removeFromSuperview];
     };
-    
-//    [UIView animateWithDuration:0.35 animations:^{
-//        
-//    } completion:^(BOOL finished) {
-//        [self removeFromSuperview];
-//    }];
 }
 
 - (void)showCloseButton:(BOOL)isShow {
     self.closeButton.hidden = !isShow;
+    if (isShow) {
+        self.closeButton.layer.opacity = 0;
+        self.closeButton.makeOpacity(1).animate(0.26);
+    }else {
+        self.closeButton.layer.opacity = 1;
+        self.closeButton.makeOpacity(0).animate(0.26);
+    }
 }
 
 - (void)dealloc {
@@ -297,10 +299,10 @@ NSInteger const kVSAlertViewTag = 5858585;
     }
 }
 
-+ (VSAlertView *)ShowAlertViewTitle:(NSString *)title
-                            message:(NSString *)message
-                       buttonTitles:(NSArray *)btnTitles
-                          callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
++ (VSAlertView *)ShowWithTitle:(NSString *)title
+                       message:(NSString *)message
+                  buttonTitles:(NSArray *)btnTitles
+                     callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
     
     return [[VSAlertView alloc] initWithParentView:[[UIApplication sharedApplication] keyWindow]
                                         customView:nil
@@ -309,11 +311,11 @@ NSInteger const kVSAlertViewTag = 5858585;
                                          callBlock:alertViewCallBackBlock];
 }
 
-+ (VSAlertView *)ShowAlertViewInView:(UIView *)view
-              Title:(NSString *)title
-               message:(NSString *)message
-          buttonTitles:(NSArray *)btnTitles
-             callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
++ (VSAlertView *)ShowInView:(UIView *)view
+                      Title:(NSString *)title
+                    message:(NSString *)message
+               buttonTitles:(NSArray *)btnTitles
+                  callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
     return [[VSAlertView alloc] initWithParentView:view
                                         customView:nil
                                              Title:title message:message
@@ -321,10 +323,10 @@ NSInteger const kVSAlertViewTag = 5858585;
                                          callBlock:alertViewCallBackBlock];
 }
 
-+ (VSAlertView *)ShowAlertViewInView:(UIView *)view
-                          customView:(UIView *)customView
-                        buttonTitles:(NSArray *)btnTitles
-                           callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
++ (VSAlertView *)ShowInView:(UIView *)view
+                 customView:(UIView *)customView
+               buttonTitles:(NSArray *)btnTitles
+                  callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
     return [[VSAlertView alloc] initWithParentView:view
                                         customView:customView
                                              Title:@""

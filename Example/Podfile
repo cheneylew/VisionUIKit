@@ -4,8 +4,8 @@ source 'https://github.com/cheneylew/cocoapods-specs.git'
 use_frameworks!
 
 def shared_private_pods
-    pod 'DJMacros', '~> 0.7.4'
-    pod 'KKCategories', '~> 0.3.3'
+    pod 'DJMacros', '~> 0.7.5'
+    pod 'KKCategories', '~> 0.3.4'
 end
 
 target 'VisionUIKit_Example' do

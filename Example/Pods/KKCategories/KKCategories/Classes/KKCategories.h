@@ -35,5 +35,10 @@
 #import "UIView+Nib.h"
 #import "UIImage+JKColor.h"
 #import "UIImage+JKOrientation.h"
+#import "UIView+JKFind.h"
+#import "UIView+JKCustomBorder.h"
+#import "UIView+JKBlockGesture.h"
+#import "UIViewController+JKBackButtonTouched.h"
+#import "UIView+JKVisuals.h"
 
 #endif /* JKCategories_h */

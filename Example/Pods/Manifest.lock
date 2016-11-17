@@ -1,20 +1,20 @@
 PODS:
-  - DJMacros (0.7.4):
-    - DJMacros/Extension (= 0.7.4)
-  - DJMacros/Extension (0.7.4)
+  - DJMacros (0.7.5):
+    - DJMacros/Extension (= 0.7.5)
+  - DJMacros/Extension (0.7.5)
   - JHChainableAnimations (1.3.0)
-  - KKCategories (0.3.3)
+  - KKCategories (0.3.4)
 
 DEPENDENCIES:
-  - DJMacros (~> 0.7.4)
+  - DJMacros (~> 0.7.5)
   - JHChainableAnimations (~> 1.3.0)
-  - KKCategories (~> 0.3.3)
+  - KKCategories (~> 0.3.4)
 
 SPEC CHECKSUMS:
-  DJMacros: 6fe6e9d86e3cfb98276c29303b6b75f58124b098
+  DJMacros: c512e986c7e1e9d7a234c38a19b668b82dbdd231
   JHChainableAnimations: 22085fcb04ca87349e584573558e637f659fd769
-  KKCategories: 14f23a81139cdfade355daf215f6513e23157158
+  KKCategories: 94eb3547377f5742382f02faf888e5aceceefba3
 
-PODFILE CHECKSUM: e80cf3430a847bca661ccd8241e98cd184bd66e1
+PODFILE CHECKSUM: 1d583099bcbdd67677ed09fe2a33e1a43ae8b6b9
 
 COCOAPODS: 1.1.1

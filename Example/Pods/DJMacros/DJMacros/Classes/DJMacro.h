@@ -16,7 +16,7 @@
 
 CGSize  ScreenSize();
 
-#define SCREEN_SIZE             ScreenSize()
+#define SCREEN_SIZE             [[UIScreen mainScreen] bounds].size
 #define SCREEN_WIDTH            SCREEN_SIZE.width
 #define SCREEN_HEIGHT           SCREEN_SIZE.height
 #define STATUS_BAR_FRAME        [UIApplication sharedApplication].statusBarFrame

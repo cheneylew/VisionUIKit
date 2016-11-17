@@ -25,10 +25,15 @@
 #import "UITextField+JKShake.h"
 #import "UIView+Borders.h"
 #import "UIView+Debug.h"
+#import "UIView+JKBlockGesture.h"
+#import "UIView+JKCustomBorder.h"
+#import "UIView+JKFind.h"
 #import "UIView+JKShake.h"
+#import "UIView+JKVisuals.h"
 #import "UIView+Nib.h"
 #import "UIView+Screenshot.h"
 #import "UIView+Utils.h"
+#import "UIViewController+JKBackButtonTouched.h"
 
 FOUNDATION_EXPORT double KKCategoriesVersionNumber;
 FOUNDATION_EXPORT const unsigned char KKCategoriesVersionString[];

@@ -22,6 +22,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9493CEB58A379AA6F8CE5540 /* Pods_VisionUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6BE3CB83BCD8B37C3C69D4 /* Pods_VisionUIKit_Example.framework */; };
+		C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97AEC071DDD73A800586B80 /* VSSheetView.m */; };
 		C9FDFB191DDA9B24009DBD67 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = C9FDFB151DDA9B24009DBD67 /* .gitkeep */; };
 		C9FDFB1A1DDA9B24009DBD67 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = C9FDFB171DDA9B24009DBD67 /* .gitkeep */; };
 		C9FDFB201DDA9BED009DBD67 /* VSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FDFB1F1DDA9BED009DBD67 /* VSAlertView.m */; };
@@ -66,6 +67,8 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8DD3A8DA59E4695583A7F78C /* VisionUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VisionUIKit.podspec; path = ../VisionUIKit.podspec; sourceTree = "<group>"; };
 		B651BC6B56631F5AA77527E3 /* Pods-VisionUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionUIKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VisionUIKit_Tests/Pods-VisionUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C97AEC061DDD73A800586B80 /* VSSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSheetView.h; sourceTree = "<group>"; };
+		C97AEC071DDD73A800586B80 /* VSSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSheetView.m; sourceTree = "<group>"; };
 		C9FDFB151DDA9B24009DBD67 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		C9FDFB171DDA9B24009DBD67 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		C9FDFB1E1DDA9BED009DBD67 /* VSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSAlertView.h; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 			children = (
 				C9FDFB1E1DDA9BED009DBD67 /* VSAlertView.h */,
 				C9FDFB1F1DDA9BED009DBD67 /* VSAlertView.m */,
+				C97AEC061DDD73A800586B80 /* VSSheetView.h */,
+				C97AEC071DDD73A800586B80 /* VSSheetView.m */,
 			);
 			path = AlertView;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				6003F59E195388D20070C39A /* VSAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* VSViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +579,7 @@
 				GCC_PREFIX_HEADER = "VisionUIKit/VisionUIKit-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "VisionUIKit/VisionUIKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -592,6 +599,7 @@
 				GCC_PREFIX_HEADER = "VisionUIKit/VisionUIKit-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "VisionUIKit/VisionUIKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
