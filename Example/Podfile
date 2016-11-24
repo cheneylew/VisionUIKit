@@ -8,6 +8,7 @@ def shared_private_pods
     pod 'DJMacros', '~> 0.7.6'
     pod 'KKCategories', '~> 0.3.4'
     pod 'NavyUIKit', '~> 0.1.23'
+    pod 'VisionUIKit', '~> 0.1.8'
 end
 
 target 'VisionUIKit_Example' do
