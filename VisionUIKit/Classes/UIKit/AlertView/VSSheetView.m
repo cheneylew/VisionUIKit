@@ -15,14 +15,14 @@ NSInteger const kVSSheetViewTag = 5858586;
 
 @interface VSSheetView()
 
-@property (nonatomic, weak)     UIView *parentView;         //添加到的目标视图，默认Window
-@property (nonatomic, strong)   UIView *maskView;           //背景蒙版
-@property (nonatomic, strong)   UIView *dialogView;         //中间弹出框区域
-@property (nonatomic, strong)   UIView *customView;         //定制视图，默认为nil
+@property (nonatomic, weak)     UIView *parentView;                 //添加到的目标视图，默认Window
+@property (nonatomic, strong)   UIView *maskView;                   //背景蒙版
+@property (nonatomic, strong)   UIView *dialogView;                 //中间弹出框区域
+@property (nonatomic, strong)   UIView *customView;                 //定制视图，默认为nil
 
-@property (nonatomic, strong)   NSArray *buttonTitles;      //按钮标题
-@property (nonatomic, strong)   NSString *cancelTitle;      //取消
-@property (nonatomic, copy)     VSSheetViewCallBackBlock callBack;    //完成回调
+@property (nonatomic, strong)   NSArray *buttonTitles;              //按钮标题
+@property (nonatomic, strong)   NSString *cancelTitle;              //取消
+@property (nonatomic, copy)     VSSheetViewCallBackBlock callBack;  //完成回调
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "VSAlertView.h"
+#import <DJMacros/DJMacro.h>
 #import <KKCategories/KKCategories.h>
 #import <JHChainableAnimations/JHChainableAnimations.h>
 
@@ -280,6 +281,18 @@ NSInteger const kVSAlertViewTag = 5858585;
     }else {
         self.closeButton.layer.opacity = 1;
         self.closeButton.makeOpacity(0).animate(0.26);
+    }
+}
+
+- (void)enableTapMaskClose:(BOOL)enabled {
+    if (enabled) {
+        self.maskView.userInteractionEnabled = YES;
+        WEAK_SELF;
+        [self.maskView jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
+            [weakself closeAlertView];
+        }];
+    }else {
+        self.maskView.userInteractionEnabled = NO;
     }
 }
 

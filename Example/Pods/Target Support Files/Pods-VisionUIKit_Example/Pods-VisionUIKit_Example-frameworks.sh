@@ -87,9 +87,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KKCategories/KKCategories.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NavyUIKit/NavyUIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KKCategories/KKCategories.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NavyUIKit/NavyUIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
 fi

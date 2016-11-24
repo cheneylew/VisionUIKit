@@ -142,7 +142,7 @@ CGSize  ScreenSize();
 #define DLog(...)
 #endif
 
-#define kMETHOD_NOT_IMPLEMENTED()       NSAssert(NO, @"You must override %@ in a subclass", NSStringFromSelector(_cmd))
+#define METHOD_NOT_IMPLEMENTED()       NSAssert(NO, @"You must override %@ in a subclass", NSStringFromSelector(_cmd))
 
 #pragma mark -
 #pragma mark NSNumber

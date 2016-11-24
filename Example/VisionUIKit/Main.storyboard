@@ -14,15 +14,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CVe-Xh-Xb4">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="jYz-wZ-RWF" kind="relationship" relationship="rootViewController" id="xgH-go-jvy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjr-FN-6dt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-862.5" y="110.05499999999999"/>
+            <point key="canvasLocation" x="-912" y="119"/>
         </scene>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="JA3-IP-AGR">
             <objects>
                 <viewController id="u8k-CZ-laF" sceneMemberID="viewController">
@@ -31,13 +35,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="Nhr-GB-OaG"/>
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="Nhr-GB-OaG">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-1"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9t-a5-52i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="154.375" y="483.57499999999999"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="NiE-h2-4qG">
             <objects>
                 <viewController id="Ab6-C4-gC8" customClass="VSViewController" sceneMemberID="viewController">
@@ -46,7 +52,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="kgs-Ir-9gj"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="kgs-Ir-9gj">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OR3-fF-MVY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

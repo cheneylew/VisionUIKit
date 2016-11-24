@@ -1,0 +1,6 @@
+framework module NavyUIKit {
+  umbrella header "NavyUIKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

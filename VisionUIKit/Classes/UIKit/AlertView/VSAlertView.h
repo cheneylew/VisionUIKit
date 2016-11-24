@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <DJMacros/DJMacro.h>
+
 
 typedef void(^VSAlertViewJKCallBackBlock)(NSInteger buttonIndex);
 
@@ -25,7 +25,8 @@ FOUNDATION_EXPORT NSInteger const kVSAlertViewTag;
 @property (nonatomic, assign) NSTextAlignment titleTextAlignment;
 @property (nonatomic, assign) NSTextAlignment messageTextAlignment;
 
-- (void)showCloseButton:(BOOL)isShow;
+- (void)showCloseButton:(BOOL)isShow;       //是否展示关闭按钮
+- (void)enableTapMaskClose:(BOOL)enabled;   //点击蒙版层关闭
 
 + (VSAlertView *)ShowWithTitle:(NSString *)title
                        message:(NSString *)message
