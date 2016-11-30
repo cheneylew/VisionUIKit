@@ -7,8 +7,7 @@
 //
 
 #import "VSTBConstructor.h"
-#import "VSTBDataModel.h"
-#import "VSTBTableViewCell.h"
+#import "VSTBBaseCell.h"
 #import <DJMacros/DJMacro.h>
 
 @interface VSTBConstructor ()
@@ -25,6 +24,11 @@
         [self addModels];
     }
     return self;
+}
+
+- (NSIndexPath *)indexPathOfModel:(VSTBBaseDataModel *)model {
+    NSUInteger idx = [self.dataModels indexOfObject:model];
+    return [NSIndexPath indexPathForRow:idx inSection:0];
 }
 
 - (void)addModels {
@@ -47,22 +51,22 @@
 }
 
 - (void)configCellUI:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath {
-    VSTBDataModel *model = [self modelAtIndexPath:indexPath];
-    VSTBTableViewCell *vsCell = (VSTBTableViewCell *)cell;
+    VSTBBaseDataModel *model = [self modelAtIndexPath:indexPath];
+    VSTBBaseCell *vsCell = (VSTBBaseCell *)cell;
     vsCell.backgroundColor = model.backgroudColor;
-    vsCell.cellModel = model;
+    [vsCell setModel:model];
 }
 
-- (VSTBDataModel *)modelAtIndexPath:(NSIndexPath *)indexPath {
-    VSTBDataModel *model = [self.dataModels objectAtIndex:indexPath.row];
+- (VSTBBaseDataModel *)modelAtIndexPath:(NSIndexPath *)indexPath {
+    VSTBBaseDataModel *model = [self.dataModels objectAtIndex:indexPath.row];
     return model;
 }
 
 - (void)loadModels {
-    
+    WEAK_SELF;
     [self.dataModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[VSTBDataModel class]]) {
-            VSTBDataModel *model = obj;
+        if ([obj isKindOfClass:[VSTBBaseDataModel class]]) {
+            VSTBBaseDataModel *model = obj;
             if (!model.backgroudColor) {
                 model.backgroudColor = [UIColor whiteColor];
             }
@@ -75,6 +79,7 @@
             if (!model.height) {
                 model.height = NUM_FLOAT(FIT6P(135));
             }
+            model.controller = weakself.controller;
             [self.TB registerClass:NSClassFromString(model.classString) forCellReuseIdentifier:model.identifier];
         }
     }];

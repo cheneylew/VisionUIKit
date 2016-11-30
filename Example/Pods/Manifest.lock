@@ -206,6 +206,13 @@ PODS:
     - SAMKeychain (~> 1.5.2)
   - NavyUIKit/Utilities (0.1.23):
     - SAMKeychain (~> 1.5.2)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - SAMKeychain (1.5.2)
 
 DEPENDENCIES:
@@ -213,14 +220,16 @@ DEPENDENCIES:
   - JHChainableAnimations (~> 1.3.0)
   - KKCategories (~> 0.3.4)
   - NavyUIKit (~> 0.1.23)
+  - ReactiveCocoa (~> 2.5)
 
 SPEC CHECKSUMS:
   DJMacros: 536b99f50601cf402c0c70a732a411c2c76e9046
   JHChainableAnimations: 22085fcb04ca87349e584573558e637f659fd769
   KKCategories: 94eb3547377f5742382f02faf888e5aceceefba3
   NavyUIKit: 9a119cfb82f983f9631ed99d418452cfe7d589ae
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
-PODFILE CHECKSUM: 9f3290ac0a0b022aa2649028e39918a02116fa34
+PODFILE CHECKSUM: 2cb20c52db461f1bd17da583a85a908c392c87cf
 
 COCOAPODS: 1.1.1

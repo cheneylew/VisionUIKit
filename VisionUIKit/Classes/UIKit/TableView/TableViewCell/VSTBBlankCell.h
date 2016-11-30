@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VSTBTableViewCell.h"
+#import "VSTBBaseCell.h"
 
-@interface VSTBBlankCell : VSTBTableViewCell
+@interface VSTBBlankCell : VSTBBaseCell
 
 @end

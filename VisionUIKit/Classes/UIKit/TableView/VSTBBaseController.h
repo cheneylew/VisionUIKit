@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VSTBBaseDelegate.h"
+#import "VSTBAdaptor.h"
 
 @interface VSTBBaseController : UIViewController
-<VSTBDelegate>
+<VSTBAdaptorDelegate>
 
-- (NSString *)getCustomTBConstructorClassName;
+- (NSString *)vs_constructorClassName;
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import "VSTableViewController.h"
+#import "VSTBButtonCell.h"
 
 @interface VSTableViewController ()
+<VSTBButtonCellDelegate>
+
 
 @end
 
@@ -24,11 +27,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSString *)getCustomTBConstructorClassName {
+- (NSString *)vs_constructorClassName {
     return @"VSTBViewConstructor";
 }
 
-- (void)vs_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)vs_tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath model:(VSTBBaseDataModel *)model {
+    
+}
+
+- (void)VSTBButtonCellWithButtonClickEvent:(UIButton *)btn model:(VSTBBaseDataModel *)model {
     
 }
 

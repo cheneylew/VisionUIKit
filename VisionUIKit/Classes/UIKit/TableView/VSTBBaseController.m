@@ -8,14 +8,14 @@
 
 #import "VSTBBaseController.h"
 #import "VSTableView.h"
-#import "VSTBBaseDelegate.h"
+#import "VSTBAdaptor.h"
 #import "VSTBConstructor.h"
 #import <DJMacros/DJMacro.h>
 
 @interface VSTBBaseController ()
 
 @property (nonatomic, strong) VSTableView *TB;
-@property (nonatomic, strong) VSTBBaseDelegate *TBDelegate;
+@property (nonatomic, strong) VSTBAdaptor *TBDelegate;
 @property (nonatomic, strong) VSTBConstructor *TBConstructor;
 
 @end
@@ -41,8 +41,9 @@
 }
 
 - (void)createTableView {
-    self.TBConstructor = [[NSClassFromString([self getCustomTBConstructorClassName]) alloc] init];
-    self.TBDelegate = [[VSTBBaseDelegate alloc] init];
+    self.TBConstructor = [[NSClassFromString([self vs_constructorClassName]) alloc] init];
+    self.TBConstructor.controller = self;
+    self.TBDelegate = [[VSTBAdaptor alloc] init];
     self.TBDelegate.constructor = self.TBConstructor;
     self.TBDelegate.delegate = self;
     
@@ -51,6 +52,7 @@
     [TB setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     TB.delegate     = self.TBDelegate;
     TB.dataSource   = self.TBConstructor;
+    TB.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
     self.TB         = TB;
     [self.view addSubview:TB];
     
@@ -61,7 +63,7 @@
     [self.TB reloadData];
 }
 
-- (NSString *)getCustomTBConstructorClassName {
+- (NSString *)vs_constructorClassName {
     METHOD_NOT_IMPLEMENTED();
     return @"";
 }

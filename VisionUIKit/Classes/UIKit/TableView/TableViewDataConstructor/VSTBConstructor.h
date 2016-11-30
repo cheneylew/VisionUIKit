@@ -8,17 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VSTBDataModel.h"
+#import "VSTBBaseCell.h"
+
 
 @interface VSTBConstructor : NSObject
 <UITableViewDataSource>
 
 @property (nonatomic, weak)             UITableView *TB;
+@property (nonatomic, weak)             UIViewController *controller;
 @property (nonatomic, strong, readonly) NSMutableArray *dataModels;
 
 - (void)loadModels;
 
-- (VSTBDataModel *)modelAtIndexPath:(NSIndexPath *)indexPath;
+- (VSTBBaseDataModel *)modelAtIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)indexPathOfModel:(VSTBBaseDataModel *)model;
 
 #pragma mark - 子类重写
 
