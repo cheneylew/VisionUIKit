@@ -29,10 +29,10 @@ CGSize  ScreenSize();
                                 green:((float)((hex & 0xFF00) >> 8))/255.0 blue:((float)(hex & 0xFF))/255.0 alpha:a]
 #define HEX(hex)                HEXA(hex,1)
 
-#define FIT5(x)                 ((x)/640.0f)*SCREEN_WIDTH
-#define FIT6(x)                 ((x)/750.0f)*SCREEN_WIDTH
-#define FIT6P(x)                ((x)/1242.0f)*SCREEN_WIDTH
-#define FIT1024(x)              ((x)/1024.0f)*SCREEN_WIDTH
+#define FIT5(x)                 ((x)/640.0f)*SCREEN_WIDTH*1.2
+#define FIT6(x)                 ((x)/750.0f)*SCREEN_WIDTH*1.2
+#define FIT6P(x)                ((x)/1242.0f)*SCREEN_WIDTH*1.2
+#define FIT1024(x)              ((x)/1024.0f)*SCREEN_WIDTH*1.2
 #define FIT_RECT6(x,y,w,h)      CGRectMake(FIT6(x), FIT6(y), FIT6(w), FIT6(h))
 #define FIT_RECT1024(x,y,w,h)   CGRectMake(FIT1024(x), FIT1024(y), FIT1024(w), FIT1024(h))
 
@@ -377,8 +377,10 @@ description:(desc), ##__VA_ARGS__]; \
 #define PP_TEXTVIEW(name)           @property (nonatomic, strong)   UITextView *(name);
 #define PP_CONTROLLER(name)         @property (nonatomic, strong)   UIViewController *(name);
 
+#define PP_COPY(class,name)         @property (nonatomic, copy)     class *(name);
 #define PP_STRONG(class,name)       @property (nonatomic, strong)   class *(name);
 #define PP_ASSIGN(class,name)       @property (nonatomic, assign)   class *(name);
+#define PP_ASSIGN_BASIC(type,name)  @property (nonatomic, assign)   class (name);
 #define PP_DELEGATE(protocal,name)  @property (nonatomic, weak)     id<protocal> (name);
 
 #pragma mark -
