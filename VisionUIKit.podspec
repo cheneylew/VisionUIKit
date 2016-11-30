@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'VisionUIKit'
-    s.version          = '0.1.12'
+    s.version          = '0.1.13'
     s.summary          = '定制化的UI控件'
 
     # This description is used to generate tags and improve search results.
@@ -55,7 +55,7 @@ Pod::Spec.new do |s|
     # s.public_header_files = 'Pod/Classes/**/*.h'
     # s.frameworks = 'UIKit', 'MapKit'
     s.dependency 'KKCategories', '~> 0.3.4'
-    s.dependency 'DJMacros', '~> 0.7.7'
+    s.dependency 'DJMacros', '~> 0.7.8'
     s.dependency 'JHChainableAnimations', '~> 1.3.0'
     s.dependency 'ReactiveCocoa', '~> 2.5'
 end
