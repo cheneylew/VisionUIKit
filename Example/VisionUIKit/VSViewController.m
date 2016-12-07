@@ -13,6 +13,7 @@
 #import "VSSheetView.h"
 #import "VSTableViewController.h"
 #import "VSInputManager.h"
+#import "NSMutableAttributedString+Category.h"
 
 #define TITLE_COLOR RGB(15, 103, 197)
 
@@ -66,9 +67,26 @@ PP_STRONG(UIScrollView, scrollView)
     }];
     
     [[self makeLeftButton:@"AlertView-类系统" index:2] jk_addActionHandler:^(NSInteger tag) {
-        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"Hello World"];
-        [att dj_addAttribute:ATT_BKG_COLOR value:[UIColor redColor] string:@"Hello"];
-        VSAlertView *alert = [VSAlertView ShowWithTitle:@"提示" message:att buttonTitles:@[@"确定",@"取消"] callBlock:^(NSInteger buttonIndex) {
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"Hello World\n"];
+        [attributedString appendString:@"确认奖励信息" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString addLine:2];
+        
+        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString appendString:@"10元"
+                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString addLine:1];
+        
+        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString appendString:@"10元"
+                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString addLine:1];
+        
+        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString appendString:@"10元"
+                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString addLine:1];
+        
+        VSAlertView *alert = [VSAlertView ShowWithTitle:@"提示" message:attributedString buttonTitles:@[@"确定",@"取消"] callBlock:^(NSInteger buttonIndex) {
             //
         }];
         alert.messageTextAlignment = NSTextAlignmentLeft;

@@ -10,6 +10,7 @@
 #import <DJMacros/DJMacro.h>
 #import <KKCategories/KKCategories.h>
 #import <JHChainableAnimations/JHChainableAnimations.h>
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
 
 #define VSSCREEN_SIZE [[UIScreen mainScreen] bounds]
 #define VSSCREEN_WIDTH VSSCREEN_SIZE.size.width
@@ -135,7 +136,9 @@ NSInteger const kVSAlertViewTag = 5858585;
     CGFloat mWidth = dWidth - 2*leftRightSpace;
     CGFloat mHeight = 0.0f;
     if ([self.message isKindOfClass:[NSAttributedString class]]) {
-        mHeight = [self.message dj_heightWithWidth:mWidth];
+        mHeight = [self.message boundingRectWithSize:CGSizeMake(mWidth, 1000000.0f)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                        context:nil].size.height;
     }else {
         mHeight = [self.message jk_heightWithFont:messageFont constrainedToWidth:mWidth];
     }
@@ -187,7 +190,7 @@ NSInteger const kVSAlertViewTag = 5858585;
         if (!haveTitle) {
             top = topBottomSpace;
         }
-        UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftRightSpace,
+        TTTAttributedLabel *msgLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(leftRightSpace,
                                                                       top,
                                                                       mWidth,
                                                                       mHeight)];

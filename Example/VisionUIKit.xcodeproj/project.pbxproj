@@ -26,6 +26,7 @@
 		C94A790B1DF577A7003F8BFF /* VSDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A790A1DF577A7003F8BFF /* VSDataModel.m */; };
 		C94A790E1DF577BD003F8BFF /* VSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A790D1DF577BD003F8BFF /* VSViewModel.m */; };
 		C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97AEC071DDD73A800586B80 /* VSSheetView.m */; };
+		C9ACEF4D1DF8111700F84905 /* NSMutableAttributedString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */; };
 		C9EE86321DEA79CF0045B889 /* VSTBButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EE86311DEA79CF0045B889 /* VSTBButtonCell.m */; };
 		C9F9FE3D1DE03B0400339937 /* VSTBBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE3C1DE03B0400339937 /* VSTBBaseController.m */; };
 		C9F9FE401DE03B3F00339937 /* VSTBConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE3F1DE03B3F00339937 /* VSTBConstructor.m */; };
@@ -93,6 +94,8 @@
 		C94A790D1DF577BD003F8BFF /* VSViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSViewModel.m; sourceTree = "<group>"; };
 		C97AEC061DDD73A800586B80 /* VSSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSheetView.h; sourceTree = "<group>"; };
 		C97AEC071DDD73A800586B80 /* VSSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSheetView.m; sourceTree = "<group>"; };
+		C9ACEF4B1DF8111700F84905 /* NSMutableAttributedString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Category.h"; sourceTree = "<group>"; };
+		C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Category.m"; sourceTree = "<group>"; };
 		C9EE86301DEA79CF0045B889 /* VSTBButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBButtonCell.h; sourceTree = "<group>"; };
 		C9EE86311DEA79CF0045B889 /* VSTBButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBButtonCell.m; sourceTree = "<group>"; };
 		C9F9FE3B1DE03B0400339937 /* VSTBBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBBaseController.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 				6003F59D195388D20070C39A /* VSAppDelegate.m */,
 				6003F5A5195388D20070C39A /* VSViewController.h */,
 				6003F5A6195388D20070C39A /* VSViewController.m */,
+				C9ACEF4B1DF8111700F84905 /* NSMutableAttributedString+Category.h */,
+				C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -635,6 +640,7 @@
 				C9F9FE581DE05FF700339937 /* VSTBBaseCell.m in Sources */,
 				C9F9FE621DE131EF00339937 /* VSTBKeyValueCell.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				C9ACEF4D1DF8111700F84905 /* NSMutableAttributedString+Category.m in Sources */,
 				C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */,
 				C94A790E1DF577BD003F8BFF /* VSViewModel.m in Sources */,
 			);
