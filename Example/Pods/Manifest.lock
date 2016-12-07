@@ -1,9 +1,12 @@
 PODS:
-  - DJMacros (0.7.7):
-    - DJMacros/Extension (= 0.7.7)
-  - DJMacros/Extension (0.7.7)
+  - DJMacros (0.7.11):
+    - DJMacros/Extension (= 0.7.11)
+    - TTTAttributedLabel (~> 2.0.0)
+  - DJMacros/Extension (0.7.11):
+    - TTTAttributedLabel (~> 2.0.0)
   - JHChainableAnimations (1.3.0)
-  - KKCategories (0.3.4)
+  - JTNavigationController (1.0.1)
+  - KKCategories (0.3.6)
   - NavyUIKit (0.1.23):
     - NavyUIKit/3rds_DBImageView (= 0.1.23)
     - NavyUIKit/3rds_KC_encryption (= 0.1.23)
@@ -213,23 +216,30 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - RTRootNavigationController (0.5.22)
   - SAMKeychain (1.5.2)
+  - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
-  - DJMacros (~> 0.7.7)
+  - DJMacros (~> 0.7.11)
   - JHChainableAnimations (~> 1.3.0)
-  - KKCategories (~> 0.3.4)
+  - JTNavigationController
+  - KKCategories (~> 0.3.6)
   - NavyUIKit (~> 0.1.23)
   - ReactiveCocoa (~> 2.5)
+  - RTRootNavigationController
 
 SPEC CHECKSUMS:
-  DJMacros: 79156ae90b3fc484c6dda0e76947dfb0057ef0bc
+  DJMacros: 74b892308689fad50f48ff551bf2c0c7a293a39f
   JHChainableAnimations: 22085fcb04ca87349e584573558e637f659fd769
-  KKCategories: 94eb3547377f5742382f02faf888e5aceceefba3
+  JTNavigationController: a3563e6d1adbd00301af8f049e546342fad7ffa9
+  KKCategories: fead30e110b7f143e1c21b502c8144c9d418a461
   NavyUIKit: 9a119cfb82f983f9631ed99d418452cfe7d589ae
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  RTRootNavigationController: cf134c044a8ce14d97fc668847ed4567efc53f91
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 6bb3f332b52481a314bb06c85c604f5d71885598
+PODFILE CHECKSUM: 2de7bcf0145a34081048f28badf0337518c0e34e
 
 COCOAPODS: 1.1.1

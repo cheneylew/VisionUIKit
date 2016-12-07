@@ -47,6 +47,9 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[self modelAtIndexPath:indexPath].identifier];
     [self configCellUI:cell indexPath:indexPath];
+    if (cell == nil) {
+        ASSERT_ALWAYS;
+    }
     return cell;
 }
 
@@ -74,7 +77,7 @@
                 model.selectedBackgroudColor = HEX(0xf5f5f5);
             }
             if (!model.groupLineColor) {
-                model.groupLineColor = HEX(0xececec);
+                model.groupLineColor = HEX(0xd9d9d9);
             }
             if (!model.height) {
                 model.height = NUM_FLOAT(FIT6P(135));

@@ -10,7 +10,7 @@
 #import <DJMacros/DJMacro.h>
 #import <KKCategories/KKCategories.h>
 
-@interface VSTBDescriptionDataModel : VSTBBaseDataModel
+@interface VSTBTitleDataModel : VSTBBaseDataModel
 
 @property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) UIFont *font;
@@ -25,7 +25,7 @@ PP_STRONG(NSNumber, bottomMargin)
 
 @end
 
-@interface VSTBDescriptionCell : VSTBBaseCell
+@interface VSTBTitleCell : VSTBBaseCell
 
 @property (nonatomic, strong) UILabel *vs_descLabel;
 

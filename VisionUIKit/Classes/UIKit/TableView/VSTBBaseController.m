@@ -14,10 +14,6 @@
 
 @interface VSTBBaseController ()
 
-@property (nonatomic, strong) VSTableView *TB;
-@property (nonatomic, strong) VSTBAdaptor *TBDelegate;
-@property (nonatomic, strong) VSTBConstructor *TBConstructor;
-
 @end
 
 @implementation VSTBBaseController

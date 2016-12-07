@@ -58,9 +58,9 @@
     [super setModel:cellModel];
     self.delegate = (id<VSTBButtonCellDelegate> )cellModel.controller;
     
-    self.button.height = 30.0f;
+    self.button.height = 40.0f;
     self.button.centerY = cellModel.height.floatValue/2.0f;
-    self.button.centerX = self.centerX;
+    self.button.centerX = SCREEN_WIDTH/2.0f;
     
     if (cellModel.button_normal_color) {
         [self.button setBackgroundImage:[UIImage jk_imageWithColor:cellModel.button_normal_color]

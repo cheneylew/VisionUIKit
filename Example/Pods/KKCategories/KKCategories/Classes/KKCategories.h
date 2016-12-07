@@ -9,9 +9,11 @@
 #ifndef HYCategories_h
 #define HYCategories_h
 
+#import "NSData+JKBase64.h"
+#import "NSData+JKEncrypt.h"
+
 #import "NSObject+JKBlocks.h"
 #import "NSObject+JKRuntime.h"
-#import "NSString+JKSize.h"
 #import "UIButton+JKImagePosition.h"
 #import "UIColor+JKGradient.h"
 #import "UIColor+JKHEX.h"
@@ -40,5 +42,25 @@
 #import "UIView+JKBlockGesture.h"
 #import "UIViewController+JKBackButtonTouched.h"
 #import "UIView+JKVisuals.h"
+#import "UIImage+JKCategory.h"
+#import "UIColor+JKCategory.h"
+
+#import "NSString+JKBase64.h"
+#import "NSString+JKContains.h"
+#import "NSString+JKDictionaryValue.h"
+#import "NSString+JKEmoji.h"
+#import "NSString+JKEncrypt.h"
+#import "NSString+JKHash.h"
+#import "NSString+JKMatcher.h"
+#import "NSString+JKMIME.h"
+#import "NSString+JKNormalRegex.h"
+#import "NSString+JKPinyin.h"
+#import "NSString+JKRemoveEmoji.h"
+#import "NSString+JKScore.h"
+#import "NSString+JKSize.h"
+#import "NSString+JKTrims.h"
+#import "NSString+JKURLEncode.h"
+#import "NSString+JKUUID.h"
+#import "NSString+JKXMLDictionary.h"
 
 #endif /* JKCategories_h */

@@ -6,16 +6,16 @@
 //  Copyright © 2016年 Deju Liu. All rights reserved.
 //
 
-#import "VSTBDescriptionCell.h"
+#import "VSTBTitleCell.h"
 #import <DJMacros/DJMacro.h>
 #import <KKCategories/KKCategories.h>
 
-@implementation VSTBDescriptionDataModel
+@implementation VSTBTitleDataModel
 
 
 @end
 
-@implementation VSTBDescriptionCell
+@implementation VSTBTitleCell
 
 - (void)initUI {
     [super initUI];
@@ -28,7 +28,7 @@
 }
 
 - (void)setModel:(VSTBBaseDataModel *)cellModel {
-    VSTBDescriptionDataModel *model = (VSTBDescriptionDataModel *) cellModel;
+    VSTBTitleDataModel *model = (VSTBTitleDataModel *) cellModel;
     
     self.vs_descLabel.top = model.topMargin?model.topMargin.floatValue:FIT6P(24);
     self.vs_descLabel.width = SCREEN_WIDTH - (model.leftRightMargin.floatValue)*2.0f;

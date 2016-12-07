@@ -1,14 +1,14 @@
 //
-//  VSTBBlankCell.m
+//  VSTBNullCell.m
 //  VisionUIKit
 //
 //  Created by Dejun Liu on 2016/11/19.
 //  Copyright © 2016年 Deju Liu. All rights reserved.
 //
 
-#import "VSTBBlankCell.h"
+#import "VSTBNullCell.h"
 
-@implementation VSTBBlankCell
+@implementation VSTBNullCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -11,10 +11,10 @@
 
 @interface VSTBButtonDataModel : VSTBBaseDataModel
 
-PP_STRONG(UIColor, button_normal_color)
-PP_STRONG(UIColor, button_hightlight_color)
-PP_STRONG(UIColor, button_title_color)
-PP_STRONG(UIFont, button_title_font)
+PP_STRONG(UIColor,  button_normal_color)
+PP_STRONG(UIColor,  button_hightlight_color)
+PP_STRONG(UIColor,  button_title_color)
+PP_STRONG(UIFont,   button_title_font)
 PP_STRONG(NSString, button_title)
 
 @end

@@ -86,16 +86,22 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JTNavigationController/JTNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KKCategories/KKCategories.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NavyUIKit/NavyUIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RTRootNavigationController/RTRootNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/JTNavigationController/JTNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KKCategories/KKCategories.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NavyUIKit/NavyUIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/RTRootNavigationController/RTRootNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
 fi

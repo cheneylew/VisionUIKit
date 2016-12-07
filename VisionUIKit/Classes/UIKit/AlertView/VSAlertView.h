@@ -29,13 +29,13 @@ FOUNDATION_EXPORT NSInteger const kVSAlertViewTag;
 - (void)enableTapMaskClose:(BOOL)enabled;   //点击蒙版层关闭
 
 + (VSAlertView *)ShowWithTitle:(NSString *)title
-                       message:(NSString *)message
+                       message:(id)message
                   buttonTitles:(NSArray *)btnTitles
                      callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock;
 
 + (VSAlertView *)ShowInView:(UIView *)view
                       Title:(NSString *)title
-                    message:(NSString *)message
+                    message:(id)message
                buttonTitles:(NSArray *)btnTitles
                   callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock;
 

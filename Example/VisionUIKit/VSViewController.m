@@ -12,10 +12,12 @@
 #import <KKCategories/KKCategories.h>
 #import "VSSheetView.h"
 #import "VSTableViewController.h"
+#import "VSInputManager.h"
 
 #define TITLE_COLOR RGB(15, 103, 197)
 
 @interface VSViewController ()
+<TTTAttributedLabelDelegate>
 
 PP_STRONG(UIScrollView, scrollView)
 
@@ -64,9 +66,12 @@ PP_STRONG(UIScrollView, scrollView)
     }];
     
     [[self makeLeftButton:@"AlertView-类系统" index:2] jk_addActionHandler:^(NSInteger tag) {
-        [VSAlertView ShowWithTitle:@"提示" message:@"标题" buttonTitles:@[@"确定",@"取消"] callBlock:^(NSInteger buttonIndex) {
+        NSMutableAttributedString *att = [[NSMutableAttributedString alloc] initWithString:@"Hello World"];
+        [att dj_addAttribute:ATT_BKG_COLOR value:[UIColor redColor] string:@"Hello"];
+        VSAlertView *alert = [VSAlertView ShowWithTitle:@"提示" message:att buttonTitles:@[@"确定",@"取消"] callBlock:^(NSInteger buttonIndex) {
             //
         }];
+        alert.messageTextAlignment = NSTextAlignmentLeft;
     }];
     
     [[self makeLeftButton:@"AlertView-点击蒙版关闭" index:3] jk_addActionHandler:^(NSInteger tag) {
@@ -79,15 +84,62 @@ PP_STRONG(UIScrollView, scrollView)
 
 - (void)makeRightButtons{
     [[self makeRightButton:@"隐藏显示NavigationBar" index:0] jk_addActionHandler:^(NSInteger tag) {
-        self.navigationController.navigationBarHidden = !self.navigationController.navigationBarHidden;
+        [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
     }];
     
     [[self makeRightButton:@"TableView" index:1] jk_addActionHandler:^(NSInteger tag) {
         VSTableViewController *tb = [[VSTableViewController alloc] init];
         [self.navigationController pushViewController:tb animated:YES];
     }];
+    
+    [[self makeRightButton:@"NSAttributeString" index:2] jk_addActionHandler:^(NSInteger tag) {
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:@"hello world"];
+        [attrString addAttribute:NSForegroundColorAttributeName
+                           value:[UIColor redColor]
+                           range:NSMakeRange(0, 4)];
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-200, 300, 200)];
+        textLabel.attributedText = attrString;
+        [self.view addSubview:textLabel];
+    }];
+    
+    [[self makeRightButton:@"TTTAttributedLabel" index:3] jk_addActionHandler:^(NSInteger tag) {
+        TTTAttributedLabel *lbl = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-49-50, 300, 50)];
+        lbl.backgroundColor = [UIColor lightGrayColor];
+        lbl.numberOfLines = 0;
+        lbl.width = 100;
+        lbl.bottom = SCREEN_HEIGHT - 200;
+        
+        lbl.linkAttributes = @{ATT_FONT:[UIFont systemFontOfSize:22],
+                               ATT_TEXT_COLOR:[UIColor purpleColor],
+                               ATT_UNDERLINE_COLOR:[UIColor purpleColor],
+                               ATT_UNDERLINE_STYLE:@1,};
+        lbl.text = @"hello world 点击百度 点击新浪";
+        [lbl setText:lbl.text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            [mutableAttributedString dj_addAttribute:kTTTBackgroundFillColorAttributeName value:[UIColor yellowColor] string:@"hello world"];
+            return mutableAttributedString;
+        }];
+        lbl.delegate = self;
+        [self.view addSubview:lbl];
+        
+        lbl.height = [lbl.attributedText dj_heightWithWidth:lbl.width];
+        [lbl dj_addLinkToURLString:@"http://www.baidu.com" subString:@"点击百度"];
+        [lbl dj_addLinkToURLString:@"http://www.sina.com.cn" subString:@"点击新浪"];
+    }];
+    
+    [[self makeRightButton:@"InputView" index:4] jk_addActionHandler:^(NSInteger tag) {
+        VSInputManager *m = [VSInputManager sharedInstance];
+        [m inputWeb:@"" complation:^(NSString *result, BOOL cancel) {
+            
+        }];
+    }];
 }
 
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    [VSAlertView ShowWithTitle:@"" message:[url absoluteString] buttonTitles:nil callBlock:^(NSInteger buttonIndex) {
+        
+    }];
+}
 
 #pragma mark 通用方法
 

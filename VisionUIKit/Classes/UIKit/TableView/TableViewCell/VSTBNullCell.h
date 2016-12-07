@@ -1,5 +1,5 @@
 //
-//  VSTBBlankCell.h
+//  VSTBNullCell.h
 //  VisionUIKit
 //
 //  Created by Dejun Liu on 2016/11/19.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "VSTBBaseCell.h"
 
-@interface VSTBBlankCell : VSTBBaseCell
+@interface VSTBNullCell : VSTBBaseCell
 
 @end

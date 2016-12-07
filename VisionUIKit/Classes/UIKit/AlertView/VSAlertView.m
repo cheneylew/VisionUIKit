@@ -33,7 +33,7 @@ NSInteger const kVSAlertViewTag = 5858585;
 @property (nonatomic, strong)   UIView *customView;         //定制视图，默认为nil
 
 @property (nonatomic, strong)   NSString *title;            //标题
-@property (nonatomic, strong)   NSString *message;          //消息内容
+@property (nonatomic, strong)   id      message;            //消息内容，可能是NSAttributeString或NSString
 @property (nonatomic, strong)   NSArray *buttonTitles;      //按钮标题
 
 @property (nonatomic, strong)   UILabel *titleLabel;
@@ -66,7 +66,7 @@ NSInteger const kVSAlertViewTag = 5858585;
 - (instancetype)initWithParentView:(UIView *)parentView
                         customView:(UIView *)customView
                              Title:(NSString *)title
-                           message:(NSString *)message
+                           message:(id)message
                       buttonTitles:(NSArray *)buttonTitles
                          callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock
 {
@@ -133,7 +133,12 @@ NSInteger const kVSAlertViewTag = 5858585;
     CGFloat dWidth = haveCustomView?leftRightSpace+self.customView.width+leftRightSpace:kFit6(600);
     
     CGFloat mWidth = dWidth - 2*leftRightSpace;
-    CGFloat mHeight = [self.message jk_heightWithFont:messageFont constrainedToWidth:mWidth];
+    CGFloat mHeight = 0.0f;
+    if ([self.message isKindOfClass:[NSAttributedString class]]) {
+        mHeight = [self.message dj_heightWithWidth:mWidth];
+    }else {
+        mHeight = [self.message jk_heightWithFont:messageFont constrainedToWidth:mWidth];
+    }
     
     CGFloat tWidth  = mWidth;
     CGFloat tHeight = haveTitle?[self.title jk_heightWithFont:titleFont constrainedToWidth:tWidth]:0;
@@ -186,7 +191,11 @@ NSInteger const kVSAlertViewTag = 5858585;
                                                                       top,
                                                                       mWidth,
                                                                       mHeight)];
-        msgLabel.text = self.message;
+        if ([self.message isKindOfClass:[NSAttributedString class]]) {
+            msgLabel.attributedText = self.message;
+        } else {
+            msgLabel.text = self.message;
+        }
         msgLabel.font = messageFont;
         msgLabel.numberOfLines = 0;
         msgLabel.textAlignment = NSTextAlignmentCenter;
@@ -313,20 +322,21 @@ NSInteger const kVSAlertViewTag = 5858585;
 }
 
 + (VSAlertView *)ShowWithTitle:(NSString *)title
-                       message:(NSString *)message
+                       message:(id)message
                   buttonTitles:(NSArray *)btnTitles
                      callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
     
     return [[VSAlertView alloc] initWithParentView:[[UIApplication sharedApplication] keyWindow]
                                         customView:nil
-                                             Title:title message:message
+                                             Title:title
+                                           message:message
                                       buttonTitles:btnTitles
                                          callBlock:alertViewCallBackBlock];
 }
 
 + (VSAlertView *)ShowInView:(UIView *)view
                       Title:(NSString *)title
-                    message:(NSString *)message
+                    message:(id)message
                buttonTitles:(NSArray *)btnTitles
                   callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
     return [[VSAlertView alloc] initWithParentView:view

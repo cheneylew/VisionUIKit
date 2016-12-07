@@ -22,6 +22,9 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9493CEB58A379AA6F8CE5540 /* Pods_VisionUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6BE3CB83BCD8B37C3C69D4 /* Pods_VisionUIKit_Example.framework */; };
+		C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A79061DF568E4003F8BFF /* VSInputManager.m */; };
+		C94A790B1DF577A7003F8BFF /* VSDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A790A1DF577A7003F8BFF /* VSDataModel.m */; };
+		C94A790E1DF577BD003F8BFF /* VSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A790D1DF577BD003F8BFF /* VSViewModel.m */; };
 		C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97AEC071DDD73A800586B80 /* VSSheetView.m */; };
 		C9EE86321DEA79CF0045B889 /* VSTBButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EE86311DEA79CF0045B889 /* VSTBButtonCell.m */; };
 		C9F9FE3D1DE03B0400339937 /* VSTBBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE3C1DE03B0400339937 /* VSTBBaseController.m */; };
@@ -29,13 +32,13 @@
 		C9F9FE441DE03B7700339937 /* VSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE431DE03B7700339937 /* VSTableViewController.m */; };
 		C9F9FE481DE03DE900339937 /* VSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE471DE03DE900339937 /* VSTableView.m */; };
 		C9F9FE4C1DE03ED300339937 /* VSTBAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE4B1DE03ED300339937 /* VSTBAdaptor.m */; };
-		C9F9FE4F1DE044C900339937 /* VSTBBlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE4E1DE044C900339937 /* VSTBBlankCell.m */; };
+		C9F9FE4F1DE044C900339937 /* VSTBNullCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE4E1DE044C900339937 /* VSTBNullCell.m */; };
 		C9F9FE521DE04D1E00339937 /* VSTBViewConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE511DE04D1E00339937 /* VSTBViewConstructor.m */; };
 		C9F9FE581DE05FF700339937 /* VSTBBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE571DE05FF700339937 /* VSTBBaseCell.m */; };
 		C9F9FE621DE131EF00339937 /* VSTBKeyValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE611DE131EF00339937 /* VSTBKeyValueCell.m */; };
 		C9F9FE641DE1810100339937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F9FE631DE1810100339937 /* Assets.xcassets */; };
 		C9F9FE671DE185E000339937 /* VSTBTitleIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE661DE185E000339937 /* VSTBTitleIconCell.m */; };
-		C9F9FE6D1DE18FCE00339937 /* VSTBDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE6C1DE18FCE00339937 /* VSTBDescriptionCell.m */; };
+		C9F9FE6D1DE18FCE00339937 /* VSTBTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE6C1DE18FCE00339937 /* VSTBTitleCell.m */; };
 		C9F9FE731DE1D21D00339937 /* VSTBTitleFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE721DE1D21D00339937 /* VSTBTitleFieldCell.m */; };
 		C9F9FE771DE1DEDA00339937 /* VSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE761DE1DEDA00339937 /* VSTextField.m */; };
 		C9FDFB191DDA9B24009DBD67 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = C9FDFB151DDA9B24009DBD67 /* .gitkeep */; };
@@ -82,6 +85,12 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8DD3A8DA59E4695583A7F78C /* VisionUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VisionUIKit.podspec; path = ../VisionUIKit.podspec; sourceTree = "<group>"; };
 		B651BC6B56631F5AA77527E3 /* Pods-VisionUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionUIKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VisionUIKit_Tests/Pods-VisionUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C94A79051DF568E4003F8BFF /* VSInputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSInputManager.h; sourceTree = "<group>"; };
+		C94A79061DF568E4003F8BFF /* VSInputManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSInputManager.m; sourceTree = "<group>"; };
+		C94A79091DF577A7003F8BFF /* VSDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSDataModel.h; sourceTree = "<group>"; };
+		C94A790A1DF577A7003F8BFF /* VSDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSDataModel.m; sourceTree = "<group>"; };
+		C94A790C1DF577BD003F8BFF /* VSViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSViewModel.h; sourceTree = "<group>"; };
+		C94A790D1DF577BD003F8BFF /* VSViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSViewModel.m; sourceTree = "<group>"; };
 		C97AEC061DDD73A800586B80 /* VSSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSheetView.h; sourceTree = "<group>"; };
 		C97AEC071DDD73A800586B80 /* VSSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSheetView.m; sourceTree = "<group>"; };
 		C9EE86301DEA79CF0045B889 /* VSTBButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBButtonCell.h; sourceTree = "<group>"; };
@@ -96,8 +105,8 @@
 		C9F9FE471DE03DE900339937 /* VSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTableView.m; sourceTree = "<group>"; };
 		C9F9FE4A1DE03ED300339937 /* VSTBAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBAdaptor.h; sourceTree = "<group>"; };
 		C9F9FE4B1DE03ED300339937 /* VSTBAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBAdaptor.m; sourceTree = "<group>"; };
-		C9F9FE4D1DE044C900339937 /* VSTBBlankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBBlankCell.h; sourceTree = "<group>"; };
-		C9F9FE4E1DE044C900339937 /* VSTBBlankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBBlankCell.m; sourceTree = "<group>"; };
+		C9F9FE4D1DE044C900339937 /* VSTBNullCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBNullCell.h; sourceTree = "<group>"; };
+		C9F9FE4E1DE044C900339937 /* VSTBNullCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBNullCell.m; sourceTree = "<group>"; };
 		C9F9FE501DE04D1E00339937 /* VSTBViewConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBViewConstructor.h; sourceTree = "<group>"; };
 		C9F9FE511DE04D1E00339937 /* VSTBViewConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBViewConstructor.m; sourceTree = "<group>"; };
 		C9F9FE561DE05FF700339937 /* VSTBBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBBaseCell.h; sourceTree = "<group>"; };
@@ -108,8 +117,8 @@
 		C9F9FE631DE1810100339937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9F9FE651DE185E000339937 /* VSTBTitleIconCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBTitleIconCell.h; sourceTree = "<group>"; };
 		C9F9FE661DE185E000339937 /* VSTBTitleIconCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBTitleIconCell.m; sourceTree = "<group>"; };
-		C9F9FE6B1DE18FCE00339937 /* VSTBDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBDescriptionCell.h; sourceTree = "<group>"; };
-		C9F9FE6C1DE18FCE00339937 /* VSTBDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBDescriptionCell.m; sourceTree = "<group>"; };
+		C9F9FE6B1DE18FCE00339937 /* VSTBTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBTitleCell.h; sourceTree = "<group>"; };
+		C9F9FE6C1DE18FCE00339937 /* VSTBTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBTitleCell.m; sourceTree = "<group>"; };
 		C9F9FE711DE1D21D00339937 /* VSTBTitleFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBTitleFieldCell.h; sourceTree = "<group>"; };
 		C9F9FE721DE1D21D00339937 /* VSTBTitleFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBTitleFieldCell.m; sourceTree = "<group>"; };
 		C9F9FE751DE1DEDA00339937 /* VSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTextField.h; sourceTree = "<group>"; };
@@ -250,6 +259,26 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		C94A79041DF568AF003F8BFF /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				C94A79051DF568E4003F8BFF /* VSInputManager.h */,
+				C94A79061DF568E4003F8BFF /* VSInputManager.m */,
+			);
+			path = InputView;
+			sourceTree = "<group>";
+		};
+		C94A79081DF5779B003F8BFF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C94A79091DF577A7003F8BFF /* VSDataModel.h */,
+				C94A790A1DF577A7003F8BFF /* VSDataModel.m */,
+				C94A790C1DF577BD003F8BFF /* VSViewModel.h */,
+				C94A790D1DF577BD003F8BFF /* VSViewModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C9F9FE311DE0394800339937 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,16 +298,16 @@
 			children = (
 				C9F9FE561DE05FF700339937 /* VSTBBaseCell.h */,
 				C9F9FE571DE05FF700339937 /* VSTBBaseCell.m */,
-				C9F9FE4D1DE044C900339937 /* VSTBBlankCell.h */,
-				C9F9FE4E1DE044C900339937 /* VSTBBlankCell.m */,
+				C9F9FE4D1DE044C900339937 /* VSTBNullCell.h */,
+				C9F9FE4E1DE044C900339937 /* VSTBNullCell.m */,
 				C9F9FE601DE131EF00339937 /* VSTBKeyValueCell.h */,
 				C9F9FE611DE131EF00339937 /* VSTBKeyValueCell.m */,
 				C9F9FE711DE1D21D00339937 /* VSTBTitleFieldCell.h */,
 				C9F9FE721DE1D21D00339937 /* VSTBTitleFieldCell.m */,
 				C9F9FE651DE185E000339937 /* VSTBTitleIconCell.h */,
 				C9F9FE661DE185E000339937 /* VSTBTitleIconCell.m */,
-				C9F9FE6B1DE18FCE00339937 /* VSTBDescriptionCell.h */,
-				C9F9FE6C1DE18FCE00339937 /* VSTBDescriptionCell.m */,
+				C9F9FE6B1DE18FCE00339937 /* VSTBTitleCell.h */,
+				C9F9FE6C1DE18FCE00339937 /* VSTBTitleCell.m */,
 				C9EE86301DEA79CF0045B889 /* VSTBButtonCell.h */,
 				C9EE86311DEA79CF0045B889 /* VSTBButtonCell.m */,
 			);
@@ -363,6 +392,8 @@
 		C9FDFB1C1DDA9BD2009DBD67 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C94A79081DF5779B003F8BFF /* Models */,
+				C94A79041DF568AF003F8BFF /* InputView */,
 				C9F9FE311DE0394800339937 /* TableView */,
 				C9FDFB1D1DDA9BD2009DBD67 /* AlertView */,
 				C9F9FE741DE1DEBE00339937 /* TextField */,
@@ -435,6 +466,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Deju Liu";
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = TX942DZTXP;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -583,16 +617,18 @@
 			files = (
 				C9F9FE731DE1D21D00339937 /* VSTBTitleFieldCell.m in Sources */,
 				C9FDFB201DDA9BED009DBD67 /* VSAlertView.m in Sources */,
-				C9F9FE4F1DE044C900339937 /* VSTBBlankCell.m in Sources */,
+				C9F9FE4F1DE044C900339937 /* VSTBNullCell.m in Sources */,
 				C9F9FE441DE03B7700339937 /* VSTableViewController.m in Sources */,
 				C9F9FE481DE03DE900339937 /* VSTableView.m in Sources */,
 				C9F9FE401DE03B3F00339937 /* VSTBConstructor.m in Sources */,
-				C9F9FE6D1DE18FCE00339937 /* VSTBDescriptionCell.m in Sources */,
+				C9F9FE6D1DE18FCE00339937 /* VSTBTitleCell.m in Sources */,
 				C9F9FE671DE185E000339937 /* VSTBTitleIconCell.m in Sources */,
 				C9F9FE3D1DE03B0400339937 /* VSTBBaseController.m in Sources */,
 				6003F59E195388D20070C39A /* VSAppDelegate.m in Sources */,
 				C9EE86321DEA79CF0045B889 /* VSTBButtonCell.m in Sources */,
+				C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */,
 				6003F5A7195388D20070C39A /* VSViewController.m in Sources */,
+				C94A790B1DF577A7003F8BFF /* VSDataModel.m in Sources */,
 				C9F9FE771DE1DEDA00339937 /* VSTextField.m in Sources */,
 				C9F9FE521DE04D1E00339937 /* VSTBViewConstructor.m in Sources */,
 				C9F9FE4C1DE03ED300339937 /* VSTBAdaptor.m in Sources */,
@@ -600,6 +636,7 @@
 				C9F9FE621DE131EF00339937 /* VSTBKeyValueCell.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */,
+				C94A790E1DF577BD003F8BFF /* VSViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,6 +758,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVELOPMENT_TEAM = TX942DZTXP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VisionUIKit/VisionUIKit-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
@@ -742,6 +781,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				DEVELOPMENT_TEAM = TX942DZTXP;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VisionUIKit/VisionUIKit-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
