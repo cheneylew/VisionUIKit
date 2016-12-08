@@ -190,13 +190,18 @@ NSInteger const kVSAlertViewTag = 5858585;
         if (!haveTitle) {
             top = topBottomSpace;
         }
-        TTTAttributedLabel *msgLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(leftRightSpace,
-                                                                      top,
-                                                                      mWidth,
-                                                                      mHeight)];
+        UILabel *msgLabel = nil;
         if ([self.message isKindOfClass:[NSAttributedString class]]) {
+            msgLabel = [[TTTAttributedLabel alloc] initWithFrame:CGRectMake(leftRightSpace,
+                                                                 top,
+                                                                 mWidth,
+                                                                 mHeight)];
             msgLabel.attributedText = self.message;
         } else {
+            msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftRightSpace,
+                                                                            top,
+                                                                            mWidth,
+                                                                            mHeight)];
             msgLabel.text = self.message;
         }
         msgLabel.font = messageFont;

@@ -98,6 +98,17 @@ PP_STRONG(UIScrollView, scrollView)
         }];
         [alertView enableTapMaskClose:YES];
     }];
+    
+    [[self makeLeftButton:@"AlertView-点击蒙版关闭" index:4] jk_addActionHandler:^(NSInteger tag) {
+        VSAlertView *alertView = [VSAlertView ShowInView:self.view
+                          Title:@""
+                        message:@"如您需要继续使用自动投标服务，请：\n1.完成实名认证\n2.阅读并同意《自动投标委托服务协议》\n否则海银会将于12月20日18点关闭您的自动投标服务。"
+                   buttonTitles:@[@"取消",@"实名认证"]
+                      callBlock:^(NSInteger buttonIndex) {
+            
+        }];
+        alertView.messageTextAlignment = NSTextAlignmentLeft;
+    }];
 }
 
 - (void)makeRightButtons{
