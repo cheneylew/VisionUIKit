@@ -36,11 +36,11 @@ SINGLETON_IMPL(VSHttpClient)
 }
 
 - (void)setup {
-    self.manager = [AFHTTPSessionManager manager];
-    self.manager.securityPolicy.allowInvalidCertificates = YES; // not recommended for production
-    self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    self.manager.securityPolicy = [VSHttpClient CustomSecurityPolicy];
+    self.manager                                            = [AFHTTPSessionManager manager];
+    self.manager.securityPolicy.allowInvalidCertificates    = YES; // not recommended for production
+    self.manager.requestSerializer                          = [AFJSONRequestSerializer serializer];
+    self.manager.responseSerializer                         = [AFJSONResponseSerializer serializer];
+    self.manager.securityPolicy                             = [VSHttpClient CustomSecurityPolicy];
     
 }
 
@@ -252,8 +252,9 @@ SINGLETON_IMPL(VSHttpClient)
             [self processWithTask:task responseObject:nil error:error success:success failure:failure];
         }];
     }else if (method == VSRequestMethodPost) {
-        [self.manager POST:absoluteURLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        } progress:^(NSProgress * _Nonnull uploadProgress) {
+        [self.manager POST:absoluteURLString
+                parameters:parameters
+                  progress:^(NSProgress * _Nonnull uploadProgress) {
             BLOCK_SAFE_RUN(progress, uploadProgress);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self processWithTask:task responseObject:responseObject error:nil success:success failure:failure];

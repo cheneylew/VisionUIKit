@@ -268,6 +268,14 @@ PP_STRONG(UIScrollView, scrollView)
                                                     //
                                                 }];
     }];
+    
+    [[self makeRightButton:@"AFNetWorking-Get" index:10] jk_addActionHandler:^(NSInteger tag) {
+        [[VSHttpClient sharedInstance] requestGet:@"ci/app/json" parameters:@{@"url":@"hello"} success:^(id responseObject) {
+            //
+        } failure:^(VSErrorDataModel *dataModel) {
+            //
+        }];
+    }];
 }
 
 

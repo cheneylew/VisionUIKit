@@ -16,9 +16,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [CCLogSystem setupDefaultLogConfigure];
     
-    [VSHttpClient sharedInstance].baseURLString = @"http://localhost/";
+    [VSHttpClient sharedInstance].baseURLString = @"http://10.11.248.45/";
     [VSHttpClient InitClientWithProcessGlobalHeader:^NSDictionary *(VSRequestParams *params) {
-        return @{@"userId":@"8989898989", @"token":@"abcdefdggggs"};
+        return @{@"userId":@"8989898989", @"token":@"abcdefdggggs", @"Content-Type":@"application/json; charset=utf-8"};
     } globalParams:^NSDictionary *(VSRequestParams *params) {
         return @{@"userId":@"8989898989", @"token":@"abcdefdggggs"};
     } globalResponse:^id(NSDictionary *responseDic) {
