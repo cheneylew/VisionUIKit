@@ -37,9 +37,17 @@ SINGLETON_IMPL(VSHttpClient)
 
 - (void)setup {
     self.manager                                            = [AFHTTPSessionManager manager];
-    self.manager.securityPolicy.allowInvalidCertificates    = YES; // not recommended for production
+    // not recommended for production
+    self.manager.securityPolicy.allowInvalidCertificates    = [VSHttpClient CustomSecurityPolicy] == nil? YES: NO;
+    
+    //设置请求的数据Content-Type.
+    //[AFJSONRequestSerializer serializer] json方式操作
+    //[AFHTTPRequestSerializer serializer] 以其它方式提交
     self.manager.requestSerializer                          = [AFJSONRequestSerializer serializer];
-    self.manager.responseSerializer                         = [AFJSONResponseSerializer serializer];
+    //设置响应接收数据的Content-Type.
+    //[AFJSONResponseSerializer serializer] 只接收application/json; charset=utf-8数据。
+    //[AFHTTPResponseSerializer serializer] 可接收任意http响应的格式。如text/plain等
+    self.manager.responseSerializer                         = [AFHTTPResponseSerializer serializer];
     self.manager.securityPolicy                             = [VSHttpClient CustomSecurityPolicy];
     
 }
