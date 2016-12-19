@@ -156,7 +156,7 @@ SINGLETON_IMPL(VSHttpClient)
                 failure:(void (^)(VSErrorDataModel* dataModel))failure {
     if (!error) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseObject);
+//            DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseObject);
             BLOCK_SAFE_RUN(success, responseObject);
             return;
         }
@@ -164,12 +164,12 @@ SINGLETON_IMPL(VSHttpClient)
         NSDictionary *responseDic = [responseStr jk_dictionaryValue];
         if (responseStr && !responseDic) {
             VSErrorDataModel *error = [VSErrorDataModel InitErrorType:VSErrorType_ResponseValidJSON];
-            DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, error);
+//            DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, error);
             BLOCK_SAFE_RUN(failure,error);
             return;
         };
         
-        DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseDic);
+//        DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseDic);
         if (self.globalResponseBlock) {
             id result = self.globalResponseBlock(responseDic);
             BLOCK_SAFE_RUN(success, result);
@@ -180,7 +180,7 @@ SINGLETON_IMPL(VSHttpClient)
         VSErrorDataModel *errorModel    = [VSErrorDataModel InitErrorType:VSErrorType_ResponseSystemError];
         errorModel.error                = error;
         
-        DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, errorModel);
+//        DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, errorModel);
         BLOCK_SAFE_RUN(failure,errorModel);
     }
 }
