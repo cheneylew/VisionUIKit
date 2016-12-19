@@ -14,6 +14,7 @@
 #import "VSTableViewController.h"
 #import "VSInputManager.h"
 #import "NSMutableAttributedString+Category.h"
+#import "VSHttpClient.h"
 
 #define TITLE_COLOR RGB(15, 103, 197)
 
@@ -68,22 +69,22 @@ PP_STRONG(UIScrollView, scrollView)
     
     [[self makeLeftButton:@"AlertView-类系统" index:2] jk_addActionHandler:^(NSInteger tag) {
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"Hello World\n"];
-        [attributedString appendString:@"确认奖励信息" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString appendString:@"确认奖励信息" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:16]}];
         [attributedString addLine:2];
         
-        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:16]}];
         [attributedString appendString:@"10元"
-                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:16]}];
         [attributedString addLine:1];
         
-        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:16]}];
         [attributedString appendString:@"10元"
-                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:16]}];
         [attributedString addLine:1];
         
-        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+        [attributedString appendString:@"\t体验金额:\t\t" withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:16]}];
         [attributedString appendString:@"10元"
-                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:14]}];
+                        withAttributes:@{ATT_TEXT_COLOR:[UIColor blackColor],ATT_FONT:[UIFont systemFontOfSize:16]}];
         [attributedString addLine:1];
         
         VSAlertView *alert = [VSAlertView ShowWithTitle:@"提示" message:attributedString buttonTitles:@[@"确定",@"取消"] callBlock:^(NSInteger buttonIndex) {
@@ -100,14 +101,56 @@ PP_STRONG(UIScrollView, scrollView)
     }];
     
     [[self makeLeftButton:@"AlertView-点击蒙版关闭" index:4] jk_addActionHandler:^(NSInteger tag) {
+        
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] init];
+        [attr appendString:@"如您需要继续使用自动投标服务，请：\n1.完成实名认证\n2.阅读并同意《自动投标委托服务协议》\n否则海银会将于12月20日18点关闭您的自动投标服务。" withAttributes:@{ATT_FONT:[UIFont systemFontOfSize:12]}];
         VSAlertView *alertView = [VSAlertView ShowInView:self.view
                           Title:@""
-                        message:@"如您需要继续使用自动投标服务，请：\n1.完成实名认证\n2.阅读并同意《自动投标委托服务协议》\n否则海银会将于12月20日18点关闭您的自动投标服务。"
+                        message:attr
                    buttonTitles:@[@"取消",@"实名认证"]
                       callBlock:^(NSInteger buttonIndex) {
             
         }];
         alertView.messageTextAlignment = NSTextAlignmentLeft;
+    }];
+    
+    [[self makeLeftButton:@"CCLogSystem" index:5] jk_addActionHandler:^(NSInteger tag) {
+        [VSSheetView ShowWithbuttonTitles:@[@"查看日志",@"制造Crash",@"生成日志",@"多线程crash",@"NSLog"] cancelTitle:@"取消" callBlock:^(NSInteger buttonIndex) {
+            switch (buttonIndex) {
+                    case 1:
+                {
+                    [CCLogSystem activeDeveloperUI];
+                }
+                    break;
+                    case 2:
+                {
+                    NSArray *att = @[@"adfasdf"];
+                    [att objectAtIndex:2];
+                }
+                    break;
+                    case 3:
+                {
+                    for (int i=0; i<100; i++) {
+                        CC_LOG_VALUE(@"hello world");
+                    }
+                }
+                    break;
+                    case 4:
+                {
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        NSArray *att = @[@"adfasdf"];
+                        [att objectAtIndex:2];
+                    });
+                }
+                    break;
+                    case 5:
+                    NSLog(@"this my log!");
+                    CC_LOG_VALUE(@"log====");
+                    break;
+                default:
+                    break;
+            }
+        }];
     }];
 }
 
@@ -161,12 +204,76 @@ PP_STRONG(UIScrollView, scrollView)
             
         }];
     }];
+    
+    [[self makeRightButton:@"AFNetWorking-Post" index:5] jk_addActionHandler:^(NSInteger tag) {
+        [[VSHttpClient sharedInstance] requestPost:@"ci/app/json" parameters:@{@"url":@"hello"} success:^(id responseObject) {
+            //
+        } failure:^(VSErrorDataModel *dataModel) {
+            //
+        }];
+    }];
+    
+    [[self makeRightButton:@"AFNetWorking-Download" index:6] jk_addActionHandler:^(NSInteger tag) {
+        [[VSHttpClient sharedInstance] downloadWithFileURL:[NSURL URLWithString:@"http://tupian.enterdesk.com/2013/mxy/12/10/15/3.jpg"] progress:^(NSProgress *downloadProgress) {
+            DLog(@"progress:%lld %lld", downloadProgress.completedUnitCount, downloadProgress.totalUnitCount);
+        } completion:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+            DLog(@"downloaded:%@", filePath);
+        }];
+    }];
+    
+    [[self makeRightButton:@"AFNetWorking-Upload-file" index:7] jk_addActionHandler:^(NSInteger tag) {
+        VSUploadFile *file = [VSUploadFile new];
+        file.fileServerKey = @"file";
+        file.localFileDIR = PATH_DOCUMENTS;
+        file.localFileName = @"3.jpg";
+        file.mimeType      = @"image/jpeg";
+        DLog(@"uploaded");
+        [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa" parameters:@{@"a":@"b"} uploadFiles:@[file] progress:^(NSProgress *progress) {
+            //
+        } success:^(id responseObject) {
+            //
+        } failure:^(VSErrorDataModel *dataModel) {
+            //
+        }];
+    }];
+    
+    [[self makeRightButton:@"AFNetWorking-Upload-data" index:8] jk_addActionHandler:^(NSInteger tag) {
+        UIImage *image = [UIImage imageNamed:@"avatar_login-1"];
+        NSData *data = UIImagePNGRepresentation(image);
+        [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa"
+                                              parameters:@{@"a":@"b"}
+                                                fileType:VSFileTypePNG
+                                                fileData:data
+                                               serverKey:@"file"
+                                                progress:^(NSProgress *progress) {
+            //
+        } success:^(id responseObject) {
+            //
+        } failure:^(VSErrorDataModel *dataModel) {
+            //
+        }];
+    }];
+    
+    [[self makeRightButton:@"AFNetWorking-Upload-data" index:9] jk_addActionHandler:^(NSInteger tag) {
+        UIImage *image = [UIImage imageNamed:@"avatar_login-1"];
+        NSData *data = UIImagePNGRepresentation(image);
+        [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa"
+                                              parameters:@{@"a":@"b"}
+                                                fileData:data
+                                                progress:^(NSProgress *progress) {
+                                                    //
+                                                } success:^(id responseObject) {
+                                                    //
+                                                } failure:^(VSErrorDataModel *dataModel) {
+                                                    //
+                                                }];
+    }];
 }
 
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     [VSAlertView ShowWithTitle:@"" message:[url absoluteString] buttonTitles:nil callBlock:^(NSInteger buttonIndex) {
-        
+
     }];
 }
 

@@ -7,11 +7,11 @@
 //
 
 #import "VSTableViewController.h"
-#import "VSTBButtonCell.h"
+#import "VSButtonTBVC.h"
 #import <UIViewController+RTRootNavigationController.h>
 #import <KKCategories/KKCategories.h>
 #import "VSInputManager.h"
-#import "VSTBTitleIconCell.h"
+#import "VSTitleImageTBVC.h"
 
 @interface DJNavigationBar : UINavigationBar
 
@@ -40,7 +40,7 @@
 @end
 
 @interface VSTableViewController ()
-<VSTBButtonCellDelegate>
+<VSButtonTBVCDelegate>
 
 
 @end
@@ -102,7 +102,7 @@
     }
 }
 
-- (void)VSTBButtonCellWithButtonClickEvent:(UIButton *)btn model:(VSTBBaseDataModel *)model {
+- (void)VSButtonTBVCWithButtonClickEvent:(UIButton *)btn model:(VSTBBaseDataModel *)model {
     
 }
 

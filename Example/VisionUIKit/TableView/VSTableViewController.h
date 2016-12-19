@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Deju Liu. All rights reserved.
 //
 
-#import "VSTBBaseController.h"
+#import "VSBaseTableViewController.h"
 
-@interface VSTableViewController : VSTBBaseController
+@interface VSTableViewController : VSBaseTableViewController
 
 @end

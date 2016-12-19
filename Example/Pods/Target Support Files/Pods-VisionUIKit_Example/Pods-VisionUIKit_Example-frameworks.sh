@@ -84,6 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DCCLogSystem/DCCLogSystem.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JTNavigationController/JTNavigationController.framework"
@@ -95,6 +97,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DCCLogSystem/DCCLogSystem.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JTNavigationController/JTNavigationController.framework"

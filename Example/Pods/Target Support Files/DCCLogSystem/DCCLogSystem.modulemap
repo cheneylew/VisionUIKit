@@ -1,0 +1,6 @@
+framework module DCCLogSystem {
+  umbrella header "DCCLogSystem-umbrella.h"
+
+  export *
+  module * { export * }
+}

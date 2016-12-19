@@ -9,7 +9,7 @@
 #ifndef VSTB_h
 #define VSTB_h
 
-#import "VSTBBaseController.h"
+#import "VSBaseTableViewController.h"
 #import "VSTableView.h"
 
 #endif /* VSTB_h */

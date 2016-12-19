@@ -44,20 +44,8 @@
 
 @end
 
+@interface UIImage (JKCategory)
 
-@interface UIImage (nv_ImageEffects)
-- (UIImage *)nv_applyLightEffect;
-- (UIImage *)nv_applyExtraLightEffect;
-- (UIImage *)nv_applyDarkEffect;
-- (UIImage *)nv_applyBlurEffect;
-- (UIImage *)nv_applyTintEffectWithColor:(UIColor *)tintColor;
-- (UIImage *)nv_applyBlurWithRadius:(CGFloat)blurRadius
-                       tintColor:(UIColor *)tintColor
-           saturationDeltaFactor:(CGFloat)saturationDeltaFactor
-                       maskImage:(UIImage *)maskImage;
-@end
+- (UIImage *)jk_scaleToSize:(CGSize)size;
 
-
-@interface UIImage (nv_Compressed)
-- (UIImage *)nv_scaleToSize:(UIImage *)img size:(CGSize)size;
 @end

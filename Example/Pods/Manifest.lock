@@ -1,4 +1,20 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - DCCLogSystem (0.1.1)
   - DJMacros (0.7.11):
     - DJMacros/Extension (= 0.7.11)
     - TTTAttributedLabel (~> 2.0.0)
@@ -6,7 +22,7 @@ PODS:
     - TTTAttributedLabel (~> 2.0.0)
   - JHChainableAnimations (1.3.0)
   - JTNavigationController (1.0.1)
-  - KKCategories (0.3.6)
+  - KKCategories (0.3.7)
   - NavyUIKit (0.1.23):
     - NavyUIKit/3rds_DBImageView (= 0.1.23)
     - NavyUIKit/3rds_KC_encryption (= 0.1.23)
@@ -221,25 +237,29 @@ PODS:
   - TTTAttributedLabel (2.0.0)
 
 DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
+  - DCCLogSystem (~> 0.1.1)
   - DJMacros (~> 0.7.11)
   - JHChainableAnimations (~> 1.3.0)
   - JTNavigationController
-  - KKCategories (~> 0.3.6)
+  - KKCategories (~> 0.3.7)
   - NavyUIKit (~> 0.1.23)
   - ReactiveCocoa (~> 2.5)
   - RTRootNavigationController
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DCCLogSystem: 7f3193ae206d960b600d14ada4cebf038c25b641
   DJMacros: 74b892308689fad50f48ff551bf2c0c7a293a39f
   JHChainableAnimations: 22085fcb04ca87349e584573558e637f659fd769
   JTNavigationController: a3563e6d1adbd00301af8f049e546342fad7ffa9
-  KKCategories: fead30e110b7f143e1c21b502c8144c9d418a461
+  KKCategories: 08cdfd9bf9e6fa9a7093ea401f095a06c016740e
   NavyUIKit: 9a119cfb82f983f9631ed99d418452cfe7d589ae
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RTRootNavigationController: cf134c044a8ce14d97fc668847ed4567efc53f91
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: 2de7bcf0145a34081048f28badf0337518c0e34e
+PODFILE CHECKSUM: 6fc47babfba900df663e7cd353227bd786a1d577
 
 COCOAPODS: 1.1.1

@@ -7,12 +7,24 @@
 //
 
 #import "VSAppDelegate.h"
+#import "VSHttpClient.h"
 
 @implementation VSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window.backgroundColor = [UIColor whiteColor];
+    [CCLogSystem setupDefaultLogConfigure];
+    
+    [VSHttpClient sharedInstance].baseURLString = @"http://localhost/";
+    [VSHttpClient InitClientWithProcessGlobalHeader:^NSDictionary *(VSRequestParams *params) {
+        return @{@"userId":@"8989898989", @"token":@"abcdefdggggs"};
+    } globalParams:^NSDictionary *(VSRequestParams *params) {
+        return @{@"userId":@"8989898989", @"token":@"abcdefdggggs"};
+    } globalResponse:^id(NSDictionary *responseDic) {
+        return responseDic;
+    }];
+    
     return YES;
 }
 

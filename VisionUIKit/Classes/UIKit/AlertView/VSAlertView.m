@@ -128,8 +128,8 @@ NSInteger const kVSAlertViewTag = 5858585;
     CGFloat leftRightSpace = haveButtons?kFit6(34):topBottomSpace;
     CGFloat titleAndMessageSpace = haveTitle?kFit6(30):0;
     
-    UIFont *messageFont = [UIFont systemFontOfSize:14];
-    UIFont *titleFont = [UIFont systemFontOfSize:16];
+    UIFont *messageFont = [UIFont systemFontOfSize:16];
+    UIFont *titleFont = [UIFont systemFontOfSize:17];
     
     CGFloat dWidth = haveCustomView?leftRightSpace+self.customView.width+leftRightSpace:kFit6(600);
     
@@ -239,7 +239,7 @@ NSInteger const kVSAlertViewTag = 5858585;
                               forState:UIControlStateHighlighted];
             [button setTitleColor:HEX(0x007aff)
                          forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont systemFontOfSize:15];
+            button.titleLabel.font = [UIFont systemFontOfSize:16];
             if (idx != count-1) {
                 UIView *line = [[UIView alloc] initWithFrame:CGRectMake(btnWidth, 0, 0.5, btnHeight)];
                 line.backgroundColor = [UIColor colorWithRed:207/255.0f green:215/255.0f blue:223/255.0f alpha:1];

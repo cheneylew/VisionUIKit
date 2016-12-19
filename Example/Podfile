@@ -6,7 +6,7 @@ use_frameworks!
 
 def shared_private_pods
     pod 'DJMacros', '~> 0.7.11'
-    pod 'KKCategories', '~> 0.3.6'
+    pod 'KKCategories', '~> 0.3.7'
     pod 'NavyUIKit', '~> 0.1.23'
     #pod 'VisionUIKit', '~> 0.1.8'
 end
@@ -16,6 +16,10 @@ target 'VisionUIKit_Example' do
     
     pod 'JHChainableAnimations', '~> 1.3.0'
     pod 'ReactiveCocoa', '~> 2.5'
+#    pod 'NSLogger', '~> 1.7.0'
+#    pod 'CocoaLumberjack'
+    pod 'DCCLogSystem', '~> 0.1.1'
+    pod 'AFNetworking', '~> 3.1.0'
     
     #VC 设置单独的导航条,不是之前那样使用一个全局统一的导航条。
     #无法使用 self.navigationItem.rightBarButtonItem 等来设置导航按钮，而必须自己手动往 navigationBar 上加；
