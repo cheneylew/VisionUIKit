@@ -37,8 +37,6 @@ SINGLETON_IMPL(VSHttpClient)
 
 - (void)setup {
     self.manager                                            = [AFHTTPSessionManager manager];
-    // not recommended for production
-    self.manager.securityPolicy.allowInvalidCertificates    = [VSHttpClient CustomSecurityPolicy] == nil? YES: NO;
     
     //设置请求的数据Content-Type.
     //[AFJSONRequestSerializer serializer] json方式操作
@@ -79,10 +77,11 @@ SINGLETON_IMPL(VSHttpClient)
 + (AFSecurityPolicy*)CustomSecurityPolicy
 {
     // /先导入证书
-    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"company" ofType:@"cer"];//证书的路径
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"https" ofType:@"cer"];//证书的路径
     NSData *certData = [NSData dataWithContentsOfFile:cerPath];
     if (!cerPath) {
-        return nil;
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        return securityPolicy;
     }
     
     // AFSSLPinningModeCertificate 使用证书验证模式
@@ -113,6 +112,7 @@ SINGLETON_IMPL(VSHttpClient)
                            failure:(void (^)(VSErrorDataModel* dataModel))failure {
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [self.uploadManagerQueue addObject:manager];
+    manager.securityPolicy = [VSHttpClient CustomSecurityPolicy];
     
     WEAK_SELF;
     WEAK(manager);
@@ -294,6 +294,7 @@ SINGLETON_IMPL(VSHttpClient)
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     [self.dowloadManagerQueue addObject:manager];
+    manager.securityPolicy = [VSHttpClient CustomSecurityPolicy];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
