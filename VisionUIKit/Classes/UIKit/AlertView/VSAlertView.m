@@ -377,7 +377,7 @@ NSInteger const kVSAlertViewTag = 5858585;
 @end
 
 
-@implementation VSAlertViewColorButton
+@implementation VSCBAlertView
 
 + (UIView *)CustomViewWithTitle:(id)title
                         message:(id)message
@@ -510,13 +510,13 @@ NSInteger const kVSAlertViewTag = 5858585;
     return view;
 }
 
-+ (VSAlertView *)ShowInView:(UIView *)view
-                      Title:(id)title
-                    message:(id)message
-               buttonTitles:(NSArray *)btnTitles
-                  callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
++ (VSCBAlertView *)CBShowInView:(UIView *)view
+                          Title:(id)title
+                        message:(id)message
+                   buttonTitles:(NSArray *)btnTitles
+                      callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
     UIView *customView = [self CustomViewWithTitle:title message:message buttonTitles:btnTitles callBlock:alertViewCallBackBlock];
-    VSAlertView *alertView = [VSAlertView ShowInView:view customView:customView buttonTitles:nil callBlock:nil];
+    VSCBAlertView *alertView = (VSCBAlertView *)[VSCBAlertView ShowInView:view customView:customView buttonTitles:nil callBlock:nil];
     [alertView showCloseButton:NO];
     return alertView;
 }

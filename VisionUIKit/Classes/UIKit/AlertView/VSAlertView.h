@@ -47,9 +47,9 @@ FOUNDATION_EXPORT NSInteger const kVSAlertViewTag;
 
 @end
 
-@interface VSAlertViewColorButton : NSObject
+@interface VSCBAlertView : VSAlertView
 
-+ (VSAlertView *)ShowInView:(UIView *)view
++ (VSCBAlertView *)CBShowInView:(UIView *)view
                       Title:(id)title
                     message:(id)message
                buttonTitles:(NSArray *)btnTitles

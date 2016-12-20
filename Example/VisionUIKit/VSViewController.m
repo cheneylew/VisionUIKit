@@ -154,9 +154,9 @@ PP_STRONG(UIScrollView, scrollView)
     }];
     
     [[self makeLeftButton:@"AlertView-海银会大师" index:6] jk_addActionHandler:^(NSInteger tag) {
-        [VSAlertViewColorButton ShowInView:self.view Title:nil
+        [VSCBAlertView CBShowInView:self.view Title:nil
                                    message:@"刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华1899999999918999999999189999999991899999999918999999999189999999991899999999918999999999"
-                              buttonTitles:@[@"取消",@"确定"]
+                              buttonTitles:@[@"取消",@"确定",@"ok"]
                                  callBlock:^(NSInteger buttonIndex) {
                                      
                                  }];
