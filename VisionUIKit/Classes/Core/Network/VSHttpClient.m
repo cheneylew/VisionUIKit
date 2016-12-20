@@ -82,23 +82,23 @@ SINGLETON_IMPL(VSHttpClient)
     if (!cerPath) {
         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         return securityPolicy;
+    } else {
+        // AFSSLPinningModeCertificate 使用证书验证模式
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+        
+        // allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO
+        // 如果是需要验证自建证书，需要设置为YES
+        securityPolicy.allowInvalidCertificates = YES;
+        
+        //validatesDomainName 是否需要验证域名，默认为YES；
+        //假如证书的域名与你请求的域名不一致，需把该项设置为NO；如设成NO的话，即服务器使用其他可信任机构颁发的证书，也可以建立连接，这个非常危险，建议打开。
+        //置为NO，主要用于这种情况：客户端请求的是子域名，而证书上的是另外一个域名。因为SSL证书上的域名是独立的，假如证书上注册的域名是www.google.com，那么mail.google.com是无法验证通过的；当然，有钱可以注册通配符的域名*.google.com，但这个还是比较贵的。
+        //如置为NO，建议自己添加对应域名的校验逻辑。
+        securityPolicy.validatesDomainName = NO;
+        securityPolicy.pinnedCertificates = [NSSet setWithObjects:certData, nil];
+        
+        return securityPolicy;
     }
-    
-    // AFSSLPinningModeCertificate 使用证书验证模式
-    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
-    
-    // allowInvalidCertificates 是否允许无效证书（也就是自建的证书），默认为NO
-    // 如果是需要验证自建证书，需要设置为YES
-    securityPolicy.allowInvalidCertificates = YES;
-    
-    //validatesDomainName 是否需要验证域名，默认为YES；
-    //假如证书的域名与你请求的域名不一致，需把该项设置为NO；如设成NO的话，即服务器使用其他可信任机构颁发的证书，也可以建立连接，这个非常危险，建议打开。
-    //置为NO，主要用于这种情况：客户端请求的是子域名，而证书上的是另外一个域名。因为SSL证书上的域名是独立的，假如证书上注册的域名是www.google.com，那么mail.google.com是无法验证通过的；当然，有钱可以注册通配符的域名*.google.com，但这个还是比较贵的。
-    //如置为NO，建议自己添加对应域名的校验逻辑。
-    securityPolicy.validatesDomainName = NO;
-    securityPolicy.pinnedCertificates = [NSSet setWithObjects:certData, nil];
-    
-    return securityPolicy;
 }
 
 - (NSString *)absoluteURLWithPath:(NSString *)path {
@@ -235,10 +235,11 @@ SINGLETON_IMPL(VSHttpClient)
     rq_params.method           = method;
     rq_params.params           = parameters;
     
+    WEAK_SELF;
     if (self.globalHeaderBlock) {
         NSDictionary *globalHeader = self.globalHeaderBlock(rq_params);
         [globalHeader enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            [self.manager.requestSerializer setValue:obj forHTTPHeaderField:key];
+            [weakself.manager.requestSerializer setValue:obj forHTTPHeaderField:key];
         }];
     }
     
@@ -254,10 +255,10 @@ SINGLETON_IMPL(VSHttpClient)
             BLOCK_SAFE_RUN(progress, downloadProgress);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
-            [self processWithTask:task responseObject:responseObject error:nil success:success failure:failure];
+            [weakself processWithTask:task responseObject:responseObject error:nil success:success failure:failure];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
-            [self processWithTask:task responseObject:nil error:error success:success failure:failure];
+            [weakself processWithTask:task responseObject:nil error:error success:success failure:failure];
         }];
     }else if (method == VSRequestMethodPost) {
         [self.manager POST:absoluteURLString
@@ -265,9 +266,9 @@ SINGLETON_IMPL(VSHttpClient)
                   progress:^(NSProgress * _Nonnull uploadProgress) {
             BLOCK_SAFE_RUN(progress, uploadProgress);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self processWithTask:task responseObject:responseObject error:nil success:success failure:failure];
+            [weakself processWithTask:task responseObject:responseObject error:nil success:success failure:failure];
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [self processWithTask:task responseObject:nil error:error success:success failure:failure];
+            [weakself processWithTask:task responseObject:nil error:error success:success failure:failure];
         }];
     }
 }

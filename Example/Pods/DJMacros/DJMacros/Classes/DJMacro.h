@@ -396,7 +396,7 @@ description:(desc), ##__VA_ARGS__]; \
 #pragma mark Attributes
 #define ATT_FONT                    NSFontAttributeName                 //UIFont    文字字体
 #define ATT_TEXT_COLOR              NSForegroundColorAttributeName      //UIColor   文字颜色
-#define ATT_BKG_COLOR               NSBackgroundColorAttributeName      //UIColor   文字背景色
+#define ATT_BACKGROUND_COLOR        NSBackgroundColorAttributeName      //UIColor   文字背景色
 #define ATT_UNDERLINE_STYLE         NSUnderlineStyleAttributeName       //NSNumber  下划线    @0 无下划线 @1有下划线
 #define ATT_UNDERLINE_COLOR         NSUnderlineColorAttributeName       //UIColor   下划线颜色
 #define ATT_BASELINE_OFFSET         NSBaselineOffsetAttributeName       //NSNumber  文字相对于其他文字基准线向上的偏移量
@@ -407,14 +407,17 @@ description:(desc), ##__VA_ARGS__]; \
 #define ATT_ATTACHMENT              NSAttachmentAttributeName           //NSTextAttachment 文字附件属性（图文混排相关）
 #define ATT_KERN                    NSKernAttributeName                 //NSNumber  字体间距
 #define ATT_STRIKETHROUGH_STYLE     NSStrikethroughStyleAttributeName   //NSNumber  删除线样式
-#define ATT_SHADOW                  NSShadowAttributeName               //NSShadow
-#define ATT_TEXT_EFFECT             NSTextEffectAttributeName           //NSString
-#define ATT_OBLIQ                   NSObliquenessAttributeName          //NSNumber  字体歪斜效果
-#define ATT_EXPS                    NSExpansionAttributeName            //NSNumber  文字向左右拉伸（正数），向中间缩小（负数）
+#define ATT_SHADOW                  NSShadowAttributeName               //NSShadow  阴影
+#define ATT_TEXT_EFFECT             NSTextEffectAttributeName           //NSString  特殊效果
+#define ATT_OBLIQUENESS             NSObliquenessAttributeName          //NSNumber  字体歪斜效果
+#define ATT_EXPANSION               NSExpansionAttributeName            //NSNumber  文字向左右拉伸（正数），向中间缩小（负数）
 #define ATT_WRITING_DIRECTION       NSWritingDirectionAttributeName     //NSArray   文字的书写样式
+#define ATT_VERTICAL_GLYPH_FORM     NSVerticalGlyphFormAttributeName    //NSNumber  排版
+#define ATT_PARAGRAPH_STYLE         NSParagraphStyleAttributeName       //NSArray of NSNumbers  顺序
 
-
-
+#pragma mark -
+#pragma mark 废弃注释
+#define DEPRECATED(msg)             __attribute__((deprecated(msg)))
 
 #pragma mark -
 #pragma mark 函数块

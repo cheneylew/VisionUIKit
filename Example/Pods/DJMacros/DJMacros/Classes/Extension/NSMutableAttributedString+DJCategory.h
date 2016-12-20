@@ -18,6 +18,25 @@
  @param value <#value description#>
  @param words <#words description#>
  */
--(void)dj_addAttribute:(NSString *)name value:(id)value string:(NSString *)string;
+-(void)dj_addAttribute:(NSString *)name
+                 value:(id)value
+           toSubString:(NSString *)subString;
+
+
+/**
+ 拼接字符串
+
+ @param string     <#string description#>
+ @param attributes <#attributes description#>
+ */
+- (void)dj_appendString:(NSString *)string
+         withAttributes:(NSDictionary *)attributes;
+
+/**
+ 换行
+
+ @param lines 行数
+ */
+- (void)dj_addLine:(NSUInteger)lines;
 
 @end

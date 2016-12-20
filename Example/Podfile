@@ -5,7 +5,7 @@ source 'http://10.11.156.200:51005/group/specs.git'
 use_frameworks!
 
 def shared_private_pods
-    pod 'DJMacros', '~> 0.7.11'
+    pod 'DJMacros', '~> 0.7.12'
     pod 'KKCategories', '~> 0.3.7'
     pod 'NavyUIKit', '~> 0.1.23'
     #pod 'VisionUIKit', '~> 0.1.8'
