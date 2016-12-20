@@ -119,6 +119,16 @@ NSInteger const kVSAlertViewTag = 5858585;
     return _closeButton;
 }
 
++ (CGFloat)HeightOfAttributeString:(NSAttributedString *) string constrainedToWidth:(CGFloat) width {
+    return [string boundingRectWithSize:CGSizeMake(width, 1000000.0f)
+                                      options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                      context:nil].size.height;
+}
+
++ (CGFloat)HeightOfString:(NSString *) string font:(UIFont *) font constrainedToWidth:(CGFloat) width {
+    return [string jk_heightWithFont:font constrainedToWidth:width];
+}
+
 - (void)makeLayout {
     BOOL haveTitle = self.title.length>0?YES:NO;
     BOOL haveCustomView = self.customView!=nil?YES:NO;
@@ -136,11 +146,9 @@ NSInteger const kVSAlertViewTag = 5858585;
     CGFloat mWidth = dWidth - 2*leftRightSpace;
     CGFloat mHeight = 0.0f;
     if ([self.message isKindOfClass:[NSAttributedString class]]) {
-        mHeight = [self.message boundingRectWithSize:CGSizeMake(mWidth, 1000000.0f)
-                                                        options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                                        context:nil].size.height;
+        mHeight = [VSAlertView HeightOfAttributeString:self.message constrainedToWidth:mWidth];
     }else {
-        mHeight = [self.message jk_heightWithFont:messageFont constrainedToWidth:mWidth];
+        mHeight = [VSAlertView HeightOfString:self.message font:messageFont constrainedToWidth:mWidth];
     }
     
     CGFloat tWidth  = mWidth;
@@ -364,6 +372,153 @@ NSInteger const kVSAlertViewTag = 5858585;
                                            message:@""
                                       buttonTitles:btnTitles
                                          callBlock:alertViewCallBackBlock];
+}
+
+@end
+
+
+@implementation VSAlertViewColorButton
+
++ (UIView *)CustomViewWithTitle:(id)title
+                        message:(id)message
+                   buttonTitles:(NSArray *)btnTitles
+                      callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock  {
+    BOOL haveTitle = title != nil;
+    BOOL haveMSG = message != nil;
+    BOOL haveButton = btnTitles.count > 0;
+    BOOL isTitleAttributeString = NO;
+    BOOL isMSGAttributeString = NO;
+
+    
+    double maxWidth = FIT6(542);
+    double leftRightSpace = FIT6(0);
+    double buttonTop = FIT6(14);
+    double buttonSpace = FIT6(30);
+    double buttonWidth = (maxWidth - leftRightSpace * 2 - buttonSpace*(btnTitles.count-1))/btnTitles.count;
+    double buttonHeight = FIT6(88);
+    double topBottomSpace = FIT6(0);
+    double contentWidth = maxWidth - 2*leftRightSpace;
+    double titleAbsoluteHeight = 0;
+    double msgAbsoluteHeight = 0;
+    
+    UIFont *titleFont = [UIFont systemFontOfSize:FIT6FONT(32)];
+    UIFont *msgFont = [UIFont systemFontOfSize:FIT6FONT(30)];
+    UIColor *titleColor = HEX(0x333333);
+    UIColor *msgColor = HEX(0x333333);
+    
+    if (title && [title isKindOfClass:[NSAttributedString class]]) {
+        isTitleAttributeString = YES;
+        titleAbsoluteHeight = [VSAlertView HeightOfAttributeString:title constrainedToWidth:contentWidth];
+    }else {
+        titleAbsoluteHeight = [VSAlertView HeightOfString:title font:titleFont constrainedToWidth:contentWidth];
+    };
+    if (message && [message isKindOfClass:[NSAttributedString class]]) {
+        isMSGAttributeString = YES;
+        msgAbsoluteHeight = [VSAlertView HeightOfAttributeString:message constrainedToWidth:contentWidth];
+    }else {
+        msgAbsoluteHeight = [VSAlertView HeightOfString:message font:msgFont constrainedToWidth:contentWidth];
+    }
+    
+    titleAbsoluteHeight = titleAbsoluteHeight<FIT6(77)?FIT6(77):titleAbsoluteHeight;
+    msgAbsoluteHeight = msgAbsoluteHeight<FIT6(82)?FIT6(82):msgAbsoluteHeight;
+    
+    if (!haveTitle) {
+        titleAbsoluteHeight = 0;
+    };
+    if (!haveMSG) {
+        msgAbsoluteHeight = 0;
+    }
+    if (!haveButton) {
+        buttonTop = 0;
+        buttonHeight = 0;
+    }
+    
+    double maxHeight = topBottomSpace*2+titleAbsoluteHeight+msgAbsoluteHeight+buttonHeight+buttonTop;
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, maxWidth, maxHeight)];
+    if (haveTitle) {
+        NSString *classString = isTitleAttributeString?@"TTTAttributedLabel":@"UILabel";
+        TTTAttributedLabel *titleLabel = [[NSClassFromString(classString) alloc] initWithFrame:CGRectMake(leftRightSpace,
+                                                                                              topBottomSpace,
+                                                                                              contentWidth,
+                                                                                              titleAbsoluteHeight)];
+        titleLabel.numberOfLines = 0;
+        if (isTitleAttributeString) {
+            titleLabel.attributedText = title;
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+        }else {
+            titleLabel.text = title;
+            titleLabel.font = titleFont;
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            titleLabel.textColor = titleColor;
+        }
+        [view addSubview:titleLabel];
+    }
+    
+    if (haveMSG) {
+        NSString *classString = isTitleAttributeString?@"TTTAttributedLabel":@"UILabel";
+        TTTAttributedLabel *msgLabel = [[NSClassFromString(classString) alloc] initWithFrame:CGRectMake(leftRightSpace,
+                                                                                            topBottomSpace+titleAbsoluteHeight,
+                                                                                            contentWidth,
+                                                                                            msgAbsoluteHeight)];
+        msgLabel.numberOfLines = 0;
+        if (isMSGAttributeString) {
+            msgLabel.attributedText = message;
+            msgLabel.textAlignment = NSTextAlignmentCenter;
+        }else {
+            msgLabel.text = message;
+            msgLabel.font = msgFont;
+            msgLabel.textAlignment = NSTextAlignmentCenter;
+            msgLabel.textColor = msgColor;
+        }
+        [view addSubview:msgLabel];
+    }
+    
+    WEAK(view);
+    if (btnTitles.count) {
+        [btnTitles enumerateObjectsUsingBlock:^(id  _Nonnull title, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.layer.cornerRadius = 2.0f;
+            button.clipsToBounds = YES;
+            button.titleLabel.font = [UIFont systemFontOfSize:FIT6FONT(32)];
+            [button setTitle:title forState:UIControlStateNormal];
+            button.frame = CGRectMake(leftRightSpace+(buttonWidth+buttonSpace)*idx,
+                                      topBottomSpace+titleAbsoluteHeight+msgAbsoluteHeight+buttonTop,
+                                      buttonWidth,
+                                      buttonHeight);
+            button.tag = idx;
+            [button jk_addActionHandler:^(NSInteger tag) {
+                BLOCK_SAFE_RUN(alertViewCallBackBlock,tag);
+                VSAlertView *alertView = (VSAlertView *)weakview.superview.superview;
+                [alertView closeAlertView];
+            }];
+            [view addSubview:button];
+            if (idx == 0 && btnTitles.count != 1) {
+                [button setTitleColor:HEX(0xa7a7a7) forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage jk_imageWithColor:HEX(0xffffff)] forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage jk_imageWithColor:HEX(0xeeeeee)] forState:UIControlStateHighlighted];
+                button.layer.borderColor = HEX(0xd0d5d8).CGColor;
+                button.layer.borderWidth = 1.0f;
+            } else {
+                [button setTitleColor:HEX(0xffffff) forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage jk_imageWithColor:HEX(0x0088ec)] forState:UIControlStateNormal];
+                [button setBackgroundImage:[UIImage jk_imageWithColor:HEXA(0x0088ec,0.8)] forState:UIControlStateHighlighted];
+            }
+        }];
+    }
+    
+    return view;
+}
+
++ (VSAlertView *)ShowInView:(UIView *)view
+                      Title:(id)title
+                    message:(id)message
+               buttonTitles:(NSArray *)btnTitles
+                  callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock {
+    UIView *customView = [self CustomViewWithTitle:title message:message buttonTitles:btnTitles callBlock:alertViewCallBackBlock];
+    VSAlertView *alertView = [VSAlertView ShowInView:view customView:customView buttonTitles:nil callBlock:nil];
+    [alertView showCloseButton:NO];
+    return alertView;
 }
 
 @end

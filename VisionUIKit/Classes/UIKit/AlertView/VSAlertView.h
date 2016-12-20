@@ -27,6 +27,7 @@ FOUNDATION_EXPORT NSInteger const kVSAlertViewTag;
 
 - (void)showCloseButton:(BOOL)isShow;       //是否展示关闭按钮
 - (void)enableTapMaskClose:(BOOL)enabled;   //点击蒙版层关闭
+- (void)closeAlertView;
 
 + (VSAlertView *)ShowWithTitle:(NSString *)title
                        message:(id)message
@@ -41,6 +42,16 @@ FOUNDATION_EXPORT NSInteger const kVSAlertViewTag;
 
 + (VSAlertView *)ShowInView:(UIView *)view
                  customView:(UIView *)customView
+               buttonTitles:(NSArray *)btnTitles
+                  callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock;
+
+@end
+
+@interface VSAlertViewColorButton : NSObject
+
++ (VSAlertView *)ShowInView:(UIView *)view
+                      Title:(id)title
+                    message:(id)message
                buttonTitles:(NSArray *)btnTitles
                   callBlock:(VSAlertViewJKCallBackBlock)alertViewCallBackBlock;
 

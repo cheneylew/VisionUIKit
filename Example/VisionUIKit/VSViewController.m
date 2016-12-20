@@ -152,6 +152,15 @@ PP_STRONG(UIScrollView, scrollView)
             }
         }];
     }];
+    
+    [[self makeLeftButton:@"AlertView-海银会大师" index:6] jk_addActionHandler:^(NSInteger tag) {
+        [VSAlertViewColorButton ShowInView:self.view Title:nil
+                                   message:@"刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华刘德华1899999999918999999999189999999991899999999918999999999189999999991899999999918999999999"
+                              buttonTitles:@[@"取消",@"确定"]
+                                 callBlock:^(NSInteger buttonIndex) {
+                                     
+                                 }];
+    }];
 }
 
 - (void)makeRightButtons{
@@ -187,7 +196,7 @@ PP_STRONG(UIScrollView, scrollView)
                                ATT_UNDERLINE_STYLE:@1,};
         lbl.text = @"hello world 点击百度 点击新浪";
         [lbl setText:lbl.text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-            [mutableAttributedString dj_addAttribute:kTTTBackgroundFillColorAttributeName value:[UIColor yellowColor] string:@"hello world"];
+//            [mutableAttributedString dj_addAttribute:kTTTBackgroundFillColorAttributeName value:[UIColor yellowColor] string:@"hello world"];
             return mutableAttributedString;
         }];
         lbl.delegate = self;
