@@ -43,8 +43,9 @@ typedef enum : NSUInteger {
 - (void)goBack;
 - (void)goForward;
 - (void)reload;
-- (void)evaluateJavaScript:(NSString *) javaScriptString
-         completionHandler:(void (^)(id, NSError * error))completionHandler;
+- (void)evaluateJavaScript:(nullable NSString *) javaScriptString
+         completionHandler:(void (^ _Nullable)(_Nullable id,
+                                      NSError * _Nullable  error))completionHandler;
 
 @end
 
@@ -63,7 +64,7 @@ shouldStartLoadWithRequest:(nullable NSURLRequest *)request
  @param newTitle <#newTitle description#>
  */
 - (void )webView:(nullable NVWebView *)webView
-    titleChanged:(NSString *) newTitle;
+    titleChanged:(NSString * _Nullable) newTitle;
 
 @end
 

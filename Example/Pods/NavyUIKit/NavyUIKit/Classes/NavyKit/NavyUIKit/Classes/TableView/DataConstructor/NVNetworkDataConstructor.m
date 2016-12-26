@@ -45,5 +45,19 @@ Class object_getClass(id object);
     
 }
 
+- (void)nv_responseError:(id)error {
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(networkDataContructor:didErrorWithData:)]) {
+        [self.delegate networkDataContructor:self didErrorWithData:error];
+    }
+}
+
+- (void)nv_responseSuccess:(id)data {
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(networkDataContructor:didFinishWithData:)]) {
+        [self.delegate networkDataContructor:self didFinishWithData:data];
+    }
+}
+
 @end
 

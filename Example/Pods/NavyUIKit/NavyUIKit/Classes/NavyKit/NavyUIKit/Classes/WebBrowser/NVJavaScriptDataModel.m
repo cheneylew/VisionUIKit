@@ -26,7 +26,7 @@
 
 - (BOOL) available:(NSArray*)argsValue {
     unsigned int count;
-    objc_property_t* properties = class_copyPropertyList([self class], &count);
+    //objc_property_t* properties = class_copyPropertyList([self class], &count);
     
     return (count == [argsValue count]);
 }

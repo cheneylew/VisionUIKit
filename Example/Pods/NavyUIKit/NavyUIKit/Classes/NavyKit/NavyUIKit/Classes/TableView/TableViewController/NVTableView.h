@@ -21,6 +21,6 @@
 
 
 @interface NVTableView : UITableView
-@property (nonatomic, assign) id<NVTableViewDataSource> dataSource;
+@property (nonatomic, weak) id<NVTableViewDataSource> dataSource;
 @end
 

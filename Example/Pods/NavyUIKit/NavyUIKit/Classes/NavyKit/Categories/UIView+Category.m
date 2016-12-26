@@ -9,7 +9,7 @@
 #import "UIView+Category.h"
 
 
-@implementation UIView (MotionEffect)
+@implementation UIView (NVMotionEffect)
 
 NSString *const centerX = @"center.x";
 NSString *const centerY = @"center.y";
@@ -62,7 +62,7 @@ NSString *const centerY = @"center.y";
 
 @end
 
-@implementation UIView (Screenshot)
+@implementation UIView (NVScreenshot)
 
 - (UIImage*) screenshot {
     //WKWebView截图有问题

@@ -289,6 +289,11 @@ static NSString* JSHandler;
 }
 
 #pragma mark - 公开方法
+
+- (void)reload {
+    [self.nvWebView reload];
+}
+
 - (void) reloadUrl:(NSString*)url {
     if (url != nil) {
         [self.nvWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
@@ -355,12 +360,12 @@ static NSString* JSHandler;
     NSURL* url = request.URL;
     
     NSString* scheme        = url.scheme;
-    NSString* host          = url.host;
-    NSString* service       = url.path;
-    NSString* paramStr      = url.query;
+//    NSString* host          = url.host;
+//    NSString* service       = url.path;
+//    NSString* paramStr      = url.query;
     
     if ([[scheme lowercaseString] isEqualToString:AJAXSCHEMA]) {
-        NSString *requestedURLString = [[[request URL] absoluteString] substringFromIndex:[AJAXSCHEMA length] + 3];
+        //NSString *requestedURLString = [[[request URL] absoluteString] substringFromIndex:[AJAXSCHEMA length] + 3];
         
         NSString* title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
         if ([title length] > 0) {
@@ -410,9 +415,9 @@ static NSString* JSHandler;
     prompt = [prompt stringByReplacingOccurrencesOfString:@"\"" withString:@""];
     NSURL* url = [NSURL URLWithString:prompt];
     NSString* scheme        = url.scheme;
-    NSString* host          = url.host;
-    NSString* service       = url.path;
-    NSString* paramStr      = url.query;
+//    NSString* host          = url.host;
+//    NSString* service       = url.path;
+//    NSString* paramStr      = url.query;
     if (url && [self.appSchemaObserver hasAppSchema:scheme]) {
         id value = [[NVAppSchemaObserver sharedInstance] syncOpenURL:url];
         completionHandler(value);
@@ -469,9 +474,9 @@ static NSString* JSHandler;
     NSURL* url = request.URL;
     
     NSString* scheme        = url.scheme;
-    NSString* host          = url.host;
-    NSString* service       = url.path;
-    NSString* paramStr      = url.query;
+//    NSString* host          = url.host;
+//    NSString* service       = url.path;
+//    NSString* paramStr      = url.query;
     if ([self.appSchemaObserver hasAppSchema:scheme]) {
         [[NVAppSchemaObserver sharedInstance] openURL:url];
         decisionHandler(WKNavigationActionPolicyCancel);

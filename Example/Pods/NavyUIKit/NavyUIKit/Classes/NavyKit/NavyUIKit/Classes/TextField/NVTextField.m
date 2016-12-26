@@ -9,7 +9,10 @@
 #import "NVTextField.h"
 
 
-@interface NVTextField ()
+@interface NVTextField () {
+    UIEdgeInsets _tableViewEdgeInsets;
+    BOOL _keyboardShowing;
+}
 - (UIView*) generateToolbar;
 - (void) doneButtonDidPressed:(id)sender;
 - (void) notifierKeyboardWillShow:(NSNotification*)notification;
@@ -30,28 +33,21 @@
     if (self) {
         // Initialization code
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifierKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifierKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(notifierKeyboardWillShow:)
+                                                     name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(notifierKeyboardWillHide:) name:UIKeyboardWillHideNotification
+                                                   object:nil];
         
         self.inputAccessoryView = [self generateToolbar];
     }
     return self;
 }
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
-
 //控制placeHolder的颜色、字体
 - (void) drawPlaceholderInRect:(CGRect)rect
 {
-    //CGContextRef context = UIGraphicsGetCurrentContext();
-    //CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
     [_placeHolderColor setFill];
     
     
@@ -63,20 +59,6 @@
                           self.font, NSFontAttributeName,
                           _placeHolderColor, NSForegroundColorAttributeName,
                           nil];
-    
-//    CGRect bounds   = self.bounds;
-//    CGSize size     = [self.placeholder boundingRectWithSize:CGSizeMake(bounds.size.width, bounds.size.height)
-//                                                     options:NSStringDrawingUsesLineFragmentOrigin
-//                                                  attributes:attr
-//                                                     context:nil].size;
-//    
-//    if (self.textAlignment == NSTextAlignmentLeft ||
-//        self.textAlignment == NSTextAlignmentCenter) {
-//        rect.origin.x = 0.0f;
-//    } else if (self.textAlignment == NSTextAlignmentRight) {
-//        rect.origin.x = bounds.size.width - size.width;
-//    }
-//    rect.size.width = size.width;
     [[self placeholder] drawInRect:self.bounds withAttributes:attr];
     
     
@@ -102,20 +84,23 @@
 
 
 - (UIView*) generateToolbar {
-    UIView* toolbar = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
+    UIView* toolbar         = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
     toolbar.backgroundColor = [UIColor whiteColor];
     
-    UIView* topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, toolbar.bounds.size.width, 0.5)];
-    topLine.backgroundColor = [UIColor lightGrayColor];
-    topLine.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    UIView* topLine             = [[UIView alloc] initWithFrame:CGRectMake(0, 0, toolbar.bounds.size.width, 0.5)];
+    topLine.backgroundColor     = [UIColor lightGrayColor];
+    topLine.autoresizingMask    = UIViewAutoresizingFlexibleWidth;
     [toolbar addSubview:topLine];
     
     UIButton *finishedButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [finishedButton setTitle:@"完成" forState:UIControlStateNormal];
     finishedButton.titleLabel.font = [UIFont systemFontOfSize:16];
-    [finishedButton addTarget:self action:@selector(doneButtonDidPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [finishedButton addTarget:self action:@selector(doneButtonDidPressed:)
+             forControlEvents:UIControlEventTouchUpInside];
     finishedButton.frame = CGRectMake(toolbar.frame.size.width - 64 - 10, 0, 64, 44);
     finishedButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    [finishedButton setTitleColor:[UIColor colorWithRed:11/255.0f green:46/255.0f blue:84/255.0f alpha:1]
+                         forState:UIControlStateNormal];
     
     [toolbar addSubview:finishedButton];
     [topLine bringSubviewToFront:topLine];
@@ -150,7 +135,12 @@
         return;
     }
     
-    UIView* view = nil;
+    if (_keyboardShowing) {
+        return;
+    }else {
+        _keyboardShowing = YES;
+    }
+    
     UIView* subView = nil;
     if ([NSStringFromClass(self.superview.class) isEqualToString:@"UITableViewCellContentView"]) {
         subView = self.superview.superview.superview;
@@ -162,6 +152,7 @@
             subView = subView.superview;
         }
         UITableView* tableView = (UITableView*)subView;
+        _tableViewEdgeInsets = tableView.contentInset;
         
         CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
         NSDictionary *info                   = notification.userInfo;
@@ -170,15 +161,12 @@
         CGFloat tableViewBottomOnScreen      = screenFrame.origin.y + screenFrame.size.height;
         CGFloat tableViewGap                 = screenHeight - tableViewBottomOnScreen;
         CGSize keyboardSize                  = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+        
         UIEdgeInsets contentInsets           = tableView.contentInset;
         contentInsets.bottom                 = keyboardSize.height - tableViewGap;
-        //        contentInsets.top                    = 70.0f;
         
-        // Prepare for the animation
         CGFloat animationDuration            = ((NSNumber *)[info objectForKey:UIKeyboardAnimationDurationUserInfoKey]).doubleValue;
         NSUInteger animationCurve            = ((NSNumber *)[info objectForKey:UIKeyboardAnimationCurveUserInfoKey]).intValue;
-        
-        
         
         [UIView animateWithDuration:animationDuration
                               delay:0
@@ -189,22 +177,17 @@
                          }
          
                          completion:nil];
-        
-        // Make sure first responder is visible
-        //        [tableView scrollFirstResponderIntoView];
-        
-        //        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-        //        UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
-        //        CGRect frame = firstResponder.frame;
-        //        subView = firstResponder.superview.superview.superview;
-        //        [tableView setContentOffset:CGPointMake(0.0f, subView.frame.origin.y - 10.0f) animated:YES];
-        
     }
 }
 
 - (void) notifierKeyboardWillHide:(NSNotification*)notification {
     
-    UIView* view = nil;
+    if (!_keyboardShowing) {
+        return;
+    }else {
+        _keyboardShowing = NO;
+    }
+    
     UIView* subView = nil;
     if ([NSStringFromClass(self.superview.class) isEqualToString:@"UITableViewCellContentView"]) {
         subView = self.superview.superview.superview;
@@ -217,10 +200,9 @@
         }
         UITableView* tableView = (UITableView*)subView;
         
-        UIEdgeInsets contentInsets           = tableView.contentInset;
-        //        contentInsets.top                    = 70.0f;
+        UIEdgeInsets contentInsets           = _tableViewEdgeInsets;
         NSDictionary *info                   = notification.userInfo;
-        // Prepare for the animation
+        
         CGFloat animationDuration            = ((NSNumber *)[info objectForKey:UIKeyboardAnimationDurationUserInfoKey]).doubleValue;
         NSUInteger animationCurve            = ((NSNumber *)[info objectForKey:UIKeyboardAnimationCurveUserInfoKey]).intValue;
         
@@ -230,10 +212,10 @@
                          animations: ^{
                              tableView.contentInset          = contentInsets;
                              tableView.scrollIndicatorInsets = contentInsets;
-                             //                             tableView.contentOffset         = CGPointMake(0.0f, -70.0f);
                          }
-         
-                         completion:nil];
+                         completion:^(BOOL finished) {
+                             _tableViewEdgeInsets = UIEdgeInsetsZero;
+                         }];
         
     }
 }

@@ -70,7 +70,7 @@ PP_STRONG(NSString, baseURLString)
 #pragma mark 下载文件
 
 /**
- 下载文件到Document文件夹，以网络上的名称自动命名
+ 下载文件到Document/download文件夹，以网络上的名称自动命名
 
  @param url                   目标文件地址
  @param downloadProgressBlock 下载进度

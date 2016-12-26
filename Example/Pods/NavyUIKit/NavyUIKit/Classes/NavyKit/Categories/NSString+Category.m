@@ -38,8 +38,8 @@
 }
 
 
-//留两位小数的带有逗号的字符串
-+ (NSString*) stringFormatCurrencyWithDouble:(double)currency {
+//钱转为2位小数(对第三位进行四舍伍入),并添加逗号
++ (NSString*) stringFormatCurrencyRoundWithDouble:(double)currency {
     NSString* value = [NSString stringWithFormat:@"%.02f", currency];
     
     NSMutableString* string     = [[NSMutableString alloc] init];
@@ -62,8 +62,35 @@
     return string;
 }
 
+//钱转为2位小数(直接舍去第三位),并添加逗号
++ (NSString*) stringFormatCurrencyFloorWithDouble:(double)currency {
+    NSMutableString *tempValue = [NSMutableString stringWithString:[NSString stringWithFormat:@"%.03f", currency]];
+    [tempValue deleteCharactersInRange:NSMakeRange(tempValue.length-1, 1)];
+    NSString* value = tempValue;
+    
+    NSMutableString* string     = [[NSMutableString alloc] init];
+    [string appendString:[value substringFromIndex:[value length] - 3]];
+    
+    NSInteger index = [value length] - 6;
+    while (index > 0) {
+        NSString* subValue = [value substringWithRange:NSMakeRange(index, 3)];
+        [string insertString:subValue atIndex:0];
+        [string insertString:@"," atIndex:0];
+        
+        index -= 3;
+    }
+    
+    if (index <= 0) {
+        NSString* subValue = [value substringWithRange:NSMakeRange(0, 3 + index)];
+        [string insertString:subValue atIndex:0];
+    }
+    
+    return string;
+}
+
+
 + (NSString *)stringFormatCurrencyToIntegerWithDouble:(double)currency{
-    NSString *string = [NSString stringFormatCurrencyWithDouble:currency];
+    NSString *string = [NSString stringFormatCurrencyRoundWithDouble:currency];
     string = [string componentsSeparatedByString:@"."].firstObject;
     
     return string;

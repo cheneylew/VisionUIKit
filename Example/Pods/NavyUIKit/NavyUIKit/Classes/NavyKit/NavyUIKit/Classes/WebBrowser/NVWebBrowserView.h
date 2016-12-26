@@ -11,7 +11,7 @@
 
 
 @interface NVWebBrowserView : UIView
-@property (nonatomic, copy) void(^linkClickedBlock)(NSURL* url);
+@property (nonatomic, copy) void(^linkClickedBlock)(NSURL* _Nullable url);
 @property (nonatomic, strong, readonly) NSURL* url;
 - (void)loadRequest:(nullable NSURLRequest *)request;
 - (void)loadHTMLString:(nullable NSString *)string baseURL:(nullable NSURL *)baseURL;

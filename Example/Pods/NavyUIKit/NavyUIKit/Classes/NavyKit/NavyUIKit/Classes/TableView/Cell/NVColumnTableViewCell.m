@@ -118,9 +118,7 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
+    [super setObject:object];
     
     [self.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj removeFromSuperview];

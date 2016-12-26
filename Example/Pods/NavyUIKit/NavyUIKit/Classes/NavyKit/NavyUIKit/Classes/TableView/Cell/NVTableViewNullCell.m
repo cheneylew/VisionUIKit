@@ -19,4 +19,10 @@
     return self;
 }
 
+- (void)setObject:(id)object {
+    [super setObject:object];
+    self.item.normalBackgroudColor = self.item.normalBackgroudColor?self.item.normalBackgroudColor:[UIColor clearColor];
+    self.backgroundColor = self.item.normalBackgroudColor;
+}
+
 @end

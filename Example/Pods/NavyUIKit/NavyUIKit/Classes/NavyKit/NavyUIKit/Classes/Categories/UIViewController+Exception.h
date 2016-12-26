@@ -12,47 +12,30 @@
 
 @interface UIViewController (Exception)
 
-/*
- function
- brief       显示异常页面
- return     <#return#>
+- (UIImage*) nv_imageOfExceptionView;
+- (UIImage*) nv_imageOfErrorView;
+- (UIImage*) nv_imageOffNetworkView;
+- (UIImage*) nv_imageOfNullDataView;
+
+- (NSAttributedString*) nv_titleOfNullDataView;
+
+- (void) nv_showExceptionView;
+- (void) nv_showExceptionViewInView:(UIView*)view;
+- (void) nv_showErrorView;
+- (void) nv_showOffNetworkView;
+- (void) nv_showOffNetworkViewInView:(UIView*)view;
+- (void) nv_showNullDataView;
+- (void) nv_showNullDataViewInView:(UIView*)view;
+
+- (void) nv_hideExceptionView;
+
+/**
+ 子类重载，触发事件方法
  */
-- (void) showExceptionView;
-- (void) showExceptionViewInView:(UIView*)view;
-
-/*
- function
- brief       显示错误页面
- return     <#return#>
- */
-- (void) showErrorView;
-
-/*
- function
- brief       显示断网异常页面
- return     <#return#>
- */
-- (void) showOffNetworkView;
-- (void) showOffNetworkViewInView:(UIView*)view;
+- (void) nv_tryAgainAtExceptionView;                       //重试一次
+- (void) nv_reloadAtNullView;                              //
+- (void) nv_nullDataViewExtention:(UIView*)exceptionView;
 
 
-- (void) showNullDataView;
-- (void) showNullDataViewInView:(UIView*)view;
-
-- (void) hideExceptionView;
-
-
-- (void) tryAgainAtExceptionView;
-- (void) reloadAtNullView;
-
-
-- (UIImage*) imageOfExceptionView;
-- (UIImage*) imageOfErrorView;
-- (UIImage*) imageOffNetworkView;
-- (UIImage*) imageOfNullDataView;
-
-//- (NSString*) titleOfNullDataView;
-- (NSAttributedString*) titleOfNullDataView;
-- (void) nullDataViewExtention:(UIView*)exceptionView;
 
 @end

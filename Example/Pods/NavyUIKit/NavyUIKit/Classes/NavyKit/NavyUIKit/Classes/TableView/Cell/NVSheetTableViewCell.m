@@ -25,7 +25,6 @@
 #define TAG_SHEET_CELL_BUTTON           10002
 #define TAG_SHEET_CELL_RIGHTBUTTON      10003
 
-
 @interface NVSheetTableViewCell ()
 <UITextFieldDelegate>
 - (void) buttonAction:(id)sender;
@@ -40,7 +39,6 @@
 - (void) dealloc {
     _delegate = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
 }
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -62,8 +60,6 @@
                                                      name:UITextFieldTextDidEndEditingNotification
                                                    object:nil];
         
-        UIEdgeInsets insets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
-        
         [self setBackgroundColor:COLOR_DEFAULT_WHITE];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         //        [self setSelectedBackgroundView:[[[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, CELL_HEIGHT)] autorelease]];
@@ -82,10 +78,8 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-        
-    }
+    [super setObject:object];
+    
     self.item.cellInstance = self;
     
     
@@ -372,10 +366,7 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
-    
+    [super setObject:object];
     
     NVSheetDataModel* dataModel = (NVSheetDataModel*)self.item;
     if ([dataModel.value isKindOfClass:[NSAttributedString class]]) {
@@ -532,10 +523,8 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-        self.item.cellInstance = self;
-    }
+    [super setObject:object];
+    self.item.cellInstance = self;
     
     _uiTextView.placeHolder = self.item.placeHolder;
     self.delegate = self.item.delegate;

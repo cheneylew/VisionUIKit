@@ -62,9 +62,7 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
+    [super setObject:object];
     
     NVImageBrowserDataModel* dataModel = (NVImageBrowserDataModel*)self.item;
     

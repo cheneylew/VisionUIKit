@@ -59,8 +59,13 @@ code_sign_if_enabled() {
   if [ -n "${EXPANDED_CODE_SIGN_IDENTITY}" -a "${CODE_SIGNING_REQUIRED}" != "NO" -a "${CODE_SIGNING_ALLOWED}" != "NO" ]; then
     # Use the current code_sign_identitiy
     echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements \"$1\""
-    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements "$1"
+    local code_sign_cmd="/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements "$1""
+
+    if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
+      code_sign_cmd="$code_sign_cmd &"
+    fi
+    echo "$code_sign_cmd"
+    eval "$code_sign_cmd"
   fi
 }
 
@@ -85,27 +90,56 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AvoidCrash/AvoidCrash.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CRToast/CRToast.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DCCLogSystem/DCCLogSystem.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DJNetworking/DJNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FontAwesomeKit/FontAwesomeKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JTNavigationController/JTNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KKCategories/KKCategories.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/NavyUIKit/NavyUIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MGSwipeTableCell/MGSwipeTableCell.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJExtension/MJExtension.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MagicalRecord/MagicalRecord.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PDTSimpleCalendar/PDTSimpleCalendar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PKRevealController/PKRevealController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RTRootNavigationController/RTRootNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SlackTextViewController/SlackTextViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Toast/Toast.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/XMAdScrollView/XMAdScrollView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AvoidCrash/AvoidCrash.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/CRToast/CRToast.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DCCLogSystem/DCCLogSystem.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DJMacros/DJMacros.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DJNetworking/DJNetworking.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FontAwesomeKit/FontAwesomeKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JHChainableAnimations/JHChainableAnimations.framework"
   install_framework "$BUILT_PRODUCTS_DIR/JTNavigationController/JTNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KKCategories/KKCategories.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/NavyUIKit/NavyUIKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MGSwipeTableCell/MGSwipeTableCell.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MJExtension/MJExtension.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MagicalRecord/MagicalRecord.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PDTSimpleCalendar/PDTSimpleCalendar.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PKRevealController/PKRevealController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RTRootNavigationController/RTRootNavigationController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SAMKeychain/SAMKeychain.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SDWebImage/SDWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SlackTextViewController/SlackTextViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Toast/Toast.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/XMAdScrollView/XMAdScrollView.framework"
+fi
+if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
+  wait
 fi

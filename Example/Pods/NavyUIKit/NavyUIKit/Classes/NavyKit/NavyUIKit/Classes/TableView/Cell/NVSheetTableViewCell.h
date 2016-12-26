@@ -53,7 +53,7 @@ typedef NS_ENUM(NSUInteger, NVSheetTableViewCellStyle) {
 
 
 
-@interface NVSheetDataModel : NVDataModel
+@interface NVSheetDataModel : NVLineDataModel
 @property (nonatomic, assign) NVSheetTableViewCellStyle cellStyle;
 @property (nonatomic, strong) id title;
 @property (nonatomic, strong) UIColor* titleColor;

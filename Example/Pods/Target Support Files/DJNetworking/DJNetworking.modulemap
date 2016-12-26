@@ -1,0 +1,6 @@
+framework module DJNetworking {
+  umbrella header "DJNetworking-umbrella.h"
+
+  export *
+  module * { export * }
+}

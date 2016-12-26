@@ -15,6 +15,11 @@
 #import "VSInputManager.h"
 #import "NSMutableAttributedString+Category.h"
 #import "VSHttpClient.h"
+#import <Toast/UIView+Toast.h>
+#import <DJNetworking/DJNetworking.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <MJExtension/MJExtension.h>
+#import "VSUser.h"
 
 #define TITLE_COLOR RGB(15, 103, 197)
 
@@ -35,6 +40,9 @@ PP_STRONG(UIScrollView, scrollView)
     [self makeScrollView];
     [self makeLeftButtons];
     [self makeRightButtons];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:self action:@selector(showMenu)];
+    self.navigationController.navigationItem.leftBarButtonItem =  item;
 }
 
 
@@ -48,6 +56,10 @@ PP_STRONG(UIScrollView, scrollView)
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)showMenu {
+    
 }
 
 #pragma mark 定制按钮
@@ -161,6 +173,24 @@ PP_STRONG(UIScrollView, scrollView)
                                      
                                  }];
     }];
+    
+    [[self makeLeftButton:@"Toast-提示" index:7] jk_addActionHandler:^(NSInteger tag) {
+        for (int i=0; i<5; i++) {
+            [CSToastManager setQueueEnabled:NO];
+            [self.view makeToast:[NSString stringWithFormat:@"Created by Deju Liu %d", i] duration:2 position:CSToastPositionCenter];
+        }
+    }];
+    
+    [[self makeLeftButton:@"MBProgressHUD-Show" index:8] jk_addActionHandler:^(NSInteger tag) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Loading";
+        hud.tag = 121212;
+    }];
+    
+    [[self makeLeftButton:@"MBProgressHUD-Hide" index:9] jk_addActionHandler:^(NSInteger tag) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
 }
 
 - (void)makeRightButtons{
@@ -214,76 +244,128 @@ PP_STRONG(UIScrollView, scrollView)
         }];
     }];
     
-    [[self makeRightButton:@"AFNetWorking-Post" index:5] jk_addActionHandler:^(NSInteger tag) {
-        [[VSHttpClient sharedInstance] requestPost:@"ci/app/json" parameters:@{@"url":@"hello"} success:^(id responseObject) {
+    [[self makeRightButton:@"VSHttpClient" index:5] jk_addActionHandler:^(NSInteger tag) {
+        [VSSheetView ShowWithbuttonTitles:@[@"AFNetWorking-Post",
+                                            @"AFNetWorking-Download",
+                                            @"AFNetWorking-Upload-file",
+                                            @"AFNetWorking-Upload-data",
+                                            @"AFNetWorking-Upload-data",
+                                            @"AFNetWorking-Get"] cancelTitle:@"取消" callBlock:^(NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                for (int i=0; i<100; i++) {
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        [[VSHttpClient sharedInstance] requestPost:@"ci/app/json" parameters:@{@"url":@"hello"} success:^(id responseObject) {
+                            //
+                        } failure:^(VSErrorDataModel *dataModel) {
+                            //
+                        }];
+                    });
+                }
+            }else if (buttonIndex == 2) {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.mode = MBProgressHUDModeAnnularDeterminate;
+                hud.backgroundColor = [UIColor clearColor];
+                hud.label.text = @"Loading";
+                [[VSHttpClient sharedInstance] downloadWithFileURL:[NSURL URLWithString:@"http://tupian.enterdesk.com/2013/mxy/12/10/15/3.jpg"] progress:^(NSProgress *downloadProgress) {
+                    DLog(@"progress:%lld %lld", downloadProgress.completedUnitCount, downloadProgress.totalUnitCount);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        hud.progress = downloadProgress.completedUnitCount/(double)downloadProgress.totalUnitCount;
+                    });
+                } completion:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+                    DLog(@"downloaded:%@", filePath);
+                    [hud hideAnimated:YES];
+                }];
+            }else if (buttonIndex == 3) {
+                VSUploadFile *file = [VSUploadFile new];
+                file.fileServerKey = @"file";
+                file.localFileDIR = PATH_DOCUMENTS;
+                file.localFileName = @"3.jpg";
+                file.mimeType      = @"image/jpeg";
+                DLog(@"uploaded");
+                [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa" parameters:@{@"a":@"b"} uploadFiles:@[file] progress:^(NSProgress *progress) {
+                    //
+                } success:^(id responseObject) {
+                    //
+                } failure:^(VSErrorDataModel *dataModel) {
+                    //
+                }];
+            }else if (buttonIndex == 4) {
+                UIImage *image = [UIImage imageNamed:@"avatar_login-1"];
+                NSData *data = UIImagePNGRepresentation(image);
+                [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa"
+                                                      parameters:@{@"a":@"b"}
+                                                        fileType:VSFileTypePNG
+                                                        fileData:data
+                                                       serverKey:@"file"
+                                                        progress:^(NSProgress *progress) {
+                                                            //
+                                                        } success:^(id responseObject) {
+                                                            //
+                                                        } failure:^(VSErrorDataModel *dataModel) {
+                                                            //
+                                                        }];
+            }else if (buttonIndex == 5) {
+                UIImage *image = [UIImage imageNamed:@"avatar_login-1"];
+                NSData *data = UIImagePNGRepresentation(image);
+                [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa"
+                                                      parameters:@{@"a":@"b"}
+                                                        fileData:data
+                                                        progress:^(NSProgress *progress) {
+                                                            //
+                                                        } success:^(id responseObject) {
+                                                            //
+                                                        } failure:^(VSErrorDataModel *dataModel) {
+                                                            //
+                                                        }];
+            }else if (buttonIndex == 6) {
+                [[VSHttpClient sharedInstance] requestGet:@"" parameters:nil success:^(id responseObject) {
+                    //
+                } failure:^(VSErrorDataModel *dataModel) {
+                    //
+                }];
+            }else if (buttonIndex == 7) {
+                
+            }else if (buttonIndex == 8) {
+                
+            }else if (buttonIndex == 9) {
+                
+            }
+        }];
+    }];
+    
+    [[self makeRightButton:@"DJNetWorking" index:6] jk_addActionHandler:^(NSInteger tag) {
+        [[DJCenter defaultCenter] setupConfig:^(DJConfig * _Nonnull config) {
+            config.consoleLog = YES;
+            config.callbackQueue = dispatch_get_main_queue();
+            config.generalServer = @"http://127.0.0.1";
+            config.generalParameters = @{@"a":@"a1",@"b":@"b1"};
+            config.generalHeaders = @{@"c":@"c1",@"d":@"d1"};
+            config.generalUserInfo = @{@"userid":@"1234"};
+        }];
+        
+        NSUInteger taskId = [[DJCenter defaultCenter] sendRequest:^(DJRequest * _Nonnull request) {
+//            request.server = @"http://www.baidu.com/"
+            request.api = @"/v1/api/userinfo";
+            request.parameters = @{@"p":@"p1"};
+        } onSuccess:^(id  _Nullable responseObject) {
             //
-        } failure:^(VSErrorDataModel *dataModel) {
+        } onFailure:^(NSError * _Nullable error) {
+            //
+        } onFinished:^(id  _Nullable responseObject, NSError * _Nullable error) {
             //
         }];
     }];
     
-    [[self makeRightButton:@"AFNetWorking-Download" index:6] jk_addActionHandler:^(NSInteger tag) {
-        [[VSHttpClient sharedInstance] downloadWithFileURL:[NSURL URLWithString:@"http://tupian.enterdesk.com/2013/mxy/12/10/15/3.jpg"] progress:^(NSProgress *downloadProgress) {
-            DLog(@"progress:%lld %lld", downloadProgress.completedUnitCount, downloadProgress.totalUnitCount);
-        } completion:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-            DLog(@"downloaded:%@", filePath);
-        }];
-    }];
-    
-    [[self makeRightButton:@"AFNetWorking-Upload-file" index:7] jk_addActionHandler:^(NSInteger tag) {
-        VSUploadFile *file = [VSUploadFile new];
-        file.fileServerKey = @"file";
-        file.localFileDIR = PATH_DOCUMENTS;
-        file.localFileName = @"3.jpg";
-        file.mimeType      = @"image/jpeg";
-        DLog(@"uploaded");
-        [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa" parameters:@{@"a":@"b"} uploadFiles:@[file] progress:^(NSProgress *progress) {
-            //
-        } success:^(id responseObject) {
-            //
-        } failure:^(VSErrorDataModel *dataModel) {
-            //
-        }];
-    }];
-    
-    [[self makeRightButton:@"AFNetWorking-Upload-data" index:8] jk_addActionHandler:^(NSInteger tag) {
-        UIImage *image = [UIImage imageNamed:@"avatar_login-1"];
-        NSData *data = UIImagePNGRepresentation(image);
-        [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa"
-                                              parameters:@{@"a":@"b"}
-                                                fileType:VSFileTypePNG
-                                                fileData:data
-                                               serverKey:@"file"
-                                                progress:^(NSProgress *progress) {
-            //
-        } success:^(id responseObject) {
-            //
-        } failure:^(VSErrorDataModel *dataModel) {
-            //
-        }];
-    }];
-    
-    [[self makeRightButton:@"AFNetWorking-Upload-data" index:9] jk_addActionHandler:^(NSInteger tag) {
-        UIImage *image = [UIImage imageNamed:@"avatar_login-1"];
-        NSData *data = UIImagePNGRepresentation(image);
-        [[VSHttpClient sharedInstance] uploadToURLString:@"http://localhost/ci/app/upload_ipa"
-                                              parameters:@{@"a":@"b"}
-                                                fileData:data
-                                                progress:^(NSProgress *progress) {
-                                                    //
-                                                } success:^(id responseObject) {
-                                                    //
-                                                } failure:^(VSErrorDataModel *dataModel) {
-                                                    //
-                                                }];
-    }];
-    
-    [[self makeRightButton:@"AFNetWorking-Get" index:10] jk_addActionHandler:^(NSInteger tag) {
-        [[VSHttpClient sharedInstance] requestGet:@"" parameters:nil success:^(id responseObject) {
-            //
-        } failure:^(VSErrorDataModel *dataModel) {
-            //
-        }];
+    [[self makeRightButton:@"MJExtentsion" index:7] jk_addActionHandler:^(NSInteger tag) {
+       [VSSheetView ShowWithbuttonTitles:@[@"JSON->Model"] cancelTitle:@"取消" callBlock:^(NSInteger buttonIndex) {
+           if (buttonIndex == 1) {
+               NSString *jsonString = @"{\"name\":\"cheney\",\"height\":\"173.2\",\"sex\":\"boy\",\"books\":[{\"name\":\"a book name\"}]}";
+               VSUser *user = [VSUser mj_objectWithKeyValues:jsonString];
+               NSLog(@"");
+           } else {
+               //
+           }
+       }];
     }];
 }
 
@@ -305,7 +387,7 @@ PP_STRONG(UIScrollView, scrollView)
 
 - (UIButton *)makeLeftButton:(NSString *)title index:(NSInteger) idx {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-    btn.frame = CGRectMake(0, idx*35, 150, 30);
+    btn.frame = CGRectMake(0, idx*35, FIT6(350), 30);
     btn.left = 0;
     btn.backgroundColor = TITLE_COLOR;
     btn.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -318,7 +400,7 @@ PP_STRONG(UIScrollView, scrollView)
 
 - (UIButton *)makeRightButton:(NSString *)title index:(NSInteger) idx {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-    btn.frame = CGRectMake(0, idx*35, 150, 30);
+    btn.frame = CGRectMake(0, idx*35, FIT6(350), 30);
     btn.right = SCREEN_WIDTH;
     btn.backgroundColor = TITLE_COLOR;
     btn.titleLabel.adjustsFontSizeToFitWidth = YES;

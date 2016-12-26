@@ -107,7 +107,7 @@
         return;
     }
     
-    UIView* view = nil;
+   // UIView* view = nil;
     UIView* subView = nil;
     if ([NSStringFromClass(self.superview.class) isEqualToString:@"UITableViewCellContentView"]) {
         subView = self.superview.superview.superview;
@@ -153,7 +153,7 @@
 
 - (void) notifierKeyboardWillHide:(NSNotification*)notification {
     
-    UIView* view = nil;
+    //UIView* view = nil;
     UIView* subView = nil;
     if ([NSStringFromClass(self.superview.class) isEqualToString:@"UITableViewCellContentView"]) {
         subView = self.superview.superview.superview;

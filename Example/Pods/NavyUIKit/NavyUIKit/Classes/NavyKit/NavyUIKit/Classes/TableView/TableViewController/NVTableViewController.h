@@ -22,11 +22,20 @@ typedef NS_ENUM(NSUInteger, NVTableViewStyle) {
     BOOL _isLoading;
 }
 
-@property (nonatomic, strong) NVTableView* uiTableView;
-@property (nonatomic, strong) NVTableViewAdaptor* adaptor;
-@property (nonatomic, assign) NVTableViewStyle tableViewStyle;
-- (void) constructData;
+@property (nonatomic, strong) NVTableView* uiTableView;         //tableView
+@property (nonatomic, strong) NVTableViewAdaptor* adaptor;      //tableView delegate
+@property (nonatomic, assign) NVTableViewStyle tableViewStyle;  //样式
+
+
+/**
+ 从DataConstructor重新载入，刷新Tableview的Cell
+ */
 - (void) reloadTableViewData;
+
+/**
+ 子类必须重写
+ */
+- (void) constructData;
 
 @end
 

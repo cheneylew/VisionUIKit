@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DJMacros/DJMacro.h>
+#import <KKCategories/KKCategories.h>
 #import "NVDataModel.h"
 
 
@@ -29,6 +31,11 @@
  @abstract      设置Cell的高度。通过object来动态设置Cell的高度。
  */
 + (CGFloat) tableView:(UITableView*)tableView rowHeightForObject:(id)object;
+
+/**
+ 初始化UI
+ */
+- (void)initUI;
 
 /*!
  @property

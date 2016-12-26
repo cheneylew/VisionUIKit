@@ -56,9 +56,9 @@
 
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
+    [super setObject:object];
+    self.item.normalBackgroudColor = self.item.normalBackgroudColor?self.item.normalBackgroudColor:[UIColor clearColor];
+    self.backgroundColor = self.item.normalBackgroudColor;
     
     NVAnimationButtonDataModel* dataModel = (NVAnimationButtonDataModel*)self.item;
     if (dataModel.backgroundColor) {

@@ -37,9 +37,7 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
+    [super setObject:object];
     
     NVSheetDataModel* dataModel     = (NVSheetDataModel*)self.item;
     
@@ -98,9 +96,7 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
+    [super setObject:object];
     
     [self.arraySubviews enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:[UIView class]]) {

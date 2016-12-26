@@ -59,6 +59,7 @@
 }
 
 - (void) setObject:(id)object {
+    [super setObject:object];
     
     NVButtonDataModel* dataModel = (NVButtonDataModel*)object;
     if ([dataModel.title length] > 0) {

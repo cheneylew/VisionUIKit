@@ -8,6 +8,7 @@
 
 #import "NVTaskManager.h"
 #import "NVTaskQueue.h"
+#import <DJMacros/DJMacro.h>
 
 
 @interface NVTaskManager ()
@@ -31,10 +32,11 @@ IMP_SINGLETON
 }
 
 - (void(^)(NVTaskQueue* taskQueue, BOOL completed))taskQueueCallback {
+    WEAK_SELF;
     return ^(NVTaskQueue* taskQueue, BOOL completed) {
-        if (self.finishBlock) {
+        if (weakself.finishBlock) {
             [taskQueue cancelAllTasks];
-            self.finishBlock(completed);
+            weakself.finishBlock(completed);
         }
     };
 }

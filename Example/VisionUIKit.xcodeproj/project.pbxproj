@@ -22,6 +22,8 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		9493CEB58A379AA6F8CE5540 /* Pods_VisionUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6BE3CB83BCD8B37C3C69D4 /* Pods_VisionUIKit_Example.framework */; };
+		C912E6D41E0E89710011C89E /* VSMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C912E6D31E0E89710011C89E /* VSMenuViewController.m */; };
+		C912E6D81E0F51C70011C89E /* VSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C912E6D71E0F51C70011C89E /* VSUser.m */; };
 		C92C8F4D1E03C295002CFFF1 /* VSDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F441E03C295002CFFF1 /* VSDataModel.m */; };
 		C92C8F4E1E03C295002CFFF1 /* VSErrorDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F461E03C295002CFFF1 /* VSErrorDataModel.m */; };
 		C92C8F4F1E03C295002CFFF1 /* VSUserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F481E03C295002CFFF1 /* VSUserDataModel.m */; };
@@ -90,6 +92,10 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8DD3A8DA59E4695583A7F78C /* VisionUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = VisionUIKit.podspec; path = ../VisionUIKit.podspec; sourceTree = "<group>"; };
 		B651BC6B56631F5AA77527E3 /* Pods-VisionUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionUIKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VisionUIKit_Tests/Pods-VisionUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C912E6D21E0E89710011C89E /* VSMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSMenuViewController.h; sourceTree = "<group>"; };
+		C912E6D31E0E89710011C89E /* VSMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSMenuViewController.m; sourceTree = "<group>"; };
+		C912E6D61E0F51C70011C89E /* VSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSUser.h; sourceTree = "<group>"; };
+		C912E6D71E0F51C70011C89E /* VSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSUser.m; sourceTree = "<group>"; };
 		C92C8F431E03C295002CFFF1 /* VSDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSDataModel.h; sourceTree = "<group>"; };
 		C92C8F441E03C295002CFFF1 /* VSDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSDataModel.m; sourceTree = "<group>"; };
 		C92C8F451E03C295002CFFF1 /* VSErrorDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSErrorDataModel.h; sourceTree = "<group>"; };
@@ -222,12 +228,15 @@
 		6003F593195388D20070C39A /* Example for VisionUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C912E6D51E0F51B30011C89E /* MJExtension */,
 				C9ACEF4B1DF8111700F84905 /* NSMutableAttributedString+Category.h */,
 				C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */,
 				C9F9FE411DE03B5F00339937 /* TableView */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F59C195388D20070C39A /* VSAppDelegate.h */,
 				6003F59D195388D20070C39A /* VSAppDelegate.m */,
+				C912E6D21E0E89710011C89E /* VSMenuViewController.h */,
+				C912E6D31E0E89710011C89E /* VSMenuViewController.m */,
 				6003F5A5195388D20070C39A /* VSViewController.h */,
 				6003F5A6195388D20070C39A /* VSViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -275,6 +284,15 @@
 				1D0A778E6BF7DAE48E80D037 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		C912E6D51E0F51B30011C89E /* MJExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C912E6D61E0F51C70011C89E /* VSUser.h */,
+				C912E6D71E0F51C70011C89E /* VSUser.m */,
+			);
+			path = MJExtension;
 			sourceTree = "<group>";
 		};
 		C92C8F411E03C272002CFFF1 /* Core */ = {
@@ -679,6 +697,7 @@
 				C92C8F4D1E03C295002CFFF1 /* VSDataModel.m in Sources */,
 				C9F9FE4F1DE044C900339937 /* VSEmptyTBVC.m in Sources */,
 				C9F9FE441DE03B7700339937 /* VSTableViewController.m in Sources */,
+				C912E6D81E0F51C70011C89E /* VSUser.m in Sources */,
 				C92C8F541E03C95B002CFFF1 /* VSHttpClient.m in Sources */,
 				C9F9FE481DE03DE900339937 /* VSTableView.m in Sources */,
 				C9F9FE401DE03B3F00339937 /* VSBaseDataConstructor.m in Sources */,
@@ -700,6 +719,7 @@
 				C9B70ED91E03EB1F003E3285 /* VSConfig.m in Sources */,
 				C9ACEF4D1DF8111700F84905 /* NSMutableAttributedString+Category.m in Sources */,
 				C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */,
+				C912E6D41E0E89710011C89E /* VSMenuViewController.m in Sources */,
 				C92C8F4F1E03C295002CFFF1 /* VSUserDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

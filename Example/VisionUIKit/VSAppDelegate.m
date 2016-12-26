@@ -8,15 +8,32 @@
 
 #import "VSAppDelegate.h"
 #import "VSHttpClient.h"
+#import <PKRevealController/PKRevealController.h>
+
+@interface VSAppDelegate ()
+<PKRevealing>
+
+@end
 
 @implementation VSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-    [CCLogSystem setupDefaultLogConfigure];
+    [self.window makeKeyAndVisible];
     
-    [VSHttpClient sharedInstance].baseURLString = @"https://www.haiyinhui.com";
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *root_vc = [sb instantiateViewControllerWithIdentifier:@"main_root"];
+    UIViewController *root_left = [sb instantiateViewControllerWithIdentifier:@"root_left"];
+    
+    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:root_vc leftViewController:root_left];
+    revealController.delegate = self;
+    self.window.rootViewController = revealController;
+    
+    
+    [CCLogSystem setupDefaultLogConfigure];
+    [VSHttpClient sharedInstance].baseURLString = @"http://127.0.0.1/";
     [VSHttpClient InitClientWithProcessGlobalHeader:^NSDictionary *(VSRequestParams *params) {
         return @{@"userId":@"8989898989", @"token":@"abcdefdggggs", @"Content-Type":@"application/json; charset=utf-8"};
     } globalParams:^NSDictionary *(VSRequestParams *params) {
@@ -53,6 +70,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - RevealController Delegate
+
+- (void)revealController:(PKRevealController *)revealController didChangeToState:(PKRevealControllerState)state {
+    
+}
+
+- (void)revealController:(PKRevealController *)revealController willChangeToState:(PKRevealControllerState)state {
+    
 }
 
 @end

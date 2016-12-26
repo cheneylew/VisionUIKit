@@ -119,7 +119,7 @@ IMP_SINGLETON
  */
 - (BOOL) handleOpenURL:(NSURL *)url {
     NSString* scheme        = url.scheme;
-    NSString* host          = url.host;
+//    NSString* host          = url.host;
     NSString* service       = url.path;
     NSString* paramStr      = url.query;
     
@@ -204,7 +204,7 @@ IMP_SINGLETON
 
 - (id) syncOpenURL:(NSURL*)url {
     NSString* scheme        = url.scheme;
-    NSString* host          = url.host;
+    //NSString* host          = url.host;
     NSString* service       = url.path;
     NSString* paramStr      = url.query;
     
@@ -221,9 +221,9 @@ IMP_SINGLETON
                 if (paramStr.length > 0) {
                     parameters        = [paramStr parameters];
                 }
-                NSArray* parametersSorted       = [paramStr parametersSorted];
+                //NSArray* parametersSorted       = [paramStr parametersSorted];
                 //                NSArray* arrayNames             = [parameters allKeys];
-                NSArray* publicParams            = [self hasPublicParamExisted:parametersSorted];
+                //NSArray* publicParams            = [self hasPublicParamExisted:parametersSorted];
                 
                 UIWindow* window = [UIApplication sharedApplication].delegate.window;
                 UIViewController* rootController = window.rootViewController;

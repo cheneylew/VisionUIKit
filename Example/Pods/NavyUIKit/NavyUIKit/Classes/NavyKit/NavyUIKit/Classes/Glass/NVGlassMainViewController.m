@@ -105,7 +105,7 @@
         UIImage *btnImage = [[UIImage imageNamed:@"icon_back.png"] imageWithColor:COLOR_HYH_BLUE];
         
         UIButton* btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(0.0f, 0.0f, 60.0f, 40.0f);
+        btn.frame = CGRectMake(0.0f, 0.0f, 30.0f, 40.0f);
         
         [btn.titleLabel setFont:nvNormalFontWithSize(18.0f)];
         [btn setTitle:@"    " forState:UIControlStateNormal];

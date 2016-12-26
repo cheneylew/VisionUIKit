@@ -11,6 +11,11 @@
 
 #define CELL_HEIGHT     40.0f
 
+@implementation NVLineDataModel
+
+
+@end
+
 @implementation NVTableViewLineCell
 
 
@@ -57,6 +62,20 @@
     
 }
 
+- (void)setObject:(id)object {
+    [super setObject:object];
+    if ([object isKindOfClass:[NVLineDataModel class]]) {
+        NVLineDataModel *model = object;
+        if (model.upperLineHidden) {
+            self.lineUpper.hidden = YES;
+        }else self.lineUpper.hidden = NO;
+        
+        if (model.lowerLineHidden) {
+            self.lineLower.hidden = YES;
+        }else self.lineLower.hidden = NO;
+    }
+}
+
 @end
 
 
@@ -80,14 +99,9 @@
 }
 
 #pragma mark - layout
-//- (void)layoutSubviews{
-//    [super layoutSubviews];
-//
-//
-////    [self bringSubviewToFront:self.lineUpper];
-////    [self bringSubviewToFront:self.lineLower];
-//
-//}
+- (void) setObject:(id)object {
+    [super setObject:object];
+}
 
 + (NSString*) cellIdentifier {
     return CLS_TABLE_VIEW_INDENT_LINE_CELL;

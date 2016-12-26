@@ -11,7 +11,7 @@
 #import "NVDataModel.h"
 
 
-@interface NVCheckboxDataModel : NVDataModel
+@interface NVCheckboxDataModel : NVLineDataModel
 @property (nonatomic, assign) BOOL selected;
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, strong) UIImage* imageNormal;

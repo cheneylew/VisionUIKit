@@ -19,11 +19,11 @@
 <NVTableViewDataSource,
 UITableViewDelegate>
 
-@property (nonatomic, assign) NVTableView* uiTableView;
-@property (nonatomic, strong) NVIndexPathArray* items;
-@property (nonatomic, assign) id<NVTableViewAdaptorDelegate> delegate;
-@property (nonatomic, assign) BOOL canEdit;
-@property (nonatomic, assign) BOOL canMove;
+@property (nonatomic, weak)     NVTableView*                    uiTableView;
+@property (nonatomic, strong)   NVIndexPathArray*               items;
+@property (nonatomic, weak)     id<NVTableViewAdaptorDelegate>  delegate;
+@property (nonatomic, assign)   BOOL                            canEdit;
+@property (nonatomic, assign)   BOOL                            canMove;
 
 
 - (NVTableViewCell *) generateCellForObject:(id<NVTableViewCellItemProtocol>)object

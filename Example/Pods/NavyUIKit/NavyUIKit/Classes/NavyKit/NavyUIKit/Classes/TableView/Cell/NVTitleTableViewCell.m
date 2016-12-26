@@ -17,6 +17,9 @@
     if (self) {
         self.fontSize       = 14.0f;
         self.textAlignment  = NSTextAlignmentCenter;
+        self.titleEdgeInset = UIEdgeInsetsMake(5, 10, 5, 10);
+        self.tagLineHidden  = YES;
+        self.tagLineColor   = HEX(0x0088ec);
     }
     
     return self;
@@ -27,6 +30,7 @@
 
 @interface NVTitleTableViewCell ()
 @property (nonatomic, strong) NVLabel* uiTitle;
+@property (nonatomic, strong) UIView *tagLine;
 @end
 
 
@@ -37,32 +41,34 @@
 
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-        self.backgroundColor            = [UIColor clearColor];
-        self.selectionStyle             = UITableViewCellSelectionStyleNone;
-        
+    return [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+}
 
-        self.uiTitle                    = [[NVLabel alloc] initWithFrame:CGRectMake(10.0f,
-                                                                                    5.0f,
-                                                                                    APPLICATIONWIDTH - 20.0f,
-                                                                                    CELL_HEIGHT - 20.0f)];
-        [self.contentView addSubview:self.uiTitle];
-        self.uiTitle.font               = nvNormalFontWithSize(14.0f);
-        self.uiTitle.textAlignment      = NSTextAlignmentCenter;
-        self.uiTitle.textColor          = COLOR_HM_LIGHT_BLACK;
-        
-    }
+- (void)initUI {
+    [super initUI];
     
-    return self;
+    self.backgroundColor            = [UIColor clearColor];
+    self.selectionStyle             = UITableViewCellSelectionStyleNone;
+    
+    
+    self.uiTitle                    = [[NVLabel alloc] initWithFrame:CGRectMake(10.0f,
+                                                                                5.0f,
+                                                                                APPLICATIONWIDTH - 20.0f,
+                                                                                CELL_HEIGHT - 20.0f)];
+    [self.contentView addSubview:self.uiTitle];
+    self.uiTitle.font               = nvNormalFontWithSize(14.0f);
+    self.uiTitle.textAlignment      = NSTextAlignmentCenter;
+    self.uiTitle.textColor          = COLOR_HM_LIGHT_BLACK;
+    
+    UIView *tagLine = [[UIView alloc] initWithFrame:CGRectMake(fit6(30), 0, fit6(4), fit6(27))];
+    tagLine.hidden  = YES;
+    [self addSubview:tagLine];
+    self.tagLine = tagLine;
 }
 
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
+    [super setObject:object];
     
     NVTitleDataModel* dataModel     = (NVTitleDataModel*)self.item;
     
@@ -75,31 +81,39 @@
         self.uiTitle.font               = nvNormalFontWithSize(dataModel.fontSize);
         self.uiTitle.numberOfLines      = 0;
         
+        CGFloat x = dataModel.titleEdgeInset.left;
+        CGFloat y = dataModel.titleEdgeInset.top;
+        CGFloat w = self.width - dataModel.titleEdgeInset.left - dataModel.titleEdgeInset.right;
+        CGFloat h = [self.uiTitle.text jk_heightWithFont:self.uiTitle.font constrainedToWidth:w];
         
-        CGSize size = [self.uiTitle.text boundingRectWithSize:CGSizeMake(APPLICATIONWIDTH - 20.0f, 1000000.0f)
-                                                      options:NSStringDrawingUsesLineFragmentOrigin
-                                                   attributes:ATTR_DICTIONARY3(COLOR_HM_LIGHT_BLACK, self.uiTitle.font)
-                                                      context:nil].size;
-        
-        CGRect frame            = self.uiTitle.frame;
-        frame.size.height       = size.height;
-        self.uiTitle.frame      = frame;
+        self.uiTitle.frame      = CGRectMake(x, y, w, h);
     
     } else if ([dataModel.title isKindOfClass:[NSAttributedString class]]) {
         NSAttributedString* attributeString = dataModel.title;
         self.uiTitle.attributedText     = attributeString;
         
-        CGSize size = [attributeString boundingRectWithSize:CGSizeMake(APPLICATIONWIDTH - 20.0f, 1000000.0f)
-                                                    options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                                    context:nil].size;
-        
-        CGRect frame            = self.uiTitle.frame;
-        frame.size.height       = size.height;
-        self.uiTitle.frame      = frame;
+        CGFloat x = dataModel.titleEdgeInset.left;
+        CGFloat y = dataModel.titleEdgeInset.top;
+        CGFloat w = self.width - dataModel.titleEdgeInset.left - dataModel.titleEdgeInset.right;
+        CGFloat h = [attributeString boundingRectWithSize:CGSizeMake(w, 1000000.0f)
+                                                  options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                  context:nil].size.height;
+        self.uiTitle.frame      = CGRectMake(x, y, w, h);
     }
     
     dataModel.cellInstance      = self;
     
+    if (dataModel.closeAutoAdjustHeight) {
+        self.uiTitle.centerY = dataModel.cellHeight.floatValue/2;
+    }
+    
+    if (dataModel.tagLineHidden) {
+        self.tagLine.hidden = YES;
+    }else {
+        self.tagLine.hidden = NO;
+        self.tagLine.backgroundColor = dataModel.tagLineColor;
+        self.tagLine.centerY = self.uiTitle.top + self.uiTitle.height/2;
+    }
 }
 
 - (void) updateDisplay {
@@ -110,30 +124,35 @@
 + (CGFloat) tableView:(UITableView *)tableView rowHeightForObject:(id)object {
     NVTitleDataModel* dataModel     = (NVTitleDataModel*)object;
     
-    CGSize size;
-    if ([dataModel.title isKindOfClass:[NSString class]]) {
-        size = [dataModel.title boundingRectWithSize:CGSizeMake(APPLICATIONWIDTH - 20.0f, 1000000.0f)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                            attributes:ATTR_DICTIONARY(COLOR_HM_LIGHT_BLACK, dataModel.fontSize)
-                                               context:nil].size;
+    if (dataModel.closeAutoAdjustHeight) {
+        return [super tableView:tableView rowHeightForObject:object];
+    }else {
+        CGFloat w = SCREEN_WIDTH - dataModel.titleEdgeInset.left - dataModel.titleEdgeInset.right;
+        CGSize size;
+        if ([dataModel.title isKindOfClass:[NSString class]]) {
+            size = [dataModel.title boundingRectWithSize:CGSizeMake(w, 1000000.0f)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin
+                                              attributes:ATTR_DICTIONARY(COLOR_HM_LIGHT_BLACK, dataModel.fontSize)
+                                                 context:nil].size;
+            
+        } else if ([dataModel.title isKindOfClass:[NSAttributedString class]]) {
+            NSAttributedString* attributeString = dataModel.title;
+            
+            size = [attributeString boundingRectWithSize:CGSizeMake(w, 1000000.0f)
+                                                 options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                 context:nil].size;
+            
+        }
         
-    } else if ([dataModel.title isKindOfClass:[NSAttributedString class]]) {
-        NSAttributedString* attributeString = dataModel.title;
         
-        size = [attributeString boundingRectWithSize:CGSizeMake(APPLICATIONWIDTH - 20.0f, 1000000.0f)
-                                      options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                             context:nil].size;
-
+        return size.height + 10.0f;
     }
-    
-    
-    return size.height + 10.0f;
 }
 
 
-+ (CGFloat) heightForCell {
-    return CELL_HEIGHT;
-}
+//+ (CGFloat) heightForCell {
+//    return CELL_HEIGHT;
+//}
 
 @end
 

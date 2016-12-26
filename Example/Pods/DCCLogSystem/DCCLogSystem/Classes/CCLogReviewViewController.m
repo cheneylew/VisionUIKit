@@ -54,10 +54,20 @@
     
     [self loadLogData];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(handleEmailBarButtonItem)];
+    UIBarButtonItem *email = [[UIBarButtonItem alloc] initWithTitle:@"Email" style:UIBarButtonItemStylePlain target:self action:@selector(handleEmailBarButtonItem)];
+    UIBarButtonItem *airDrop = [[UIBarButtonItem alloc] initWithTitle:@"AirDrop" style:UIBarButtonItemStylePlain target:self action:@selector(handleAirDropBarButtonItem)];
+    
+    self.navigationItem.rightBarButtonItems = @[email, airDrop];
 }
 
 #pragma mark - Private
+
+- (void)handleAirDropBarButtonItem {
+    NSArray *items = [NSArray arrayWithObjects:self.currentLogPathURL,nil];
+    UIActivityViewController *activityViewController =
+    [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+    [self presentViewController:activityViewController animated:YES completion:NULL];
+}
 
 - (void)handleEmailBarButtonItem
 {

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface UIView (MotionEffect)
+@interface UIView (NVMotionEffect)
 - (void) addCenterMotionEffectsXYWithOffset:(CGFloat)offset;
 @end
 
@@ -19,7 +19,7 @@
 @end
 
 
-@interface UIView (Screenshot)
+@interface UIView (NVScreenshot)
 - (UIImage*) screenshot;
 - (UIImage*) screenshotForScrollViewWithContentOffset:(CGPoint)contentOffset;
 - (UIImage*) screenshotInFrame:(CGRect)frame;

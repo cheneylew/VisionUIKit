@@ -156,7 +156,7 @@ SINGLETON_IMPL(VSHttpClient)
                 failure:(void (^)(VSErrorDataModel* dataModel))failure {
     if (!error) {
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//            DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseObject);
+            DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseObject);
             BLOCK_SAFE_RUN(success, responseObject);
             return;
         }
@@ -164,12 +164,12 @@ SINGLETON_IMPL(VSHttpClient)
         NSDictionary *responseDic = [responseStr jk_dictionaryValue];
         if (responseStr && !responseDic) {
             VSErrorDataModel *error = [VSErrorDataModel InitErrorType:VSErrorType_ResponseValidJSON];
-//            DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, error);
+            DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, error);
             BLOCK_SAFE_RUN(failure,error);
             return;
         };
         
-//        DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseDic);
+        DLog(@"\n\ntask:%lu\nsuccess:\n%@\n\n", (unsigned long)task.taskIdentifier, responseDic);
         if (self.globalResponseBlock) {
             id result = self.globalResponseBlock(responseDic);
             BLOCK_SAFE_RUN(success, result);
@@ -180,7 +180,7 @@ SINGLETON_IMPL(VSHttpClient)
         VSErrorDataModel *errorModel    = [VSErrorDataModel InitErrorType:VSErrorType_ResponseSystemError];
         errorModel.error                = error;
         
-//        DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, errorModel);
+        DLog(@"\n\ntask:%lu\nerror:\n%@\n\n", (unsigned long)task.taskIdentifier, errorModel);
         BLOCK_SAFE_RUN(failure,errorModel);
     }
 }
@@ -236,19 +236,23 @@ SINGLETON_IMPL(VSHttpClient)
     rq_params.params           = parameters;
     
     WEAK_SELF;
-    if (self.globalHeaderBlock) {
-        NSDictionary *globalHeader = self.globalHeaderBlock(rq_params);
-        [globalHeader enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            [weakself.manager.requestSerializer setValue:obj forHTTPHeaderField:key];
-        }];
+    @synchronized (self) {
+        if (self.globalHeaderBlock) {
+            NSDictionary *globalHeader = self.globalHeaderBlock(rq_params);
+            [globalHeader enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                if (obj && key) {
+                    [weakself.manager.requestSerializer setValue:obj forHTTPHeaderField:key];
+                }
+            }];
+        }
+        
+        if (self.globalParamsBlock) {
+            NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:parameters];
+            [params addEntriesFromDictionary:self.globalParamsBlock(rq_params)];
+            parameters = params;
+        }
     }
-    
-    if (self.globalParamsBlock) {
-        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:parameters];
-        [params addEntriesFromDictionary:self.globalParamsBlock(rq_params)];
-        parameters = params;
-    }
-    
+
     NSString *absoluteURLString = [self absoluteURLWithPath:path];
     if (method == VSRequestMethodGet) {
         [self.manager GET:absoluteURLString parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -279,9 +283,17 @@ SINGLETON_IMPL(VSHttpClient)
                    progress:(void (^)(NSProgress *downloadProgress)) downloadProgressBlock
                  completion:(void (^)(NSURLResponse *response, NSURL *filePath, NSError *error))completionHandler {
     NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+    NSString *fileName = url.lastPathComponent;
+    NSArray *arr = [fileName componentsSeparatedByString:@"."];
+    NSString *fileType = @"";
+    if (arr.count > 1) {
+        fileType = [NSString stringWithFormat:@".%@", arr.lastObject];
+    }
+    NSString *dateString = [[NSDate date] jk_stringWithFormat:@"yyyy-MM-dd-HHmmss"];
+    NSString *newFileName = [NSString stringWithFormat:@"%@%@", [NSString stringWithFormat:@"%@-%d", dateString, arc4random()], fileType];
     [self downloadWithFileURL:url
-                localFilePath:documentsDirectoryURL
-                localFileName:nil
+                localFilePath:[documentsDirectoryURL URLByAppendingPathComponent:@"download"]
+                localFileName:newFileName
                      progress:downloadProgressBlock
                    completion:completionHandler];
 }
@@ -306,6 +318,10 @@ SINGLETON_IMPL(VSHttpClient)
             NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
             return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
         } else {
+            BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:[filePathURL path]];
+            if (!isExist) {
+                [[NSFileManager defaultManager] createDirectoryAtPath:[filePathURL path] withIntermediateDirectories:YES attributes:nil error:nil];
+            }
             return [filePathURL URLByAppendingPathComponent:fileName];
         }
         

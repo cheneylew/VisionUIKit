@@ -21,7 +21,8 @@
 - (BOOL) hasExistedSpace;
 - (BOOL) isValidAmount;
 
-+ (NSString*) stringFormatCurrencyWithDouble:(double)currency; //留两位小数的带有逗号的字符串
++ (NSString*) stringFormatCurrencyFloorWithDouble:(double)currency;     //钱转为2位小数(直接舍去第三位),并添加逗号
++ (NSString*) stringFormatCurrencyRoundWithDouble:(double)currency;     //钱转为2位小数(对第三位进行四舍伍入),并添加逗号
 + (NSString*) stringFormatCurrencyToIntegerWithDouble:(double)currency; //转为带有逗号的整数字符串
 + (NSString*) stringFormatJPYCurrencyWithDouble:(double)currency;
 

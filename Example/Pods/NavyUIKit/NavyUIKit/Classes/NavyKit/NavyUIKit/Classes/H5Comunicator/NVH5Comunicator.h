@@ -28,12 +28,12 @@ DEF_SINGLETON(NVH5Comunicator)
  *  @return 加密后的UUID
  */
 - (NSString *)getEncodedUUID;
-- (NSString *)decodeUUID:(NSString *) enUUID;
+//- (NSString *)decodeUUID:(NSString *) enUUID;
 
-- (NSString *)encodeUserID:(NSString *) userId;
+//- (NSString *)encodeUserID:(NSString *) userId;
 - (NSString *)decodeUserID:(NSString *) encodedUserId;
 
-- (NSString *)encodeToken:(NSString *) token;
+//- (NSString *)encodeToken:(NSString *) token;
 - (NSString *)decodeToken:(NSString *) encodedToken;
 
 
@@ -50,8 +50,6 @@ DEF_SINGLETON(NVH5Comunicator)
                              userid:(NSString *) userId
                               token:(NSString *) token;
 
-- (void)refreshUserWith:(NSString *) userId
-                  token:(NSString *) token;
 
 
 + (void)CleanCookies;

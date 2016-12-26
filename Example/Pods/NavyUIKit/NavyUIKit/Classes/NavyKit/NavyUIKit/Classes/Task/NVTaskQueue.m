@@ -7,7 +7,7 @@
 //
 
 #import "NVTaskQueue.h"
-
+#import <DJMacros/DJMacro.h>
 
 @interface NVTaskQueue ()
 @property (nonatomic, strong) NSMutableArray* arrayTasks;
@@ -17,6 +17,11 @@
 
 @implementation NVTaskQueue
 @synthesize interator = _interator;
+
+- (void)dealloc
+{
+    DLog(@"NVTaskQueue Dealloc");
+}
 
 - (NSMutableArray*) arrayTasks {
     if (_arrayTasks == nil) {
@@ -38,6 +43,10 @@
 - (void) addTask:(NVTask *)task {
     [self.arrayTasks addObject:task];
     task.callback   = self.taskCallback;
+}
+
+- (void) removeTask:(NVTask *)task {
+    [self.arrayTasks removeObject:task];
 }
 
 - (void) cancelAllTasks {

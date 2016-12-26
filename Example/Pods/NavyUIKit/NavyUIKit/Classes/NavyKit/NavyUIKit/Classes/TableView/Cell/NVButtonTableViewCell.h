@@ -62,6 +62,10 @@ typedef NS_ENUM(NSInteger, NVButtonIconAlignment) {
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, assign) NVButtonStyle style;
 @property (nonatomic, assign) BOOL enable;
+@property (nonatomic, assign) CGFloat radius;
+@property (nonatomic, strong) UIColor *shadowColor;
+@property (nonatomic, strong) NSNumber *btnHeight;
+@property (nonatomic, strong) NSNumber *btnWidth;
 @end
 
 

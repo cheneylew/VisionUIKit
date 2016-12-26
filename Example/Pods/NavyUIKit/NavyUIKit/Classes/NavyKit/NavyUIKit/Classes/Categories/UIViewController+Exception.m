@@ -24,12 +24,12 @@
 @implementation UIViewController (Exception)
 
 
-- (void) showExceptionView {
-    [self showExceptionViewInView:self.view];
+- (void) nv_showExceptionView {
+    [self nv_showExceptionViewInView:self.view];
 }
 
 
-- (void) showExceptionViewInView:(UIView*)view {
+- (void) nv_showExceptionViewInView:(UIView*)view {
     
     UIView* exceptionView = [self exceptionViewInView:view];
     exceptionView.backgroundColor = COLOR_HM_WHITE_GRAY;
@@ -80,16 +80,16 @@
 
 
 
-- (void) showErrorView {
+- (void) nv_showErrorView {
     
 }
 
 
-- (void) showOffNetworkView {
-    [self showOffNetworkViewInView:self.view];
+- (void) nv_showOffNetworkView {
+    [self nv_showOffNetworkViewInView:self.view];
 }
 
-- (void) showOffNetworkViewInView:(UIView *)view {
+- (void) nv_showOffNetworkViewInView:(UIView *)view {
     
     UIView* exceptionView = [self exceptionViewInView:view];
     
@@ -139,11 +139,11 @@
 }
 
 
-- (void) showNullDataView {
-    [self showNullDataViewInView:self.view];
+- (void) nv_showNullDataView {
+    [self nv_showNullDataViewInView:self.view];
 }
 
-- (void) showNullDataViewInView:(UIView *)view {
+- (void) nv_showNullDataViewInView:(UIView *)view {
     UIView* exceptionView = [self exceptionViewInView:view];
     
     CGRect frame = view.frame;
@@ -153,7 +153,7 @@
                                                                            76.0f * displayScale,
                                                                            66.0f * displayScale)];
     [exceptionView addSubview:imageView];
-    imageView.image     = [self imageOfNullDataView];
+    imageView.image     = [self nv_imageOfNullDataView];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     CGSize size         = imageView.image.size;
@@ -167,7 +167,7 @@
     label.font          = nvNormalFontWithSize(16.0f + fontScale);
     label.textColor     = COLOR_HM_GRAY;
     label.textAlignment = NSTextAlignmentCenter;
-    label.attributedText= [self titleOfNullDataView];
+    label.attributedText= [self nv_titleOfNullDataView];
 
     //只有搜索的时候才有清空按钮
 //    if ([label.text isEqualToString:@"抱歉,未找到相关搜索客户"]) {
@@ -188,39 +188,39 @@
     
     [view addSubview:exceptionView];
     
-    [self nullDataViewExtention:exceptionView];
+    [self nv_nullDataViewExtention:exceptionView];
     
 }
 
 
-- (void) tryAgainAtExceptionView {
+- (void) nv_tryAgainAtExceptionView {
     
 }
 
-- (void) reloadAtNullView {
+- (void) nv_reloadAtNullView {
     
 }
 
-- (void) hideExceptionView {
+- (void) nv_hideExceptionView {
     UIView* exceptionView = [self.view viewWithTag:TAG_OF_EXCEPTION_VIEW];
     if (exceptionView != nil) {
         [exceptionView removeFromSuperview];
     }
 }
 
-- (UIImage*) imageOfNullDataView {
+- (UIImage*) nv_imageOfNullDataView {
     return [UIImage imageNamed:@"img_null.png"];
 }
 
 
-- (NSAttributedString*) titleOfNullDataView {
+- (NSAttributedString*) nv_titleOfNullDataView {
     NSAttributedString* attributedString    = [[NSAttributedString alloc] initWithString:@"暂无数据"
                                                                               attributes:ATTR_DICTIONARY(COLOR_HM_LIGHT_BLACK, 14.0f + fontScale)];
     
     return attributedString;
 }
 
-- (void) nullDataViewExtention:(UIView*)exceptionView {
+- (void) nv_nullDataViewExtention:(UIView*)exceptionView {
     
 }
 
@@ -246,11 +246,11 @@
 }
 
 - (void) onTryAgain:(id)sender {
-    [self tryAgainAtExceptionView];
+    [self nv_tryAgainAtExceptionView];
 }
 
 - (void) onRestartLoad:(id)sender {
-    [self reloadAtNullView];
+    [self nv_reloadAtNullView];
 }
 
 @end

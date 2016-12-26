@@ -10,6 +10,12 @@
 #import "NVTableViewCell.h"
 #import "NVNoAnimationLayer.h"
 
+@interface NVLineDataModel : NVDataModel
+
+@property (nonatomic, assign) BOOL upperLineHidden;
+@property (nonatomic, assign) BOOL lowerLineHidden;
+
+@end
 
 /*!
  @class

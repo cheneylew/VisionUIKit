@@ -56,9 +56,7 @@
 }
 
 - (void) setObject:(id)object {
-    if (self.item != object && object != nil) {
-        self.item = object;
-    }
+    [super setObject: object];
     
     NVCheckboxDataModel* dataModel = (NVCheckboxDataModel*)self.item;
     

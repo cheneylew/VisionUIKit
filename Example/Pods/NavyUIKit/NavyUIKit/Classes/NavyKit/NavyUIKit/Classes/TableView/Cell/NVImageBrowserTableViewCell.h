@@ -9,9 +9,9 @@
 #import "NVTableViewLineCell.h"
 
 
-@interface NVImageBrowserDataModel : NVDataModel
-@property (nonatomic, retain) NSArray* imageNameds;
-@property (nonatomic, retain) NSArray* titles;
+@interface NVImageBrowserDataModel : NVLineDataModel
+@property (nonatomic, strong) NSMutableArray* imageNameds;
+@property (nonatomic, strong) NSMutableArray* titles;
 @end
 
 

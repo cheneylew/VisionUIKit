@@ -33,7 +33,7 @@
     NSString* arrayCellTitles[kEnvCount] = {
         @"AstraeaSae",
         @"开发环境1 [默认]",
-        @"开发环境2 [主程主机]",
+        @"开发环境2 [LJ]",
         @"测试环境1",
         @"测试环境2",
         @"测试环境3",

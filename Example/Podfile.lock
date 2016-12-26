@@ -14,217 +14,43 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - DCCLogSystem (0.1.1)
+  - AvoidCrash (1.6.7)
+  - CRToast (0.0.9)
+  - DCCLogSystem (0.1.2)
   - DJMacros (0.7.13):
     - DJMacros/Extension (= 0.7.13)
     - TTTAttributedLabel (~> 2.0.0)
   - DJMacros/Extension (0.7.13):
     - TTTAttributedLabel (~> 2.0.0)
+  - DJNetworking (0.1.2):
+    - AFNetworking (~> 3.1.0)
+  - DZNEmptyDataSet (1.8.1)
+  - FontAwesomeKit (2.2.0):
+    - FontAwesomeKit/Core (= 2.2.0)
+    - FontAwesomeKit/FontAwesome (= 2.2.0)
+    - FontAwesomeKit/FoundationIcons (= 2.2.0)
+    - FontAwesomeKit/IonIcons (= 2.2.0)
+    - FontAwesomeKit/Zocial (= 2.2.0)
+  - FontAwesomeKit/Core (2.2.0)
+  - FontAwesomeKit/FontAwesome (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/FoundationIcons (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/IonIcons (2.2.0):
+    - FontAwesomeKit/Core
+  - FontAwesomeKit/Zocial (2.2.0):
+    - FontAwesomeKit/Core
   - JHChainableAnimations (1.3.0)
   - JTNavigationController (1.0.1)
   - KKCategories (0.3.7)
-  - NavyUIKit (0.1.23):
-    - NavyUIKit/3rds_DBImageView (= 0.1.23)
-    - NavyUIKit/3rds_KC_encryption (= 0.1.23)
-    - NavyUIKit/3rds_MBProgressHUD (= 0.1.23)
-    - NavyUIKit/3rds_Toast (= 0.1.23)
-    - NavyUIKit/Categories (= 0.1.23)
-    - NavyUIKit/NavyCoreFundation (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit (= 0.1.23)
-    - NavyUIKit/Utilities (= 0.1.23)
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/3rds_DBImageView (0.1.23):
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/3rds_KC_encryption (0.1.23):
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/3rds_MBProgressHUD (0.1.23):
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/3rds_Toast (0.1.23):
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/Categories (0.1.23):
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreFundation (0.1.23):
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation/Categories (= 0.1.23)
-    - NavyUIKit/NavyCoreFundation/Common (= 0.1.23)
-    - NavyUIKit/NavyCoreFundation/Models (= 0.1.23)
-    - NavyUIKit/NavyCoreFundation/Protocol (= 0.1.23)
-    - NavyUIKit/NavyCoreFundation/Storage (= 0.1.23)
-    - NavyUIKit/Utilities
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreFundation/Categories (0.1.23):
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation/Models
-    - NavyUIKit/NavyCoreFundation/Storage
-    - NavyUIKit/Utilities
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreFundation/Common (0.1.23):
-    - NavyUIKit/Categories
-    - NavyUIKit/Utilities
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreFundation/Models (0.1.23):
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation/Protocol
-    - NavyUIKit/Utilities
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreFundation/Protocol (0.1.23):
-    - NavyUIKit/Categories
-    - NavyUIKit/Utilities
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreFundation/Storage (0.1.23):
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation/Common
-    - NavyUIKit/NavyCoreFundation/Models
-    - NavyUIKit/NavyCoreFundation/Protocol
-    - NavyUIKit/Utilities
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreUIKit/AlertView (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Button (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Label (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Layer (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Macros (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Menu (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Picker (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/ProcessHandler (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/RemoteNotification (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Task (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/TextField (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/TextView (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/TextView (= 0.1.23)
-    - NavyUIKit/NavyCoreUIKit/Utility (= 0.1.23)
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/AlertView (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreUIKit/Button
-    - NavyUIKit/NavyCoreUIKit/Label
-    - NavyUIKit/NavyCoreUIKit/Macros
-    - NavyUIKit/NavyCoreUIKit/Picker
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Button (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreUIKit/Label
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Label (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreUIKit/Layer
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Layer (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreUIKit/Macros
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Macros (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Menu (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreUIKit/Label
-    - NavyUIKit/NavyCoreUIKit/Macros
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Picker (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreFundation/Models
-    - NavyUIKit/NavyCoreUIKit/Label
-    - NavyUIKit/NavyCoreUIKit/Macros
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/ProcessHandler (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/RemoteNotification (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreFundation/Common
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Task (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreFundation/Common
-    - NavyUIKit/NavyCoreFundation/Models
-    - NavyUIKit/NavyCoreUIKit/Label
-    - NavyUIKit/NavyCoreUIKit/Macros
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/TextField (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - NavyUIKit/NavyCoreUIKit/Label
-    - NavyUIKit/NavyCoreUIKit/Macros
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/TextView (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/NavyCoreUIKit/Utility (0.1.23):
-    - NavyUIKit/3rds_DBImageView
-    - NavyUIKit/3rds_KC_encryption
-    - NavyUIKit/3rds_MBProgressHUD
-    - NavyUIKit/3rds_Toast
-    - NavyUIKit/Categories
-    - NavyUIKit/NavyCoreFundation
-    - SAMKeychain (~> 1.5.2)
-  - NavyUIKit/Utilities (0.1.23):
-    - SAMKeychain (~> 1.5.2)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+  - MBProgressHUD (1.0.0)
+  - MGSwipeTableCell (1.5.6)
+  - MJExtension (3.0.13)
+  - PDTSimpleCalendar (0.9.1)
+  - PKRevealController (2.0.6)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -233,33 +59,64 @@ PODS:
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
   - RTRootNavigationController (0.5.22)
-  - SAMKeychain (1.5.2)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SlackTextViewController (1.9.5)
+  - Toast (3.1.0)
   - TTTAttributedLabel (2.0.0)
+  - XMAdScrollView (1.3):
+    - SDWebImage
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.1.0)
-  - DCCLogSystem (~> 0.1.1)
+  - AvoidCrash
+  - CRToast
+  - DCCLogSystem (~> 0.1.2)
   - DJMacros (~> 0.7.12)
+  - DJNetworking
+  - DZNEmptyDataSet
+  - FontAwesomeKit
   - JHChainableAnimations (~> 1.3.0)
   - JTNavigationController
   - KKCategories (~> 0.3.7)
-  - NavyUIKit (~> 0.1.23)
+  - MagicalRecord
+  - MBProgressHUD
+  - MGSwipeTableCell
+  - MJExtension
+  - PDTSimpleCalendar
+  - PKRevealController
   - ReactiveCocoa (~> 2.5)
   - RTRootNavigationController
+  - SlackTextViewController
+  - Toast (~> 3.1.0)
+  - XMAdScrollView (~> 1.3)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  DCCLogSystem: 7f3193ae206d960b600d14ada4cebf038c25b641
+  AvoidCrash: 74136074de17bde312719c0b44fa0c9b26a4b652
+  CRToast: 5a78c22b921c5ed3487488af605bc403a9c92fed
+  DCCLogSystem: 8be2405e139cd033c23cf00bc183972bc5649599
   DJMacros: 5de71afaed7a185aefc03c7443ded20097909eb4
+  DJNetworking: 6c9612fd86cf662268f079ab446b48068a142467
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  FontAwesomeKit: 025fd4dd1017fe4e3f8d47b03e024deedbb33cd4
   JHChainableAnimations: 22085fcb04ca87349e584573558e637f659fd769
   JTNavigationController: a3563e6d1adbd00301af8f049e546342fad7ffa9
   KKCategories: 08cdfd9bf9e6fa9a7093ea401f095a06c016740e
-  NavyUIKit: 9a119cfb82f983f9631ed99d418452cfe7d589ae
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
+  PKRevealController: ffb45a16f5a5032ad90a3d16e5cbb0d8e035bd58
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   RTRootNavigationController: cf134c044a8ce14d97fc668847ed4567efc53f91
-  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  XMAdScrollView: 0ed2905246026cc4315f669417d47970a7ad6106
 
-PODFILE CHECKSUM: 0d0a4c1aeb0f0f65209dd2f95fa2ae2d88028bdf
+PODFILE CHECKSUM: a922220ebc79cb6f08a98c0b81e0b05c89fbe39e
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0.beta.1
