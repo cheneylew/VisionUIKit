@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'VisionUIKit'
-    s.version          = '0.1.32'
+    s.version          = '0.1.33'
     s.summary          = '定制化的UI控件'
 
     # This description is used to generate tags and improve search results.
@@ -30,39 +30,39 @@ Pod::Spec.new do |s|
 
     s.ios.deployment_target = '8.0'
 
-    #s.source_files = 'VisionUIKit/Classes/**/*'
+    s.source_files = 'VisionUIKit/Classes/**/*'
 
-    s.subspec 'UIKit' do |sp|
-        sp.requires_arc        = true
-        sp.subspec 'TextField' do |spp|
-            spp.requires_arc        = true
-            spp.source_files = 'VisionUIKit/Classes/UIKit/TextField/**/*'
-        end
-        sp.subspec 'AlertView' do |spp|
-            spp.requires_arc        = true
-            spp.source_files = 'VisionUIKit/Classes/UIKit/AlertView/**/*'
-        end
-        sp.subspec 'TableView' do |spp|
-            spp.requires_arc        = true
-            spp.source_files = 'VisionUIKit/Classes/UIKit/TableView/**/*'
-            spp.dependency 'VisionUIKit/UIKit/TextField'
-        end
-    end
+#    s.subspec 'UIKit' do |sp|
+#        sp.requires_arc        = true
+#        sp.subspec 'TextField' do |spp|
+#            spp.requires_arc        = true
+#            spp.source_files = 'VisionUIKit/Classes/UIKit/TextField/**/*'
+#        end
+#        sp.subspec 'AlertView' do |spp|
+#            spp.requires_arc        = true
+#            spp.source_files = 'VisionUIKit/Classes/UIKit/AlertView/**/*'
+#        end
+#        sp.subspec 'TableView' do |spp|
+#            spp.requires_arc        = true
+#            spp.source_files = 'VisionUIKit/Classes/UIKit/TableView/**/*'
+#            spp.dependency 'VisionUIKit/UIKit/TextField'
+#        end
+#    end
+#
+#    s.subspec 'Config' do |sp|
+#        sp.requires_arc        = true
+#        sp.source_files = 'VisionUIKit/Classes/Config/**/*'
+#    end
+#
+#    s.subspec 'Core' do |sp|
+#        sp.requires_arc        = true
+#        sp.source_files = 'VisionUIKit/Classes/Core/**/*'
+#        sp.dependency 'VisionUIKit/Config'
+#    end
 
-    s.subspec 'Config' do |sp|
-        sp.requires_arc        = true
-        sp.source_files = 'VisionUIKit/Classes/Config/**/*'
-    end
-
-    s.subspec 'Core' do |sp|
-        sp.requires_arc        = true
-        sp.source_files = 'VisionUIKit/Classes/Core/**/*'
-        sp.dependency 'VisionUIKit/Config'
-    end
-
-    # s.resource_bundles = {
-    #   'VisionUIKit' => ['VisionUIKit/Assets/*.png']
-    # }
+    s.resource_bundles = {
+       'VisionUIKit' => ['VisionUIKit/Assets/**/*']
+    }
     # s.public_header_files = 'Pod/Classes/**/*.h'
     # s.frameworks = 'UIKit', 'MapKit'
     s.dependency 'KKCategories', '~> 0.3.7'

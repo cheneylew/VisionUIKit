@@ -104,7 +104,7 @@ static NSString * const LXPlaceholderFontKeyPath = @"_placeholderLabel.font";
 }
 
 - (UIView*) generateToolbar {
-    UIView* toolbar         = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 44.0)];
+    UIView* toolbar         = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 40.0)];
     toolbar.backgroundColor = [UIColor whiteColor];
     
     UIView* topLine             = [[UIView alloc] initWithFrame:CGRectMake(0, 0, toolbar.bounds.size.width, 0.5)];
@@ -117,7 +117,7 @@ static NSString * const LXPlaceholderFontKeyPath = @"_placeholderLabel.font";
     finishedButton.titleLabel.font = [UIFont systemFontOfSize:16];
     [finishedButton addTarget:self action:@selector(doneButtonDidPressed:)
              forControlEvents:UIControlEventTouchUpInside];
-    finishedButton.frame = CGRectMake(toolbar.frame.size.width - 64 - 10, 0, 64, 44);
+    finishedButton.frame = CGRectMake(toolbar.frame.size.width - 64 - 10, 0, 64, 40.0);
     finishedButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     [finishedButton setTitleColor:[UIColor colorWithRed:11/255.0f green:46/255.0f blue:84/255.0f alpha:1]
                          forState:UIControlStateNormal];

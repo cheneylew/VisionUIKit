@@ -24,29 +24,36 @@
 		9493CEB58A379AA6F8CE5540 /* Pods_VisionUIKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6BE3CB83BCD8B37C3C69D4 /* Pods_VisionUIKit_Example.framework */; };
 		C912E6D41E0E89710011C89E /* VSMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C912E6D31E0E89710011C89E /* VSMenuViewController.m */; };
 		C912E6D81E0F51C70011C89E /* VSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C912E6D71E0F51C70011C89E /* VSUser.m */; };
+		C923A4E11E1E232500F7A92B /* VSNetUser.m in Sources */ = {isa = PBXBuildFile; fileRef = C923A4E01E1E232500F7A92B /* VSNetUser.m */; };
+		C9289B831E13AAC400F83DCD /* VSPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9289B821E13AAC400F83DCD /* VSPhotoPickerViewController.m */; };
+		C9289B861E13B2C000F83DCD /* VSPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9289B851E13B2C000F83DCD /* VSPhotoCollectionViewCell.m */; };
 		C92C8F4D1E03C295002CFFF1 /* VSDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F441E03C295002CFFF1 /* VSDataModel.m */; };
 		C92C8F4E1E03C295002CFFF1 /* VSErrorDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F461E03C295002CFFF1 /* VSErrorDataModel.m */; };
 		C92C8F4F1E03C295002CFFF1 /* VSUserDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F481E03C295002CFFF1 /* VSUserDataModel.m */; };
 		C92C8F501E03C295002CFFF1 /* VSViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F4A1E03C295002CFFF1 /* VSViewModel.m */; };
 		C92C8F541E03C95B002CFFF1 /* VSHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C92C8F531E03C95B002CFFF1 /* VSHttpClient.m */; };
 		C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A79061DF568E4003F8BFF /* VSInputManager.m */; };
+		C94C76F41E1B86AC00B9223D /* VSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76F01E1B86AC00B9223D /* VSBaseTableViewController.m */; };
+		C94C76F51E1B86AC00B9223D /* VSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76F21E1B86AC00B9223D /* VSBaseViewController.m */; };
+		C94C76FB1E1C97A500B9223D /* VSNetworkDataConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76FA1E1C97A500B9223D /* VSNetworkDataConstructor.m */; };
+		C94C76FF1E1C9EF300B9223D /* VSNetworkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76FE1E1C9EF300B9223D /* VSNetworkTableViewController.m */; };
+		C94C77021E1C9F3200B9223D /* VSNetworkMyConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C77011E1C9F3200B9223D /* VSNetworkMyConstructor.m */; };
 		C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97AEC071DDD73A800586B80 /* VSSheetView.m */; };
 		C9ACEF4D1DF8111700F84905 /* NSMutableAttributedString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */; };
 		C9B70ED91E03EB1F003E3285 /* VSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B70ED81E03EB1F003E3285 /* VSConfig.m */; };
-		C9EE86321DEA79CF0045B889 /* VSButtonTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EE86311DEA79CF0045B889 /* VSButtonTBVC.m */; };
-		C9F9FE3D1DE03B0400339937 /* VSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE3C1DE03B0400339937 /* VSBaseTableViewController.m */; };
-		C9F9FE401DE03B3F00339937 /* VSBaseDataConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE3F1DE03B3F00339937 /* VSBaseDataConstructor.m */; };
+		C9EE86321DEA79CF0045B889 /* VSButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EE86311DEA79CF0045B889 /* VSButtonTableViewCell.m */; };
+		C9F9FE401DE03B3F00339937 /* VSNormalDataConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE3F1DE03B3F00339937 /* VSNormalDataConstructor.m */; };
 		C9F9FE441DE03B7700339937 /* VSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE431DE03B7700339937 /* VSTableViewController.m */; };
 		C9F9FE481DE03DE900339937 /* VSTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE471DE03DE900339937 /* VSTableView.m */; };
 		C9F9FE4C1DE03ED300339937 /* VSTableAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE4B1DE03ED300339937 /* VSTableAdaptor.m */; };
-		C9F9FE4F1DE044C900339937 /* VSEmptyTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE4E1DE044C900339937 /* VSEmptyTBVC.m */; };
+		C9F9FE4F1DE044C900339937 /* VSEmptyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE4E1DE044C900339937 /* VSEmptyTableViewCell.m */; };
 		C9F9FE521DE04D1E00339937 /* VSTBViewConstructor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE511DE04D1E00339937 /* VSTBViewConstructor.m */; };
-		C9F9FE581DE05FF700339937 /* VSBaseTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE571DE05FF700339937 /* VSBaseTBVC.m */; };
-		C9F9FE621DE131EF00339937 /* VSKeyValueTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE611DE131EF00339937 /* VSKeyValueTBVC.m */; };
+		C9F9FE581DE05FF700339937 /* VSBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE571DE05FF700339937 /* VSBaseTableViewCell.m */; };
+		C9F9FE621DE131EF00339937 /* VSTitleDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE611DE131EF00339937 /* VSTitleDetailTableViewCell.m */; };
 		C9F9FE641DE1810100339937 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F9FE631DE1810100339937 /* Assets.xcassets */; };
-		C9F9FE671DE185E000339937 /* VSTitleImageTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE661DE185E000339937 /* VSTitleImageTBVC.m */; };
-		C9F9FE6D1DE18FCE00339937 /* VSTitleTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE6C1DE18FCE00339937 /* VSTitleTBVC.m */; };
-		C9F9FE731DE1D21D00339937 /* VSTitleFieldTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE721DE1D21D00339937 /* VSTitleFieldTBVC.m */; };
+		C9F9FE671DE185E000339937 /* VSTitleImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE661DE185E000339937 /* VSTitleImageTableViewCell.m */; };
+		C9F9FE6D1DE18FCE00339937 /* VSTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE6C1DE18FCE00339937 /* VSTitleTableViewCell.m */; };
+		C9F9FE731DE1D21D00339937 /* VSTitleFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE721DE1D21D00339937 /* VSTitleFieldTableViewCell.m */; };
 		C9F9FE771DE1DEDA00339937 /* VSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F9FE761DE1DEDA00339937 /* VSTextField.m */; };
 		C9FDFB191DDA9B24009DBD67 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = C9FDFB151DDA9B24009DBD67 /* .gitkeep */; };
 		C9FDFB1A1DDA9B24009DBD67 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = C9FDFB171DDA9B24009DBD67 /* .gitkeep */; };
@@ -96,6 +103,12 @@
 		C912E6D31E0E89710011C89E /* VSMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSMenuViewController.m; sourceTree = "<group>"; };
 		C912E6D61E0F51C70011C89E /* VSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSUser.h; sourceTree = "<group>"; };
 		C912E6D71E0F51C70011C89E /* VSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSUser.m; sourceTree = "<group>"; };
+		C923A4DF1E1E232500F7A92B /* VSNetUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSNetUser.h; sourceTree = "<group>"; };
+		C923A4E01E1E232500F7A92B /* VSNetUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSNetUser.m; sourceTree = "<group>"; };
+		C9289B811E13AAC400F83DCD /* VSPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSPhotoPickerViewController.h; sourceTree = "<group>"; };
+		C9289B821E13AAC400F83DCD /* VSPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSPhotoPickerViewController.m; sourceTree = "<group>"; };
+		C9289B841E13B2C000F83DCD /* VSPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		C9289B851E13B2C000F83DCD /* VSPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		C92C8F431E03C295002CFFF1 /* VSDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSDataModel.h; sourceTree = "<group>"; };
 		C92C8F441E03C295002CFFF1 /* VSDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSDataModel.m; sourceTree = "<group>"; };
 		C92C8F451E03C295002CFFF1 /* VSErrorDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSErrorDataModel.h; sourceTree = "<group>"; };
@@ -109,40 +122,48 @@
 		C92C8F531E03C95B002CFFF1 /* VSHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSHttpClient.m; sourceTree = "<group>"; };
 		C94A79051DF568E4003F8BFF /* VSInputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSInputManager.h; sourceTree = "<group>"; };
 		C94A79061DF568E4003F8BFF /* VSInputManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSInputManager.m; sourceTree = "<group>"; };
+		C94C76EF1E1B86AC00B9223D /* VSBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseTableViewController.h; sourceTree = "<group>"; };
+		C94C76F01E1B86AC00B9223D /* VSBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseTableViewController.m; sourceTree = "<group>"; };
+		C94C76F11E1B86AC00B9223D /* VSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseViewController.h; sourceTree = "<group>"; };
+		C94C76F21E1B86AC00B9223D /* VSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseViewController.m; sourceTree = "<group>"; };
+		C94C76F91E1C97A500B9223D /* VSNetworkDataConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSNetworkDataConstructor.h; sourceTree = "<group>"; };
+		C94C76FA1E1C97A500B9223D /* VSNetworkDataConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSNetworkDataConstructor.m; sourceTree = "<group>"; };
+		C94C76FD1E1C9EF300B9223D /* VSNetworkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSNetworkTableViewController.h; sourceTree = "<group>"; };
+		C94C76FE1E1C9EF300B9223D /* VSNetworkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSNetworkTableViewController.m; sourceTree = "<group>"; };
+		C94C77001E1C9F3200B9223D /* VSNetworkMyConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSNetworkMyConstructor.h; sourceTree = "<group>"; };
+		C94C77011E1C9F3200B9223D /* VSNetworkMyConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSNetworkMyConstructor.m; sourceTree = "<group>"; };
 		C97AEC061DDD73A800586B80 /* VSSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSheetView.h; sourceTree = "<group>"; };
 		C97AEC071DDD73A800586B80 /* VSSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSSheetView.m; sourceTree = "<group>"; };
 		C9ACEF4B1DF8111700F84905 /* NSMutableAttributedString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+Category.h"; sourceTree = "<group>"; };
 		C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Category.m"; sourceTree = "<group>"; };
 		C9B70ED71E03EB1F003E3285 /* VSConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSConfig.h; sourceTree = "<group>"; };
 		C9B70ED81E03EB1F003E3285 /* VSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSConfig.m; sourceTree = "<group>"; };
-		C9EE86301DEA79CF0045B889 /* VSButtonTBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSButtonTBVC.h; sourceTree = "<group>"; };
-		C9EE86311DEA79CF0045B889 /* VSButtonTBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSButtonTBVC.m; sourceTree = "<group>"; };
-		C9F9FE3B1DE03B0400339937 /* VSBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseTableViewController.h; sourceTree = "<group>"; };
-		C9F9FE3C1DE03B0400339937 /* VSBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseTableViewController.m; sourceTree = "<group>"; };
-		C9F9FE3E1DE03B3F00339937 /* VSBaseDataConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseDataConstructor.h; sourceTree = "<group>"; };
-		C9F9FE3F1DE03B3F00339937 /* VSBaseDataConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseDataConstructor.m; sourceTree = "<group>"; };
+		C9EE86301DEA79CF0045B889 /* VSButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSButtonTableViewCell.h; sourceTree = "<group>"; };
+		C9EE86311DEA79CF0045B889 /* VSButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSButtonTableViewCell.m; sourceTree = "<group>"; };
+		C9F9FE3E1DE03B3F00339937 /* VSNormalDataConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSNormalDataConstructor.h; sourceTree = "<group>"; };
+		C9F9FE3F1DE03B3F00339937 /* VSNormalDataConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSNormalDataConstructor.m; sourceTree = "<group>"; };
 		C9F9FE421DE03B7700339937 /* VSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTableViewController.h; sourceTree = "<group>"; };
 		C9F9FE431DE03B7700339937 /* VSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTableViewController.m; sourceTree = "<group>"; };
 		C9F9FE461DE03DE900339937 /* VSTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTableView.h; sourceTree = "<group>"; };
 		C9F9FE471DE03DE900339937 /* VSTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTableView.m; sourceTree = "<group>"; };
 		C9F9FE4A1DE03ED300339937 /* VSTableAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTableAdaptor.h; sourceTree = "<group>"; };
 		C9F9FE4B1DE03ED300339937 /* VSTableAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTableAdaptor.m; sourceTree = "<group>"; };
-		C9F9FE4D1DE044C900339937 /* VSEmptyTBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSEmptyTBVC.h; sourceTree = "<group>"; };
-		C9F9FE4E1DE044C900339937 /* VSEmptyTBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSEmptyTBVC.m; sourceTree = "<group>"; };
+		C9F9FE4D1DE044C900339937 /* VSEmptyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSEmptyTableViewCell.h; sourceTree = "<group>"; };
+		C9F9FE4E1DE044C900339937 /* VSEmptyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSEmptyTableViewCell.m; sourceTree = "<group>"; };
 		C9F9FE501DE04D1E00339937 /* VSTBViewConstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTBViewConstructor.h; sourceTree = "<group>"; };
 		C9F9FE511DE04D1E00339937 /* VSTBViewConstructor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTBViewConstructor.m; sourceTree = "<group>"; };
-		C9F9FE561DE05FF700339937 /* VSBaseTBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseTBVC.h; sourceTree = "<group>"; };
-		C9F9FE571DE05FF700339937 /* VSBaseTBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseTBVC.m; sourceTree = "<group>"; };
+		C9F9FE561DE05FF700339937 /* VSBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseTableViewCell.h; sourceTree = "<group>"; };
+		C9F9FE571DE05FF700339937 /* VSBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseTableViewCell.m; sourceTree = "<group>"; };
 		C9F9FE5C1DE0888B00339937 /* VSTB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTB.h; sourceTree = "<group>"; };
-		C9F9FE601DE131EF00339937 /* VSKeyValueTBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSKeyValueTBVC.h; sourceTree = "<group>"; };
-		C9F9FE611DE131EF00339937 /* VSKeyValueTBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSKeyValueTBVC.m; sourceTree = "<group>"; };
+		C9F9FE601DE131EF00339937 /* VSTitleDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTitleDetailTableViewCell.h; sourceTree = "<group>"; };
+		C9F9FE611DE131EF00339937 /* VSTitleDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTitleDetailTableViewCell.m; sourceTree = "<group>"; };
 		C9F9FE631DE1810100339937 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C9F9FE651DE185E000339937 /* VSTitleImageTBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTitleImageTBVC.h; sourceTree = "<group>"; };
-		C9F9FE661DE185E000339937 /* VSTitleImageTBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTitleImageTBVC.m; sourceTree = "<group>"; };
-		C9F9FE6B1DE18FCE00339937 /* VSTitleTBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTitleTBVC.h; sourceTree = "<group>"; };
-		C9F9FE6C1DE18FCE00339937 /* VSTitleTBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTitleTBVC.m; sourceTree = "<group>"; };
-		C9F9FE711DE1D21D00339937 /* VSTitleFieldTBVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTitleFieldTBVC.h; sourceTree = "<group>"; };
-		C9F9FE721DE1D21D00339937 /* VSTitleFieldTBVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTitleFieldTBVC.m; sourceTree = "<group>"; };
+		C9F9FE651DE185E000339937 /* VSTitleImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTitleImageTableViewCell.h; sourceTree = "<group>"; };
+		C9F9FE661DE185E000339937 /* VSTitleImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTitleImageTableViewCell.m; sourceTree = "<group>"; };
+		C9F9FE6B1DE18FCE00339937 /* VSTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTitleTableViewCell.h; sourceTree = "<group>"; };
+		C9F9FE6C1DE18FCE00339937 /* VSTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTitleTableViewCell.m; sourceTree = "<group>"; };
+		C9F9FE711DE1D21D00339937 /* VSTitleFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTitleFieldTableViewCell.h; sourceTree = "<group>"; };
+		C9F9FE721DE1D21D00339937 /* VSTitleFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTitleFieldTableViewCell.m; sourceTree = "<group>"; };
 		C9F9FE751DE1DEDA00339937 /* VSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSTextField.h; sourceTree = "<group>"; };
 		C9F9FE761DE1DEDA00339937 /* VSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSTextField.m; sourceTree = "<group>"; };
 		C9FDFB151DDA9B24009DBD67 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -231,7 +252,6 @@
 				C912E6D51E0F51B30011C89E /* MJExtension */,
 				C9ACEF4B1DF8111700F84905 /* NSMutableAttributedString+Category.h */,
 				C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */,
-				C9F9FE411DE03B5F00339937 /* TableView */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F59C195388D20070C39A /* VSAppDelegate.h */,
 				6003F59D195388D20070C39A /* VSAppDelegate.m */,
@@ -239,6 +259,8 @@
 				C912E6D31E0E89710011C89E /* VSMenuViewController.m */,
 				6003F5A5195388D20070C39A /* VSViewController.h */,
 				6003F5A6195388D20070C39A /* VSViewController.m */,
+				C9F9FE411DE03B5F00339937 /* TableView */,
+				C94C76FC1E1C9ECA00B9223D /* NetworkTableView */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -295,6 +317,25 @@
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
+		C9289B7F1E13AA9800F83DCD /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				C9289B801E13AA9800F83DCD /* PhotoPicker */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		C9289B801E13AA9800F83DCD /* PhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				C9289B811E13AAC400F83DCD /* VSPhotoPickerViewController.h */,
+				C9289B821E13AAC400F83DCD /* VSPhotoPickerViewController.m */,
+				C9289B841E13B2C000F83DCD /* VSPhotoCollectionViewCell.h */,
+				C9289B851E13B2C000F83DCD /* VSPhotoCollectionViewCell.m */,
+			);
+			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
 		C92C8F411E03C272002CFFF1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +387,38 @@
 			path = InputView;
 			sourceTree = "<group>";
 		};
+		C94C76E71E1B80A800B9223D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C94C76EE1E1B86AC00B9223D /* Controllers */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C94C76EE1E1B86AC00B9223D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C94C76EF1E1B86AC00B9223D /* VSBaseTableViewController.h */,
+				C94C76F01E1B86AC00B9223D /* VSBaseTableViewController.m */,
+				C94C76F11E1B86AC00B9223D /* VSBaseViewController.h */,
+				C94C76F21E1B86AC00B9223D /* VSBaseViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C94C76FC1E1C9ECA00B9223D /* NetworkTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C94C76FD1E1C9EF300B9223D /* VSNetworkTableViewController.h */,
+				C94C76FE1E1C9EF300B9223D /* VSNetworkTableViewController.m */,
+				C94C77001E1C9F3200B9223D /* VSNetworkMyConstructor.h */,
+				C94C77011E1C9F3200B9223D /* VSNetworkMyConstructor.m */,
+				C923A4DF1E1E232500F7A92B /* VSNetUser.h */,
+				C923A4E01E1E232500F7A92B /* VSNetUser.m */,
+			);
+			path = NetworkTableView;
+			sourceTree = "<group>";
+		};
 		C9B70ED61E03EAE9003E3285 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,8 +436,6 @@
 				C9F9FE361DE03A8600339937 /* TableViewDataConstructor */,
 				C9F9FE351DE03A5500339937 /* TableViewCell */,
 				C9F9FE491DE03EBF00339937 /* TableViewDelegate */,
-				C9F9FE3B1DE03B0400339937 /* VSBaseTableViewController.h */,
-				C9F9FE3C1DE03B0400339937 /* VSBaseTableViewController.m */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -372,20 +443,20 @@
 		C9F9FE351DE03A5500339937 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				C9F9FE561DE05FF700339937 /* VSBaseTBVC.h */,
-				C9F9FE571DE05FF700339937 /* VSBaseTBVC.m */,
-				C9F9FE4D1DE044C900339937 /* VSEmptyTBVC.h */,
-				C9F9FE4E1DE044C900339937 /* VSEmptyTBVC.m */,
-				C9F9FE601DE131EF00339937 /* VSKeyValueTBVC.h */,
-				C9F9FE611DE131EF00339937 /* VSKeyValueTBVC.m */,
-				C9F9FE711DE1D21D00339937 /* VSTitleFieldTBVC.h */,
-				C9F9FE721DE1D21D00339937 /* VSTitleFieldTBVC.m */,
-				C9F9FE651DE185E000339937 /* VSTitleImageTBVC.h */,
-				C9F9FE661DE185E000339937 /* VSTitleImageTBVC.m */,
-				C9F9FE6B1DE18FCE00339937 /* VSTitleTBVC.h */,
-				C9F9FE6C1DE18FCE00339937 /* VSTitleTBVC.m */,
-				C9EE86301DEA79CF0045B889 /* VSButtonTBVC.h */,
-				C9EE86311DEA79CF0045B889 /* VSButtonTBVC.m */,
+				C9F9FE561DE05FF700339937 /* VSBaseTableViewCell.h */,
+				C9F9FE571DE05FF700339937 /* VSBaseTableViewCell.m */,
+				C9F9FE4D1DE044C900339937 /* VSEmptyTableViewCell.h */,
+				C9F9FE4E1DE044C900339937 /* VSEmptyTableViewCell.m */,
+				C9F9FE601DE131EF00339937 /* VSTitleDetailTableViewCell.h */,
+				C9F9FE611DE131EF00339937 /* VSTitleDetailTableViewCell.m */,
+				C9F9FE711DE1D21D00339937 /* VSTitleFieldTableViewCell.h */,
+				C9F9FE721DE1D21D00339937 /* VSTitleFieldTableViewCell.m */,
+				C9F9FE651DE185E000339937 /* VSTitleImageTableViewCell.h */,
+				C9F9FE661DE185E000339937 /* VSTitleImageTableViewCell.m */,
+				C9F9FE6B1DE18FCE00339937 /* VSTitleTableViewCell.h */,
+				C9F9FE6C1DE18FCE00339937 /* VSTitleTableViewCell.m */,
+				C9EE86301DEA79CF0045B889 /* VSButtonTableViewCell.h */,
+				C9EE86311DEA79CF0045B889 /* VSButtonTableViewCell.m */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -393,8 +464,10 @@
 		C9F9FE361DE03A8600339937 /* TableViewDataConstructor */ = {
 			isa = PBXGroup;
 			children = (
-				C9F9FE3E1DE03B3F00339937 /* VSBaseDataConstructor.h */,
-				C9F9FE3F1DE03B3F00339937 /* VSBaseDataConstructor.m */,
+				C9F9FE3E1DE03B3F00339937 /* VSNormalDataConstructor.h */,
+				C9F9FE3F1DE03B3F00339937 /* VSNormalDataConstructor.m */,
+				C94C76F91E1C97A500B9223D /* VSNetworkDataConstructor.h */,
+				C94C76FA1E1C97A500B9223D /* VSNetworkDataConstructor.m */,
 			);
 			path = TableViewDataConstructor;
 			sourceTree = "<group>";
@@ -470,6 +543,8 @@
 		C9FDFB1C1DDA9BD2009DBD67 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C94C76E71E1B80A800B9223D /* Base */,
+				C9289B7F1E13AA9800F83DCD /* Picker */,
 				C94A79041DF568AF003F8BFF /* InputView */,
 				C9F9FE311DE0394800339937 /* TableView */,
 				C9FDFB1D1DDA9BD2009DBD67 /* AlertView */,
@@ -692,33 +767,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F9FE731DE1D21D00339937 /* VSTitleFieldTBVC.m in Sources */,
+				C94C76FB1E1C97A500B9223D /* VSNetworkDataConstructor.m in Sources */,
+				C9F9FE731DE1D21D00339937 /* VSTitleFieldTableViewCell.m in Sources */,
 				C9FDFB201DDA9BED009DBD67 /* VSAlertView.m in Sources */,
+				C94C76FF1E1C9EF300B9223D /* VSNetworkTableViewController.m in Sources */,
+				C9289B831E13AAC400F83DCD /* VSPhotoPickerViewController.m in Sources */,
 				C92C8F4D1E03C295002CFFF1 /* VSDataModel.m in Sources */,
-				C9F9FE4F1DE044C900339937 /* VSEmptyTBVC.m in Sources */,
+				C9F9FE4F1DE044C900339937 /* VSEmptyTableViewCell.m in Sources */,
 				C9F9FE441DE03B7700339937 /* VSTableViewController.m in Sources */,
 				C912E6D81E0F51C70011C89E /* VSUser.m in Sources */,
 				C92C8F541E03C95B002CFFF1 /* VSHttpClient.m in Sources */,
 				C9F9FE481DE03DE900339937 /* VSTableView.m in Sources */,
-				C9F9FE401DE03B3F00339937 /* VSBaseDataConstructor.m in Sources */,
-				C9F9FE6D1DE18FCE00339937 /* VSTitleTBVC.m in Sources */,
-				C9F9FE671DE185E000339937 /* VSTitleImageTBVC.m in Sources */,
-				C9F9FE3D1DE03B0400339937 /* VSBaseTableViewController.m in Sources */,
+				C94C77021E1C9F3200B9223D /* VSNetworkMyConstructor.m in Sources */,
+				C9F9FE401DE03B3F00339937 /* VSNormalDataConstructor.m in Sources */,
+				C923A4E11E1E232500F7A92B /* VSNetUser.m in Sources */,
+				C9F9FE6D1DE18FCE00339937 /* VSTitleTableViewCell.m in Sources */,
+				C9F9FE671DE185E000339937 /* VSTitleImageTableViewCell.m in Sources */,
 				C92C8F4E1E03C295002CFFF1 /* VSErrorDataModel.m in Sources */,
 				6003F59E195388D20070C39A /* VSAppDelegate.m in Sources */,
-				C9EE86321DEA79CF0045B889 /* VSButtonTBVC.m in Sources */,
+				C9289B861E13B2C000F83DCD /* VSPhotoCollectionViewCell.m in Sources */,
+				C9EE86321DEA79CF0045B889 /* VSButtonTableViewCell.m in Sources */,
 				C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */,
 				6003F5A7195388D20070C39A /* VSViewController.m in Sources */,
 				C9F9FE771DE1DEDA00339937 /* VSTextField.m in Sources */,
 				C9F9FE521DE04D1E00339937 /* VSTBViewConstructor.m in Sources */,
+				C94C76F51E1B86AC00B9223D /* VSBaseViewController.m in Sources */,
 				C9F9FE4C1DE03ED300339937 /* VSTableAdaptor.m in Sources */,
-				C9F9FE581DE05FF700339937 /* VSBaseTBVC.m in Sources */,
-				C9F9FE621DE131EF00339937 /* VSKeyValueTBVC.m in Sources */,
+				C9F9FE581DE05FF700339937 /* VSBaseTableViewCell.m in Sources */,
+				C9F9FE621DE131EF00339937 /* VSTitleDetailTableViewCell.m in Sources */,
 				C92C8F501E03C295002CFFF1 /* VSViewModel.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				C9B70ED91E03EB1F003E3285 /* VSConfig.m in Sources */,
 				C9ACEF4D1DF8111700F84905 /* NSMutableAttributedString+Category.m in Sources */,
 				C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */,
+				C94C76F41E1B86AC00B9223D /* VSBaseTableViewController.m in Sources */,
 				C912E6D41E0E89710011C89E /* VSMenuViewController.m in Sources */,
 				C92C8F4F1E03C295002CFFF1 /* VSUserDataModel.m in Sources */,
 			);

@@ -8,10 +8,11 @@
 
 #import "VSAppDelegate.h"
 #import "VSHttpClient.h"
-#import <PKRevealController/PKRevealController.h>
-
+//#import <PKRevealController/PKRevealController.h>
+#import <DJDebug/DJDebugger.h>
+#import <RTRootNavigationController/RTRootNavigationController.h>
+#import <JTNavigationController/JTNavigationController.h>
 @interface VSAppDelegate ()
-<PKRevealing>
 
 @end
 
@@ -19,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [DJDebugger Debug];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -27,9 +30,14 @@
     UIViewController *root_vc = [sb instantiateViewControllerWithIdentifier:@"main_root"];
     UIViewController *root_left = [sb instantiateViewControllerWithIdentifier:@"root_left"];
     
-    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:root_vc leftViewController:root_left];
-    revealController.delegate = self;
-    self.window.rootViewController = revealController;
+    UIViewController *main_tb = [sb instantiateViewControllerWithIdentifier:@"main_tb"];
+    
+    
+//    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:root_vc leftViewController:root_left];
+//    revealController.delegate = self;
+    
+    JTNavigationController *main_tb_navi = [[JTNavigationController alloc] initWithRootViewController:main_tb];
+    self.window.rootViewController = main_tb_navi;
     
     
     [CCLogSystem setupDefaultLogConfigure];
@@ -74,12 +82,12 @@
 
 #pragma mark - RevealController Delegate
 
-- (void)revealController:(PKRevealController *)revealController didChangeToState:(PKRevealControllerState)state {
-    
-}
-
-- (void)revealController:(PKRevealController *)revealController willChangeToState:(PKRevealControllerState)state {
-    
-}
+//- (void)revealController:(PKRevealController *)revealController didChangeToState:(PKRevealControllerState)state {
+//    
+//}
+//
+//- (void)revealController:(PKRevealController *)revealController willChangeToState:(PKRevealControllerState)state {
+//    
+//}
 
 @end

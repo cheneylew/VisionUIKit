@@ -20,11 +20,20 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <MJExtension/MJExtension.h>
 #import "VSUser.h"
+#import "VSPhotoPickerViewController.h"
+#import <DLPhotoPicker/DLPhotoPicker.h>
+#import <ZLPhotoBrowser/ZLPhotoActionSheet.h>
+#import <JYCarousel/JYCarousel.h>
+#import <RTRootNavigationController.h>
+#import "VSNetworkTableViewController.h"
+//#import <XMNPhoto/XMNPhotoBrowserController.h>
 
 #define TITLE_COLOR RGB(15, 103, 197)
 
 @interface VSViewController ()
-<TTTAttributedLabelDelegate>
+<TTTAttributedLabelDelegate,
+DLPhotoPickerViewControllerDelegate,
+UINavigationControllerDelegate>
 
 PP_STRONG(UIScrollView, scrollView)
 
@@ -367,13 +376,139 @@ PP_STRONG(UIScrollView, scrollView)
            }
        }];
     }];
+    
+    [[self makeRightButton:@"Wechat-PhotoPicker" index:8] jk_addActionHandler:^(NSInteger tag) {
+        VSPhotoPickerViewController *vc = [[VSPhotoPickerViewController alloc] init];
+        [self presentViewController:vc animated:YES completion:^{
+            
+        }];
+    }];
+    
+    [[self makeRightButton:@"DLPhotoPicker-选取相册图片" index:9] jk_addActionHandler:^(NSInteger tag) {
+        DLPhotoPickerViewController *picker = [[DLPhotoPickerViewController alloc] init];
+        picker.delegate = self;
+        picker.pickerType = DLPhotoPickerTypeDisplay;
+        picker.navigationTitle = @"相册";
+        
+        [self presentViewController:picker animated:YES completion:nil];
+    }];
+    
+    [[self makeRightButton:@"ZLPhotoBrowser" index:10] jk_addActionHandler:^(NSInteger tag) {
+        ZLPhotoActionSheet *actionSheet = [[ZLPhotoActionSheet alloc] init];
+        //设置照片最大选择数
+        actionSheet.maxSelectCount = 2;
+        [actionSheet showPhotoLibraryWithSender:self lastSelectPhotoModels:nil completion:^(NSArray<UIImage *> * _Nonnull selectPhotos, NSArray<ZLSelectPhotoModel *> * _Nonnull selectPhotoModels) {
+            NSLog(@"%@", selectPhotos);
+        }];
+    }];
+    
+    [[self makeRightButton:@"JYCarousel图片轮播" index:11] jk_addActionHandler:^(NSInteger tag) {
+//            __weak typeof(self) weakSelf = self;
+            //图片数组（或者图片URL，图片URL字符串，图片UIImage对象）
+            NSMutableArray *imageArray = [[NSMutableArray alloc] initWithArray: @[@"personalHelp_4",@"personalHelp_4",@"personalHelp_4",@"personalHelp_4"]];
+            JYCarousel *carouselView = [[JYCarousel alloc] initWithFrame:CGRectMake(0, 64, ViewWidth(self.view), 200) configBlock:^JYConfiguration *(JYConfiguration *carouselConfig) {
+                //配置指示器类型
+                carouselConfig.pageContollType = LabelPageControl;
+                //配置轮播时间间隔
+                carouselConfig.interValTime = 3;
+                //配置轮播翻页动画
+                carouselConfig.pushAnimationType = PushCube;
+                //配置动画方向
+                carouselConfig.animationSubtype = kCATransitionFromRight;
+                return carouselConfig;
+            } clickBlock:^(NSInteger index) {
+                //点击imageView回调方法
+//                [weakSelf clickIndex:index];
+            }];
+            //开始轮播
+            [carouselView startCarouselWithArray:imageArray];
+            [self.view addSubview:carouselView];
+    }];
+ 
+    [[self makeRightButton:@"TableView-Network" index:12] jk_addActionHandler:^(NSInteger tag) {
+        VSNetworkTableViewController *tb = [[VSNetworkTableViewController alloc] init];
+        [self.navigationController pushViewController:tb animated:YES];
+    }];
 }
 
-
+#pragma mark - TTTAttributeLabel Delegate
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     [VSAlertView ShowWithTitle:@"" message:[url absoluteString] buttonTitles:nil callBlock:^(NSInteger buttonIndex) {
-
+        
     }];
+}
+
+#pragma mark - DLPhotoPicker Delegate
+-(void)pickerController:(DLPhotoPickerViewController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+//    self.assets = [NSArray arrayWithArray:assets];
+    
+    // to operation with 'self.assets'
+}
+
+- (void)pickerControllerDidCancel:(DLPhotoPickerViewController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (BOOL)pickerController:(DLPhotoPickerViewController *)picker shouldScrollToBottomForPhotoCollection:(DLPhotoCollection *)assetCollection;
+{
+    return YES;
+}
+
+- (BOOL)pickerController:(DLPhotoPickerViewController *)picker shouldEnableAsset:(DLPhotoAsset *)asset
+{
+    return YES;
+}
+
+- (BOOL)pickerController:(DLPhotoPickerViewController *)picker shouldSelectAsset:(DLPhotoAsset *)asset
+{
+    if (asset.mediaType != DLPhotoMediaTypeImage) {
+        [VSAlertView ShowInView:picker.view Title:@"提示" message:@"只能上传照片" buttonTitles:@[@"知道了"] callBlock:^(NSInteger buttonIndex) {
+            
+        }];
+        return NO;
+    }
+    
+    
+    NSInteger max = 3;
+    
+    if (picker.selectedAssets.count >= max){
+        [VSAlertView ShowInView:picker.view Title:@"提示" message:[NSString stringWithFormat:@"您最多只能选择%ld张照片", (long)max] buttonTitles:@[@"知道了"] callBlock:^(NSInteger buttonIndex) {
+            
+        }];
+    }
+    
+    // limit selection to max
+    return (picker.selectedAssets.count < max);
+    
+    return YES;
+}
+
+- (void)pickerController:(DLPhotoPickerViewController *)picker didSelectAsset:(DLPhotoAsset *)asset
+{
+    // didSelectAsset
+}
+
+- (BOOL)pickerController:(DLPhotoPickerViewController *)picker shouldDeselectAsset:(DLPhotoAsset *)asset
+{
+    return YES;
+}
+
+- (void)pickerController:(DLPhotoPickerViewController *)picker didDeselectAsset:(DLPhotoAsset *)asset
+{
+    // didDeselectAsset
+}
+
+- (BOOL)pickerController:(DLPhotoPickerViewController *)picker shouldHighlightAsset:(DLPhotoAsset *)asset
+{
+    return YES;
+}
+
+- (void)pickerController:(DLPhotoPickerViewController *)picker didHighlightAsset:(DLPhotoAsset *)asset
+{
+    //  didHighlightAsset
 }
 
 #pragma mark 通用方法

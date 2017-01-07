@@ -7,12 +7,12 @@
 //
 
 #import "VSTBViewConstructor.h"
-#import "VSKeyValueTBVC.h"
-#import "VSTitleFieldTBVC.h"
-#import "VSEmptyTBVC.h"
-#import "VSTitleTBVC.h"
-#import "VSTitleImageTBVC.h"
-#import "VSButtonTBVC.h"
+#import "VSTitleDetailTableViewCell.h"
+#import "VSTitleFieldTableViewCell.h"
+#import "VSEmptyTableViewCell.h"
+#import "VSTitleTableViewCell.h"
+#import "VSTitleImageTableViewCell.h"
+#import "VSButtonTableViewCell.h"
 #import <DJMacros/DJMacro.h>
 #import <ReactiveCocoa/NSObject+RACPropertySubscribing.h>
 #import <ReactiveCocoa/RACSignal.h>
@@ -20,11 +20,11 @@
 
 @implementation VSTBViewConstructor
 
-- (void)addModels {
+- (void)vs_addModels {
     
     {
         VSTBButtonDataModel *model = [[VSTBButtonDataModel alloc] init];
-        model.classString = @"VSButtonTBVC";
+        model.cellClass = [VSButtonTableViewCell class];
         model.identifier = @"com.navi.hidden";
         model.height = NUM_FLOAT(60);
         model.detailArrowIcon = NO;
@@ -39,7 +39,7 @@
     
     {
         VSTBBaseDataModel *model = [[VSTBBaseDataModel alloc] init];
-        model.classString = @"VSEmptyTBVC";
+        model.cellClass = [VSEmptyTableViewCell class];
         model.identifier = @"com.cell.a";
         model.backgroudColor = HEX(0xf5f5f5);
         model.height = NUM_FLOAT(12);
@@ -47,8 +47,8 @@
         [self.dataModels addObject:model];
     }
     {
-        VSTBKeyValueDataModel *model = [[VSTBKeyValueDataModel alloc] init];
-        model.classString = @"VSKeyValueTBVC";
+        VSTBTitleDetailDataModel *model = [[VSTBTitleDetailDataModel alloc] init];
+        model.cellClass = [VSTitleDetailTableViewCell class];
         model.identifier = @"com.cell.b";
         model.showGroupLine = YES;
         model.height = NUM_FLOAT(FIT6P(133));
@@ -63,7 +63,7 @@
     
     {
         VSTBBaseDataModel *model = [[VSTBBaseDataModel alloc] init];
-        model.classString = @"VSEmptyTBVC";
+        model.cellClass = [VSEmptyTableViewCell class];
         model.identifier = @"com.cell.a";
         model.backgroudColor = HEX(0xf5f5f5);
         model.height = NUM_FLOAT(12);
@@ -72,8 +72,8 @@
     }
     
     {
-        VSTBKeyValueDataModel *model = [[VSTBKeyValueDataModel alloc] init];
-        model.classString = @"VSKeyValueTBVC";
+        VSTBTitleDetailDataModel *model = [[VSTBTitleDetailDataModel alloc] init];
+        model.cellClass = [VSTitleDetailTableViewCell class];
         model.identifier = @"com.cell.b11";
         model.showGroupLine = YES;
         model.height = NUM_FLOAT(FIT6P(133));
@@ -89,7 +89,7 @@
     
     {
         VSTBTitleIconDataModel *model = [[VSTBTitleIconDataModel alloc] init];
-        model.classString = @"VSTitleImageTBVC";
+        model.cellClass = [VSTitleImageTableViewCell class];
         model.identifier = @"com.cell.c";
         model.showGroupLine = YES;
         model.height = NUM_FLOAT(FIT6P(133));
@@ -101,7 +101,7 @@
     
     {
         VSTBTitleFieldDataModel *modelA = [[VSTBTitleFieldDataModel alloc] init];
-        modelA.classString = @"VSTitleFieldTBVC";
+        modelA.cellClass = [VSTitleFieldTableViewCell class];
         modelA.identifier = @"com.cell.field1";
         modelA.showGroupLine = YES;
         modelA.height = NUM_FLOAT(FIT6P(133));
@@ -113,7 +113,7 @@
         [self.dataModels addObject:modelA];
         
         VSTBTitleFieldDataModel *modelB = [[VSTBTitleFieldDataModel alloc] init];
-        modelB.classString = @"VSTitleFieldTBVC";
+        modelB.cellClass = [VSTitleFieldTableViewCell class];
         modelB.identifier = @"com.cell.field1";
         modelB.showGroupLine = YES;
         modelB.height = NUM_FLOAT(FIT6P(133));
@@ -128,7 +128,7 @@
         [RACObserve(modelB, value) subscribeNext:^(id x) {
             DLog(@"%@",x);
             weakmodelA.value = x;
-            [weakself.TB reloadRowsAtIndexPaths:@[[self indexPathOfModel:modelA]]
+            [weakself.TB reloadRowsAtIndexPaths:@[[self vs_indexPathOfModel:modelA]]
                                withRowAnimation:UITableViewRowAnimationFade];
             //[weakself.TB reloadData];
         }];
@@ -138,7 +138,7 @@
     for (int i=0; i<2; i++) {
         {
             VSTBTitleFieldDataModel *model = [[VSTBTitleFieldDataModel alloc] init];
-            model.classString = @"VSTitleFieldTBVC";
+            model.cellClass = [VSTitleFieldTableViewCell class];
             model.identifier = @"com.cell.field1";
             model.showGroupLine = YES;
             model.height = NUM_FLOAT(FIT6P(133));
@@ -151,7 +151,7 @@
     
     {
         VSTBBaseDataModel *model = [[VSTBBaseDataModel alloc] init];
-        model.classString = @"VSEmptyTBVC";
+        model.cellClass = [VSEmptyTableViewCell class];
         model.identifier = @"com.cell.d";
         model.backgroudColor = HEX(0xf5f5f5);
         model.height = NUM_FLOAT(12);
@@ -159,8 +159,8 @@
     }
     
     {
-        VSTBKeyValueDataModel *model = [[VSTBKeyValueDataModel alloc] init];
-        model.classString = @"VSKeyValueTBVC";
+        VSTBTitleDetailDataModel *model = [[VSTBTitleDetailDataModel alloc] init];
+        model.cellClass = [VSTitleDetailTableViewCell class];
         model.identifier = @"com.cell.b";
         model.height = NUM_FLOAT(FIT6P(133));
         model.key = @"标题";
@@ -171,7 +171,7 @@
     
     {
         VSTBTitleDataModel *model = [[VSTBTitleDataModel alloc] init];
-        model.classString = @"VSTitleTBVC";
+        model.cellClass = [VSTitleTableViewCell class];
         model.identifier = @"com.cell.aa";
         model.showGroupLine = YES;
         model.height = NUM_FLOAT(FIT6P(133));
@@ -183,8 +183,8 @@
     }
     
     {
-        VSTBKeyValueDataModel *model = [[VSTBKeyValueDataModel alloc] init];
-        model.classString = @"VSKeyValueTBVC";
+        VSTBTitleDetailDataModel *model = [[VSTBTitleDetailDataModel alloc] init];
+        model.cellClass = [VSTitleDetailTableViewCell class];
         model.identifier = @"com.cell.b";
         model.height = NUM_FLOAT(FIT6P(133));
         model.key = @"标题";
@@ -195,7 +195,7 @@
     
     {
         VSTBTitleDataModel *model = [[VSTBTitleDataModel alloc] init];
-        model.classString = @"VSTitleTBVC";
+        model.cellClass = [VSTitleTableViewCell class];
         model.identifier = @"com.cell.aab";
         model.showGroupLine = YES;
         model.height = NUM_FLOAT(40);
@@ -213,7 +213,7 @@
     
     {
         VSTBButtonDataModel *model = [[VSTBButtonDataModel alloc] init];
-        model.classString = @"VSButtonTBVC";
+        model.cellClass = [VSButtonTableViewCell class];
         model.identifier = @"com.cell.btn000";
         model.height = NUM_FLOAT(60);
         model.detailArrowIcon = NO;

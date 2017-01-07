@@ -19,6 +19,9 @@
 <VSSerializedObjectProtocol>
 
 @property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, assign, readonly) NSInteger count;
 @property (nonatomic, assign) NSInteger total;
+
+- (instancetype)initWithModels:(NSArray *)models;
 
 @end

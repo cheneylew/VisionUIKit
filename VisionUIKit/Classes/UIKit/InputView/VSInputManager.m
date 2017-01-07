@@ -140,6 +140,9 @@ SINGLETON_IMPL(VSInputManager)
         _textField.font = [UIFont systemFontOfSize:FIT6P(48)];
         _textField.textColor = [UIColor blackColor];
         _textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _textField.inputAccessoryView = nil;
+//        _textField.autocorrectionType = UITextAutocorrectionTypeNo;
+//        _textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     }
     
     return _textField;

@@ -32,12 +32,25 @@
     [super initModel];
 }
 
+- (instancetype)initWithModels:(NSArray *)models
+{
+    self = [super init];
+    if (self) {
+        self.items = [NSMutableArray arrayWithArray:models];
+    }
+    return self;
+}
+
 - (NSMutableArray *)items {
     if (_items == nil) {
         _items = [NSMutableArray new];
     }
     
     return _items;
+}
+
+- (NSInteger)count {
+    return self.items.count;
 }
 
 @end

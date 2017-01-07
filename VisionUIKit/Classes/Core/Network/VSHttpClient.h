@@ -26,6 +26,9 @@ typedef NSDictionary* (^AspectHttpHeader)(VSRequestParams *);                   
 typedef NSDictionary* (^AspectHttpParams)(VSRequestParams *);                    //设置全局请求提交参数需要插入的参数
 typedef id (^AspectHttpResponse)(NSDictionary *responseDic);                     //设置全局Response结果自定义处理结果
 
+/**
+ use DJNetworking replace it !
+ */
 @interface VSHttpClient : NSObject
 SINGLETON_ITF(VSHttpClient)
 

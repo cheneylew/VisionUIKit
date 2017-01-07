@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VSBaseDataConstructor.h"
+#import "VSNormalDataConstructor.h"
 
 @protocol VSTableAdaptorDelegate <NSObject>
 
@@ -19,7 +19,7 @@
 @interface VSTableAdaptor : NSObject
 <UITableViewDelegate>
 
-@property (nonatomic, weak) VSBaseDataConstructor *constructor;
+@property (nonatomic, weak) VSNormalDataConstructor *constructor;
 @property (nonatomic, weak) id<VSTableAdaptorDelegate> delegate;
 
 @end

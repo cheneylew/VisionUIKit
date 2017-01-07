@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Deju Liu. All rights reserved.
 //
 
-#import "VSBaseDataConstructor.h"
+#import "VSNormalDataConstructor.h"
 
-@interface VSTBViewConstructor : VSBaseDataConstructor
+@interface VSTBViewConstructor : VSNormalDataConstructor
 
 @end
