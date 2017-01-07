@@ -41,10 +41,19 @@ PP_STRONG(UIScrollView, scrollView)
 
 @implementation VSViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tabBarController.title = @"效果展示";
+    self.title = @"效果展示";
     self.view.backgroundColor = RGB(245, 245, 245);
     [self makeScrollView];
     [self makeLeftButtons];
@@ -58,6 +67,10 @@ PP_STRONG(UIScrollView, scrollView)
 - (void)viewWillAppear:(BOOL)animated {
     
     
+}
+
+- (BOOL)vs_tabItemHidden {
+    return NO;
 }
 
 

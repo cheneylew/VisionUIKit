@@ -35,6 +35,8 @@
 		C933440F1E20E810000B0041 /* VisionUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C933440E1E20E810000B0041 /* VisionUIKit.bundle */; };
 		C93344131E20E92F000B0041 /* NSBundle+VisionUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93344121E20E92F000B0041 /* NSBundle+VisionUIKit.m */; };
 		C93344191E20F46C000B0041 /* UIImage+Bundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C93344181E20F46C000B0041 /* UIImage+Bundle.m */; };
+		C93344201E210F84000B0041 /* VSBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C933441F1E210F84000B0041 /* VSBaseTabBarController.m */; };
+		C93344231E21107C000B0041 /* VSMyTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93344221E21107C000B0041 /* VSMyTabViewController.m */; };
 		C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A79061DF568E4003F8BFF /* VSInputManager.m */; };
 		C94C76F41E1B86AC00B9223D /* VSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76F01E1B86AC00B9223D /* VSBaseTableViewController.m */; };
 		C94C76F51E1B86AC00B9223D /* VSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76F21E1B86AC00B9223D /* VSBaseViewController.m */; };
@@ -127,6 +129,10 @@
 		C93344121E20E92F000B0041 /* NSBundle+VisionUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+VisionUIKit.m"; sourceTree = "<group>"; };
 		C93344171E20F46C000B0041 /* UIImage+Bundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Bundle.h"; sourceTree = "<group>"; };
 		C93344181E20F46C000B0041 /* UIImage+Bundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Bundle.m"; sourceTree = "<group>"; };
+		C933441E1E210F84000B0041 /* VSBaseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseTabBarController.h; sourceTree = "<group>"; };
+		C933441F1E210F84000B0041 /* VSBaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseTabBarController.m; sourceTree = "<group>"; };
+		C93344211E21107C000B0041 /* VSMyTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSMyTabViewController.h; sourceTree = "<group>"; };
+		C93344221E21107C000B0041 /* VSMyTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSMyTabViewController.m; sourceTree = "<group>"; };
 		C94A79051DF568E4003F8BFF /* VSInputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSInputManager.h; sourceTree = "<group>"; };
 		C94A79061DF568E4003F8BFF /* VSInputManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSInputManager.m; sourceTree = "<group>"; };
 		C94C76EF1E1B86AC00B9223D /* VSBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseTableViewController.h; sourceTree = "<group>"; };
@@ -261,10 +267,12 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F59C195388D20070C39A /* VSAppDelegate.h */,
 				6003F59D195388D20070C39A /* VSAppDelegate.m */,
-				C912E6D21E0E89710011C89E /* VSMenuViewController.h */,
-				C912E6D31E0E89710011C89E /* VSMenuViewController.m */,
+				C93344211E21107C000B0041 /* VSMyTabViewController.h */,
+				C93344221E21107C000B0041 /* VSMyTabViewController.m */,
 				6003F5A5195388D20070C39A /* VSViewController.h */,
 				6003F5A6195388D20070C39A /* VSViewController.m */,
+				C912E6D21E0E89710011C89E /* VSMenuViewController.h */,
+				C912E6D31E0E89710011C89E /* VSMenuViewController.m */,
 				C9F9FE411DE03B5F00339937 /* TableView */,
 				C94C76FC1E1C9ECA00B9223D /* NetworkTableView */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -419,6 +427,8 @@
 				C94C76F01E1B86AC00B9223D /* VSBaseTableViewController.m */,
 				C94C76F11E1B86AC00B9223D /* VSBaseViewController.h */,
 				C94C76F21E1B86AC00B9223D /* VSBaseViewController.m */,
+				C933441E1E210F84000B0041 /* VSBaseTabBarController.h */,
+				C933441F1E210F84000B0041 /* VSBaseTabBarController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -817,12 +827,14 @@
 				C9F9FE621DE131EF00339937 /* VSTitleDetailTableViewCell.m in Sources */,
 				C92C8F501E03C295002CFFF1 /* VSViewModel.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				C93344201E210F84000B0041 /* VSBaseTabBarController.m in Sources */,
 				C9B70ED91E03EB1F003E3285 /* VSConfig.m in Sources */,
 				C9ACEF4D1DF8111700F84905 /* NSMutableAttributedString+Category.m in Sources */,
 				C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */,
 				C94C76F41E1B86AC00B9223D /* VSBaseTableViewController.m in Sources */,
 				C912E6D41E0E89710011C89E /* VSMenuViewController.m in Sources */,
 				C92C8F4F1E03C295002CFFF1 /* VSUserDataModel.m in Sources */,
+				C93344231E21107C000B0041 /* VSMyTabViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,18 +1,17 @@
 //
-//  VSBaseViewController.h
+//  VSBaseTabBarController.h
 //  VisionUIKit
 //
-//  Created by Dejun Liu on 2017/1/3.
+//  Created by Dejun Liu on 2017/1/7.
 //  Copyright © 2017年 Deju Liu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-/**
- 对NavigationBar/NavigationItem/状态栏 进行自定义。 有默认样式，重写下面方法实现自定义。
- 结合JTNavigationController，可灵活定制每一页的NavigationBar
- */
-@interface VSBaseViewController : UIViewController
+@interface VSBaseTabBarController : UITabBarController
+// Tab Bar
+- (UIColor *)vs_tabBarBackgroundColor;  //设置背景色
+- (BOOL)vs_tabBarTranslucent;           //设置透明效果
 
 // Navigation Bar
 - (UIColor *)vs_navigationBarBackgroundColor;
@@ -32,13 +31,6 @@
 - (void)vs_eventNavigationBarBackItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventNavigationBarRightItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventNavigationBarRightItemTouchedIndex:(NSUInteger) index;
-
-// Tab Item
-- (BOOL)vs_tabItemHidden;
-- (UIImage *)vs_tabItemSelectedImage;
-- (UIImage *)vs_tabItemUnselectedImage;
-- (UIColor *)vs_tabItemTitleSelectedColor;
-- (UIColor *)vs_tabItemTitleUnSelectedColor;
 
 
 /**

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VSBaseViewController.h"
 
-@interface VSMenuViewController : UIViewController
+@interface VSMenuViewController : VSBaseViewController
 
 @end

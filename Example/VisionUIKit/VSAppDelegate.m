@@ -12,6 +12,8 @@
 #import <DJDebug/DJDebugger.h>
 #import <RTRootNavigationController/RTRootNavigationController.h>
 #import <JTNavigationController/JTNavigationController.h>
+#import "VSMyTabViewController.h"
+
 @interface VSAppDelegate ()
 
 @end
@@ -36,7 +38,9 @@
 //    PKRevealController *revealController = [PKRevealController revealControllerWithFrontViewController:root_vc leftViewController:root_left];
 //    revealController.delegate = self;
     
-    JTNavigationController *main_tb_navi = [[JTNavigationController alloc] initWithRootViewController:main_tb];
+    VSMyTabViewController *tab = [VSMyTabViewController new];
+    
+    JTNavigationController *main_tb_navi = [[JTNavigationController alloc] initWithRootViewController:tab];
     self.window.rootViewController = main_tb_navi;
     
     

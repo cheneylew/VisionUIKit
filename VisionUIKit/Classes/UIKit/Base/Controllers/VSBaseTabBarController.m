@@ -1,54 +1,85 @@
 //
-//  VSBaseViewController.m
+//  VSBaseTabBarController.m
 //  VisionUIKit
 //
-//  Created by Dejun Liu on 2017/1/3.
+//  Created by Dejun Liu on 2017/1/7.
 //  Copyright © 2017年 Deju Liu. All rights reserved.
 //
 
-#import "VSBaseViewController.h"
+#import "VSBaseTabBarController.h"
 #import <KKCategories/KKCategories.h>
 #import <DJMacros/DJMacro.h>
 #import "UIImage+Bundle.h"
+#import <ReactiveCocoa/NSObject+RACPropertySubscribing.h>
+#import <ReactiveCocoa/RACSignal.h>
 
-@interface VSBaseViewController ()
+@interface VSBaseTabBarController ()
+
+@property (nonatomic, strong) RACDisposable *rac;
 
 @end
 
-@implementation VSBaseViewController
+@implementation VSBaseTabBarController
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        [self initTabItem];
-        [[UIApplication sharedApplication] setStatusBarStyle:[self vs_statusBarStyle]];
-        [self.navigationController setNavigationBarHidden:[self vs_navigationBarHidden]];
+        WEAK_SELF;
+        self.selectedIndex = 0;
+        self.rac = [RACObserve(self, selectedViewController) subscribeNext:^(UIViewController* controller) {
+            STRONG(weakself);
+            strongweakself.title = controller.title;
+        }];
+        
+//        UIView* backView = [[UIView alloc]init];
+//        backView.backgroundColor = HEX(0x787fb5);
+//        backView.frame = self.tabBar.bounds;
+//        backView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        [[UITabBar appearance] insertSubview:backView atIndex:0];
+        
+        [[UITabBar appearance] setBackgroundImage:[UIImage jk_imageWithColor:[self vs_tabBarBackgroundColor]]];
+        [UITabBar appearance].translucent = [self vs_tabBarTranslucent];  //禁用透明效果
     }
     return self;
 }
 
+- (UIColor *)vs_tabBarBackgroundColor {
+    return HEXA(0xefefef,0.8);
+}
+
+- (BOOL)vs_tabBarTranslucent {
+    return YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initNavigationBar];
-    [self initNavigationItems];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self initNavigationBar];
+    [self initNavigationItems];
+    [[UIApplication sharedApplication] setStatusBarStyle:[self vs_statusBarStyle]];
+    [self.navigationController setNavigationBarHidden:[self vs_navigationBarHidden]];
+}
+
 - (void)initNavigationBar {
     //背景色透明
     [self.navigationController.navigationBar setBackgroundImage:[UIImage jk_imageWithColor:[self vs_navigationBarBackgroundColor]]
-               forBarMetrics:UIBarMetricsDefault];
+                                                  forBarMetrics:UIBarMetricsDefault];
     //发丝线透明
     [self.navigationController.navigationBar setShadowImage:[UIImage jk_imageWithColor:[self vs_navigationBarHairLineColor]]];
     
     //标题样式
     [self.navigationController.navigationBar setTitleTextAttributes:@{ATT_TEXT_COLOR:[self vs_navigationBarTitleColor],
-                                   ATT_FONT:[self vs_navigationBarTitleFont]
-                                   }];
+                                                                      ATT_FONT:[self vs_navigationBarTitleFont]
+                                                                      }];
     [self vs_decorateNavigationBar:self.navigationController.navigationBar];
 }
 
@@ -63,16 +94,8 @@
                                                                 target:self
                                                                 action:@selector(vs_eventNavigationBarBackItemTouched:)];
     backItem.tintColor = [self vs_navigationBarBackItemColor];
-    NSArray *controllers = self.navigationController.viewControllers;
-    //JTWrapNavigationController每页都是独立的，navigationController.viewControllers中只有1个
-    if ([self.navigationController isKindOfClass:[NSClassFromString(@"JTWrapNavigationController") class]]) {
-        if (controllers.count >= 1) {
-            self.navigationItem.leftBarButtonItem = backItem;
-        }
-    } else {
-        if (controllers.count > 1) {
-            self.navigationItem.leftBarButtonItem = backItem;
-        }
+    if (self.navigationController.viewControllers.count > 1) {
+        self.navigationItem.leftBarButtonItem = backItem;
     }
     
     // Right items
@@ -165,47 +188,5 @@
 - (UIStatusBarStyle)vs_statusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
-#pragma mark Tab Item
-- (void) initTabItem {
-    if (![self vs_tabItemHidden]) {
-        UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:[self vs_tabItemTitle]
-                                                                 image:[[self vs_tabItemSelectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                                                         selectedImage:[[self vs_tabItemUnselectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        [tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[self vs_tabItemTitleSelectedColor]}
-                                  forState:UIControlStateSelected];
-        [tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[self vs_tabItemTitleUnSelectedColor]}
-                                  forState:UIControlStateNormal];
-        self.tabBarItem = tabBarItem;
-    }
-
-}
-
-- (BOOL) vs_tabItemHidden {
-    return YES;
-}
-
-- (NSString *) vs_tabItemTitle {
-    return @"默认";
-}
-
-- (UIImage *) vs_tabItemSelectedImage {
-    UIImage *image = [UIImage vs_imageName:@"vs_camera_hl"];
-    return image;
-}
-
-- (UIImage *) vs_tabItemUnselectedImage {
-    UIImage *image = [UIImage vs_imageName:@"vs_camera_ok"];
-    return image;
-}
-
-- (UIColor *) vs_tabItemTitleSelectedColor {
-    return [UIColor blueColor];
-}
-
-- (UIColor *) vs_tabItemTitleUnSelectedColor {
-    return [UIColor grayColor];
-}
-
 
 @end
