@@ -8,6 +8,7 @@
 
 #import "NSBundle+VisionUIKit.h"
 #import <DJMacros/DJMacro.h>
+#import "VSConfig.h"
 
 @implementation NSBundle (VisionUIKit)
 
@@ -16,7 +17,7 @@
     static NSBundle *sourceBundle = nil;
     if (sourceBundle == nil) {
         // 这里不使用mainBundle是为了适配pod 1.x和0.x
-        sourceBundle = [self vs_bundleName:@"VisionUIKit" forClass:[self class]];
+        sourceBundle = [self vs_bundleName:@"VisionUIKit" forClass:[VSConfig class]];
     }
     return sourceBundle;
 }
