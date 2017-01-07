@@ -14,6 +14,7 @@
 #import "VSTitleImageTableViewCell.h"
 #import "VSTextField.h"
 #import "VSTBViewConstructor.h"
+#import "UIImage+Bundle.h"
 
 @interface VSTableViewController ()
 <VSButtonTableViewCellDelegate>
@@ -49,7 +50,7 @@
 }
 
 - (UIBarButtonItem *)customBackItemWithTarget:(id)target action:(SEL)action {
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigation_back_normal"]
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage vs_imageName:@"vs_navigation_back_normal"]
                                             style:UIBarButtonItemStylePlain
                                            target:target action:action];
     item.tintColor = [UIColor whiteColor];

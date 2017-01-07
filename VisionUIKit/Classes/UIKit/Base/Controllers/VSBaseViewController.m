@@ -9,6 +9,7 @@
 #import "VSBaseViewController.h"
 #import <KKCategories/KKCategories.h>
 #import <DJMacros/DJMacro.h>
+#import "UIImage+Bundle.h"
 
 @interface VSBaseViewController ()
 
@@ -114,7 +115,7 @@
 }
 
 - (UIImage *)vs_navigationBarBackItemImage {
-    return [UIImage imageNamed:@"navigation_back_normal"];
+    return [UIImage vs_imageName:@"vs_navigation_back_normal"];
 }
 
 - (UIColor *)vs_navigationBarRightItemColor {

@@ -9,6 +9,7 @@
 #import "VSBaseTableViewCell.h"
 #import <DJMacros/DJMacro.h>
 #import <KKCategories/KKCategories.h>
+#import "UIImage+Bundle.h"
 
 @implementation VSTBBaseDataModel
 
@@ -44,7 +45,7 @@ PP_VIEW(bottomLine)
 }
 
 - (void)initUI {
-    UIImageView *arrowIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_icon"]];
+    UIImageView *arrowIcon = [[UIImageView alloc] initWithImage:[UIImage vs_imageName:@"vs_arrow_icon"]];
     arrowIcon.frame = CGRectMake(0, 0, FIT6P(24), FIT6P(42));
     arrowIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     self.arrow_icon = arrowIcon;
