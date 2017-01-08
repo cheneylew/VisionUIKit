@@ -65,7 +65,7 @@ PP_STRONG(UIScrollView, scrollView)
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    [super viewWillAppear:animated];
     
 }
 
@@ -80,7 +80,6 @@ PP_STRONG(UIScrollView, scrollView)
 - (UIImage *)vs_tabItemSelectedImage {
     return [UIImage imageNamed:@"assist_hl"];
 }
-
 
 - (void)didReceiveMemoryWarning
 {

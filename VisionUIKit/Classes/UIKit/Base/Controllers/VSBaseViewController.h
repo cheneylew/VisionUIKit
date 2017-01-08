@@ -28,10 +28,20 @@
 - (NSArray<NSString *> *)vs_navigationBarRightItemsTitles;
 - (NSArray<UIImage *> *)vs_navigationBarRightItemsImages;
 
-// Event
 - (void)vs_eventNavigationBarBackItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventNavigationBarRightItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventNavigationBarRightItemTouchedIndex:(NSUInteger) index;
+
+// Tab Bar Navigation Items
+- (NSArray<NSString *> *)vs_tabBarNavigationBarRightItemsTitles;
+- (NSArray<UIImage *> *)vs_tabBarNavigationBarRightItemsImages;
+- (void)vs_eventTabBarNavigationBarRightItemTouched:(UIBarButtonItem *) item;
+- (void)vs_eventTabBarNavigationBarRightItemTouchedIndex:(NSUInteger) index;
+
+- (NSArray<NSString *> *)vs_tabBarNavigationBarLeftItemsTitles;
+- (NSArray<UIImage *> *)vs_tabBarNavigationBarLeftItemsImages;
+- (void)vs_eventTabBarNavigationBarLeftItemTouched:(UIBarButtonItem *) item;
+- (void)vs_eventTabBarNavigationBarLeftItemTouchedIndex:(NSUInteger) index;
 
 // Tab Item
 - (BOOL)vs_tabItemHidden;

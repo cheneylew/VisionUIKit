@@ -1,0 +1,6 @@
+framework module DJDebug {
+  umbrella header "DJDebug-umbrella.h"
+
+  export *
+  module * { export * }
+}

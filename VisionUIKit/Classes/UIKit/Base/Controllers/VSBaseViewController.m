@@ -34,6 +34,11 @@
     [self initNavigationItems];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self initTabBarNavigationItems];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -54,6 +59,77 @@
 
 - (void)vs_decorateNavigationBar:(UINavigationBar *) navigationBar {
     
+}
+
+- (void)initTabBarNavigationItems {
+    if (!self.tabBarController) {
+        return;
+    }
+    // Left items
+    NSArray *leftItemTitles = [self vs_tabBarNavigationBarLeftItemsTitles];
+    NSArray *leftItemImages = [self vs_tabBarNavigationBarLeftItemsImages];
+    if (leftItemTitles.count == 0 && leftItemImages.count == 0) {
+        self.tabBarController.navigationItem.leftBarButtonItems = nil;
+    }
+    
+    if ((leftItemTitles.count && !leftItemImages.count)) {
+        NSMutableArray *leftItems = [NSMutableArray array];
+        [leftItemTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:obj
+                                                                         style:UIBarButtonItemStylePlain
+                                                                        target:self
+                                                                        action:@selector(vs_eventTabBarNavigationBarLeftItemTouched:)];
+            leftItem.tintColor = [self vs_tabBarNavigationBarLeftItemColor];
+            [leftItems addObject:leftItem];
+        }];
+        self.tabBarController.navigationItem.leftBarButtonItems = leftItems;
+    }
+    
+    if ((leftItemImages.count && !leftItemTitles.count) || (leftItemTitles.count && leftItemImages.count)) {
+        NSMutableArray *leftItems = [NSMutableArray array];
+        [leftItemImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:obj
+                                                                         style:UIBarButtonItemStylePlain
+                                                                        target:self
+                                                                        action:@selector(vs_eventTabBarNavigationBarLeftItemTouched:)];
+            leftItem.tintColor = [self vs_tabBarNavigationBarLeftItemColor];
+            [leftItems addObject:leftItem];
+        }];
+        self.tabBarController.navigationItem.leftBarButtonItems = leftItems;
+    }
+    
+    // Right items
+    NSArray *rightItemTitles = [self vs_tabBarNavigationBarRightItemsTitles];
+    NSArray *rightItemImages = [self vs_tabBarNavigationBarRightItemsImages];
+    if (rightItemTitles.count == 0 && rightItemImages.count == 0) {
+        self.tabBarController.navigationItem.rightBarButtonItems = nil;
+    }
+    
+    if ((rightItemTitles.count && !rightItemImages.count)) {
+        NSMutableArray *rightItems = [NSMutableArray array];
+        [rightItemTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:obj
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(vs_eventTabBarNavigationBarRightItemTouched:)];
+            rightItem.tintColor = [self vs_tabBarNavigationBarRightItemColor];
+            [rightItems addObject:rightItem];
+        }];
+        self.tabBarController.navigationItem.rightBarButtonItems = rightItems;
+    }
+    
+    if ((rightItemImages.count && !rightItemTitles.count) || (rightItemTitles.count && rightItemImages.count)) {
+        NSMutableArray *rightItems = [NSMutableArray array];
+        [rightItemImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:obj
+                                                                          style:UIBarButtonItemStylePlain
+                                                                         target:self
+                                                                         action:@selector(vs_eventTabBarNavigationBarRightItemTouched:)];
+            rightItem.tintColor = [self vs_tabBarNavigationBarRightItemColor];
+            [rightItems addObject:rightItem];
+        }];
+        self.tabBarController.navigationItem.rightBarButtonItems = rightItems;
+    }
 }
 
 - (void)initNavigationItems {
@@ -158,6 +234,50 @@
 }
 
 - (void)vs_eventNavigationBarRightItemTouchedIndex:(NSUInteger)index {
+    
+}
+#pragma mark - Tab Bar Navigation Items -
+#pragma mark Tab Bar Navigation Items Right
+- (UIColor *)vs_tabBarNavigationBarRightItemColor {
+    return [UIColor whiteColor];
+}
+
+- (NSArray<NSString *> *)vs_tabBarNavigationBarRightItemsTitles {
+    return @[];
+}
+
+- (NSArray<UIImage *> *)vs_tabBarNavigationBarRightItemsImages {
+    return @[];
+}
+
+- (void)vs_eventTabBarNavigationBarRightItemTouched:(UIBarButtonItem *) item {
+    NSInteger idx = [self.navigationItem.rightBarButtonItems indexOfObject:item];
+    [self vs_eventTabBarNavigationBarRightItemTouchedIndex:idx];
+}
+
+- (void)vs_eventTabBarNavigationBarRightItemTouchedIndex:(NSUInteger)index {
+    
+}
+
+#pragma mark Tab Bar Navigation Items Left
+- (UIColor *)vs_tabBarNavigationBarLeftItemColor {
+    return [UIColor whiteColor];
+}
+
+- (NSArray<NSString *> *)vs_tabBarNavigationBarLeftItemsTitles {
+    return @[];
+}
+
+- (NSArray<UIImage *> *)vs_tabBarNavigationBarLeftItemsImages {
+    return @[];
+}
+
+- (void)vs_eventTabBarNavigationBarLeftItemTouched:(UIBarButtonItem *) item {
+    NSInteger idx = [self.navigationItem.leftBarButtonItems indexOfObject:item];
+    [self vs_eventTabBarNavigationBarLeftItemTouchedIndex:idx];
+}
+
+- (void)vs_eventTabBarNavigationBarLeftItemTouchedIndex:(NSUInteger)index {
     
 }
 
