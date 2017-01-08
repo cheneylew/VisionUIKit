@@ -40,12 +40,36 @@
         
         [[UITabBar appearance] setBackgroundImage:[UIImage jk_imageWithColor:[self vs_tabBarBackgroundColor]]];
         [UITabBar appearance].translucent = [self vs_tabBarTranslucent];  //禁用透明效果
+        
+        UIImage *selectedBackgroundImage = [UIImage jk_imageWithColor:[self vs_tabBarSelectedBackgroundColor]];
+        selectedBackgroundImage = [selectedBackgroundImage jk_scaleToSize:CGSizeMake(self.tabBar.width/self.tabBar.items.count, self.tabBar.height)];
+        self.tabBar.selectionIndicatorImage = selectedBackgroundImage;
+        self.tabBar.shadowImage = [UIImage jk_imageWithColor:[self vs_tabBarHairLineBackgroundColor]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runtimeTabBarIndexChanged:) name:@"RuntimeTabBarControllerIndexChanged" object:nil];
     }
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)runtimeTabBarIndexChanged:(NSNotification *) notification {
+    id index = notification.object;
+    self.selectedIndex = [index integerValue];
+}
+
 - (UIColor *)vs_tabBarBackgroundColor {
     return HEXA(0xefefef,0.8);
+}
+
+- (UIColor *)vs_tabBarSelectedBackgroundColor {
+    return HEXA(0xaaaaaa,0);
+}
+
+- (UIColor *)vs_tabBarHairLineBackgroundColor {
+    return HEXA(0xaaaaaa,1);
 }
 
 - (BOOL)vs_tabBarTranslucent {

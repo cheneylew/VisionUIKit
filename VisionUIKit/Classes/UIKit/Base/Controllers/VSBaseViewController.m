@@ -170,12 +170,14 @@
 - (void) initTabItem {
     if (![self vs_tabItemHidden]) {
         UITabBarItem* tabBarItem = [[UITabBarItem alloc] initWithTitle:[self vs_tabItemTitle]
-                                                                 image:[[self vs_tabItemSelectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
-                                                         selectedImage:[[self vs_tabItemUnselectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        [tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[self vs_tabItemTitleSelectedColor]}
+                                                                 image:[[self vs_tabItemUnselectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+                                                         selectedImage:[[self vs_tabItemSelectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [tabBarItem setTitleTextAttributes:@{ATT_TEXT_COLOR:[self vs_tabItemTitleSelectedColor]}
                                   forState:UIControlStateSelected];
-        [tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[self vs_tabItemTitleUnSelectedColor]}
+        [tabBarItem setTitleTextAttributes:@{ATT_TEXT_COLOR:[self vs_tabItemTitleUnSelectedColor]}
                                   forState:UIControlStateNormal];
+        tabBarItem.titlePositionAdjustment = UIOffsetMake([self vs_tabItemTitleOffsetX], [self vs_tabItemTitleOffsetY]);
+        tabBarItem.badgeValue = [self vs_tabItemBadgeValue];
         self.tabBarItem = tabBarItem;
     }
 
@@ -205,6 +207,18 @@
 
 - (UIColor *) vs_tabItemTitleUnSelectedColor {
     return [UIColor grayColor];
+}
+
+- (NSString *) vs_tabItemBadgeValue {
+    return nil;
+}
+
+- (double) vs_tabItemTitleOffsetY {
+    return 0;
+}
+
+- (double) vs_tabItemTitleOffsetX {
+    return -2;
 }
 
 

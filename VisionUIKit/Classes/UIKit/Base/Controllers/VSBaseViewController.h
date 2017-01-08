@@ -39,7 +39,9 @@
 - (UIImage *)vs_tabItemUnselectedImage;
 - (UIColor *)vs_tabItemTitleSelectedColor;
 - (UIColor *)vs_tabItemTitleUnSelectedColor;
-
+- (double) vs_tabItemTitleOffsetY;
+- (double) vs_tabItemTitleOffsetX;
+- (NSString *) vs_tabItemBadgeValue;
 
 /**
  首先需要在info.plist设置：

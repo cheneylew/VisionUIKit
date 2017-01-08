@@ -37,6 +37,7 @@
 		C93344191E20F46C000B0041 /* UIImage+Bundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C93344181E20F46C000B0041 /* UIImage+Bundle.m */; };
 		C93344201E210F84000B0041 /* VSBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C933441F1E210F84000B0041 /* VSBaseTabBarController.m */; };
 		C93344231E21107C000B0041 /* VSMyTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C93344221E21107C000B0041 /* VSMyTabViewController.m */; };
+		C93344271E21E328000B0041 /* UITabBar+Swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = C93344261E21E328000B0041 /* UITabBar+Swizzling.m */; };
 		C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A79061DF568E4003F8BFF /* VSInputManager.m */; };
 		C94C76F41E1B86AC00B9223D /* VSBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76F01E1B86AC00B9223D /* VSBaseTableViewController.m */; };
 		C94C76F51E1B86AC00B9223D /* VSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C76F21E1B86AC00B9223D /* VSBaseViewController.m */; };
@@ -133,6 +134,8 @@
 		C933441F1E210F84000B0041 /* VSBaseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSBaseTabBarController.m; sourceTree = "<group>"; };
 		C93344211E21107C000B0041 /* VSMyTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSMyTabViewController.h; sourceTree = "<group>"; };
 		C93344221E21107C000B0041 /* VSMyTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSMyTabViewController.m; sourceTree = "<group>"; };
+		C93344251E21E328000B0041 /* UITabBar+Swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+Swizzling.h"; sourceTree = "<group>"; };
+		C93344261E21E328000B0041 /* UITabBar+Swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+Swizzling.m"; sourceTree = "<group>"; };
 		C94A79051DF568E4003F8BFF /* VSInputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSInputManager.h; sourceTree = "<group>"; };
 		C94A79061DF568E4003F8BFF /* VSInputManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSInputManager.m; sourceTree = "<group>"; };
 		C94C76EF1E1B86AC00B9223D /* VSBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSBaseTableViewController.h; sourceTree = "<group>"; };
@@ -403,6 +406,15 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		C93344241E21E31D000B0041 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C93344251E21E328000B0041 /* UITabBar+Swizzling.h */,
+				C93344261E21E328000B0041 /* UITabBar+Swizzling.m */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		C94A79041DF568AF003F8BFF /* InputView */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +427,7 @@
 		C94C76E71E1B80A800B9223D /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C93344241E21E31D000B0041 /* TabBar */,
 				C94C76EE1E1B86AC00B9223D /* Controllers */,
 			);
 			path = Base;
@@ -819,6 +832,7 @@
 				C9EE86321DEA79CF0045B889 /* VSButtonTableViewCell.m in Sources */,
 				C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */,
 				6003F5A7195388D20070C39A /* VSViewController.m in Sources */,
+				C93344271E21E328000B0041 /* UITabBar+Swizzling.m in Sources */,
 				C9F9FE771DE1DEDA00339937 /* VSTextField.m in Sources */,
 				C9F9FE521DE04D1E00339937 /* VSTBViewConstructor.m in Sources */,
 				C94C76F51E1B86AC00B9223D /* VSBaseViewController.m in Sources */,

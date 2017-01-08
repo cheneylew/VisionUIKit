@@ -10,8 +10,10 @@
 
 @interface VSBaseTabBarController : UITabBarController
 // Tab Bar
-- (UIColor *)vs_tabBarBackgroundColor;  //设置背景色
-- (BOOL)vs_tabBarTranslucent;           //设置透明效果
+- (UIColor *)vs_tabBarBackgroundColor;              //TabBar设置背景色
+- (UIColor *)vs_tabBarSelectedBackgroundColor;      //TabBar选中背景色
+- (UIColor *)vs_tabBarHairLineBackgroundColor;      //TabBar发丝线颜色
+- (BOOL)vs_tabBarTranslucent;                       //TabBar设置透明效果
 
 // Navigation Bar
 - (UIColor *)vs_navigationBarBackgroundColor;

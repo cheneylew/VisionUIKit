@@ -73,6 +73,14 @@ PP_STRONG(UIScrollView, scrollView)
     return NO;
 }
 
+- (UIImage *)vs_tabItemUnselectedImage {
+    return [UIImage imageNamed:@"assist_hl"];
+}
+
+- (UIImage *)vs_tabItemSelectedImage {
+    return [UIImage imageNamed:@"assist_hl"];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
