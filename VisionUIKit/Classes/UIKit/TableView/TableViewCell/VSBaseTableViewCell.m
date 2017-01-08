@@ -60,8 +60,8 @@ PP_VIEW(bottomLine)
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (self.cellModel.selectedStyle == VSTBCellSelectedStyleCustom) {
         self.backgroundColor = self.cellModel.selectedBackgroudColor;
-        [super touchesBegan:touches withEvent:event];
     }
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -70,8 +70,8 @@ PP_VIEW(bottomLine)
         [UIView animateWithDuration:0.5 animations:^{
             weakself.backgroundColor = self.cellModel.backgroudColor;
         }];
-        [super touchesEnded:touches withEvent:event];
     }
+    [super touchesEnded:touches withEvent:event];
 }
 
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -80,8 +80,8 @@ PP_VIEW(bottomLine)
         [UIView animateWithDuration:0.5 animations:^{
             weakself.backgroundColor = self.cellModel.backgroudColor;
         }];
-        [super touchesCancelled:touches withEvent:event];
     }
+    [super touchesCancelled:touches withEvent:event];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

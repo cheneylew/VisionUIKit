@@ -1,6 +1,0 @@
-framework module XMAdScrollView {
-  umbrella header "XMAdScrollView-umbrella.h"
-
-  export *
-  module * { export * }
-}
