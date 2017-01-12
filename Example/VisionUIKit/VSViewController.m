@@ -26,6 +26,7 @@
 #import <JYCarousel/JYCarousel.h>
 #import <RTRootNavigationController.h>
 #import "VSNetworkTableViewController.h"
+#import "VSMVVMViewController.h"
 //#import <XMNPhoto/XMNPhotoBrowserController.h>
 
 #define TITLE_COLOR RGB(15, 103, 197)
@@ -219,6 +220,14 @@ PP_STRONG(UIScrollView, scrollView)
     
     [[self makeLeftButton:@"MBProgressHUD-Hide" index:9] jk_addActionHandler:^(NSInteger tag) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+    
+    [[self makeLeftButton:@"MVVM-Demo" index:10] jk_addActionHandler:^(NSInteger tag) {
+        [self.navigationController pushViewController:[VSMVVMViewController new] animated:YES];
+    }];
+    
+    [[self makeLeftButton:@"ImagesBrowser" index:11] jk_addActionHandler:^(NSInteger tag) {
+        [self.navigationController pushViewController:[NSClassFromString(@"ImageBrowserViewController") new] animated:YES];
     }];
 }
 

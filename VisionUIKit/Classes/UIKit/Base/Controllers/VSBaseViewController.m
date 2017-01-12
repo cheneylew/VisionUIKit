@@ -88,7 +88,9 @@
     if ((leftItemImages.count && !leftItemTitles.count) || (leftItemTitles.count && leftItemImages.count)) {
         NSMutableArray *leftItems = [NSMutableArray array];
         [leftItemImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:obj
+            UIImage *image = obj;
+            image = [image imageWithRenderingMode:[self vs_tabBarNavigationBarLeftItemsImagesRenderMode]];
+            UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:image
                                                                          style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(vs_eventTabBarNavigationBarLeftItemTouched:)];
@@ -121,7 +123,9 @@
     if ((rightItemImages.count && !rightItemTitles.count) || (rightItemTitles.count && rightItemImages.count)) {
         NSMutableArray *rightItems = [NSMutableArray array];
         [rightItemImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:obj
+            UIImage *image = obj;
+            image = [image imageWithRenderingMode:[self vs_tabBarNavigationBarRightItemsImagesRenderMode]];
+            UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:image
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(vs_eventTabBarNavigationBarRightItemTouched:)];
@@ -134,11 +138,14 @@
 
 - (void)initNavigationItems {
     // Back buttons
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[self vs_navigationBarBackItemImage]
+    UIImage *image = [self vs_navigationBarBackItemImage];
+    image = [image imageWithRenderingMode:[self vs_navigationBarBackItemImageRenderMode]];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:image
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
                                                                 action:@selector(vs_eventNavigationBarBackItemTouched:)];
     backItem.tintColor = [self vs_navigationBarBackItemColor];
+    backItem.imageInsets = UIEdgeInsetsMake(0, -5, 0, 0);
     NSArray *controllers = self.navigationController.viewControllers;
     //JTWrapNavigationController每页都是独立的，navigationController.viewControllers中只有1个
     if ([self.navigationController isKindOfClass:[NSClassFromString(@"JTWrapNavigationController") class]]) {
@@ -170,7 +177,9 @@
     if ((rightItemImages.count && !rightItemTitles.count) || (rightItemTitles.count && rightItemImages.count)) {
         NSMutableArray *rightItems = [NSMutableArray array];
         [rightItemImages enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:obj
+            UIImage *image = obj;
+            image = [image imageWithRenderingMode:[self vs_navigationBarRightItemsImagesRenderMode]];
+            UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithImage:image
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(vs_eventNavigationBarRightItemTouched:)];
@@ -212,6 +221,10 @@
     return [UIImage vs_imageName:@"vs_navigation_back_normal"];
 }
 
+- (UIImageRenderingMode)vs_navigationBarBackItemImageRenderMode {
+    return UIImageRenderingModeAlwaysTemplate;
+}
+
 - (UIColor *)vs_navigationBarRightItemColor {
     return [UIColor whiteColor];
 }
@@ -222,6 +235,10 @@
 
 - (NSArray<UIImage *> *)vs_navigationBarRightItemsImages {
     return @[];
+}
+
+- (UIImageRenderingMode)vs_navigationBarRightItemsImagesRenderMode {
+    return UIImageRenderingModeAlwaysTemplate;
 }
 
 - (void)vs_eventNavigationBarBackItemTouched:(UIBarButtonItem *) item {
@@ -250,6 +267,10 @@
     return @[];
 }
 
+- (UIImageRenderingMode)vs_tabBarNavigationBarRightItemsImagesRenderMode {
+    return UIImageRenderingModeAlwaysTemplate;
+}
+
 - (void)vs_eventTabBarNavigationBarRightItemTouched:(UIBarButtonItem *) item {
     NSInteger idx = [self.navigationItem.rightBarButtonItems indexOfObject:item];
     [self vs_eventTabBarNavigationBarRightItemTouchedIndex:idx];
@@ -270,6 +291,10 @@
 
 - (NSArray<UIImage *> *)vs_tabBarNavigationBarLeftItemsImages {
     return @[];
+}
+
+- (UIImageRenderingMode)vs_tabBarNavigationBarLeftItemsImagesRenderMode {
+    return UIImageRenderingModeAlwaysTemplate;
 }
 
 - (void)vs_eventTabBarNavigationBarLeftItemTouched:(UIBarButtonItem *) item {

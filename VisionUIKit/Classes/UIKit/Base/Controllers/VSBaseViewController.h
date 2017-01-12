@@ -25,21 +25,29 @@
 // Navigation Items
 - (UIColor *)vs_navigationBarBackItemColor;
 - (UIImage *)vs_navigationBarBackItemImage;
+- (UIImageRenderingMode)vs_navigationBarBackItemImageRenderMode;            //默认UIImageRenderingModeAlwaysTemplate，忽略图片默认颜色
+
+- (UIColor *)vs_navigationBarRightItemColor;
 - (NSArray<NSString *> *)vs_navigationBarRightItemsTitles;
 - (NSArray<UIImage *> *)vs_navigationBarRightItemsImages;
+- (UIImageRenderingMode)vs_navigationBarRightItemsImagesRenderMode;         //默认UIImageRenderingModeAlwaysTemplate，忽略图片默认颜色
 
 - (void)vs_eventNavigationBarBackItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventNavigationBarRightItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventNavigationBarRightItemTouchedIndex:(NSUInteger) index;
 
 // Tab Bar Navigation Items
+- (UIColor *)vs_tabBarNavigationBarRightItemColor;
 - (NSArray<NSString *> *)vs_tabBarNavigationBarRightItemsTitles;
 - (NSArray<UIImage *> *)vs_tabBarNavigationBarRightItemsImages;
+- (UIImageRenderingMode)vs_tabBarNavigationBarRightItemsImagesRenderMode;       //默认UIImageRenderingModeAlwaysTemplate，忽略图片默认颜色
 - (void)vs_eventTabBarNavigationBarRightItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventTabBarNavigationBarRightItemTouchedIndex:(NSUInteger) index;
 
+- (UIColor *)vs_tabBarNavigationBarLeftItemColor;
 - (NSArray<NSString *> *)vs_tabBarNavigationBarLeftItemsTitles;
 - (NSArray<UIImage *> *)vs_tabBarNavigationBarLeftItemsImages;
+- (UIImageRenderingMode)vs_tabBarNavigationBarLeftItemsImagesRenderMode;        //默认UIImageRenderingModeAlwaysTemplate，忽略图片默认颜色
 - (void)vs_eventTabBarNavigationBarLeftItemTouched:(UIBarButtonItem *) item;
 - (void)vs_eventTabBarNavigationBarLeftItemTouchedIndex:(NSUInteger) index;
 

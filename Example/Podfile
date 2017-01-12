@@ -51,6 +51,7 @@ def good_lib_pods
     pod 'JYCarousel'                    #图片轮播
 #    pod 'Popover', '~> 1.0.1'           #微型菜单弹窗(类似QQ和微信右上角弹窗) https://github.com/lifution/Popover
 #    pod 'XMNPhoto', '~> 1.1.0'          #浏览展示一组图片或从相册选取图片
+    pod 'KVOController'                 #facebook MVVM KVO
 end
 
 target 'VisionUIKit_Example' do

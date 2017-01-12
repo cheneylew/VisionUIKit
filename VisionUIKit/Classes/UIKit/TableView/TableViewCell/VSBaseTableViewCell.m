@@ -45,7 +45,7 @@ PP_VIEW(bottomLine)
 }
 
 - (void)initUI {
-    UIImageView *arrowIcon = [[UIImageView alloc] initWithImage:[UIImage vs_imageName:@"vs_arrow_icon"]];
+    UIImageView *arrowIcon = [[UIImageView alloc] initWithImage:[[UIImage vs_imageName:@"vs_arrow_icon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     arrowIcon.frame = CGRectMake(0, 0, FIT6P(24), FIT6P(42));
     arrowIcon.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     self.arrow_icon = arrowIcon;

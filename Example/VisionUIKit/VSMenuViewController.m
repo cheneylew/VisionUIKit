@@ -28,19 +28,16 @@
     return NO;
 }
 
-- (NSArray<NSString *> *)vs_tabBarNavigationBarRightItemsTitles {
-    return @[@"编辑",@"打开"];
+
+- (NSArray<UIImage *> *)vs_tabBarNavigationBarRightItemsImages {
+    return @[[UIImage imageNamed:@"error"]];
+}
+
+- (UIColor *)vs_tabBarNavigationBarRightItemColor {
+    return [UIColor blueColor];
 }
 
 - (void)vs_eventTabBarNavigationBarRightItemTouchedIndex:(NSUInteger)index {
-    
-}
-
-- (NSArray<NSString *> *)vs_tabBarNavigationBarLeftItemsTitles {
-    return @[@"abc"];
-}
-
-- (void)vs_eventTabBarNavigationBarLeftItemTouchedIndex:(NSUInteger)index {
     
 }
 
