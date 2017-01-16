@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="154.375" y="483.57499999999999"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="NiE-h2-4qG">
             <objects>
-                <viewController id="Ab6-C4-gC8" customClass="VSViewController" sceneMemberID="viewController">
+                <viewController id="Ab6-C4-gC8" customClass="VSHomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pz8-r9-a0V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

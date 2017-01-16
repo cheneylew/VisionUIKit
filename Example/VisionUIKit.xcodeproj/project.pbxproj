@@ -13,7 +13,7 @@
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
 		6003F59E195388D20070C39A /* VSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* VSAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* VSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* VSViewController.m */; };
+		6003F5A7195388D20070C39A /* VSHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* VSHomeViewController.m */; };
 		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -54,6 +54,7 @@
 		C94C869B1E2761C5008AA49F /* 火影03.png in Resources */ = {isa = PBXBuildFile; fileRef = C94C86961E2761C5008AA49F /* 火影03.png */; };
 		C94C869C1E2761C5008AA49F /* 火影04.png in Resources */ = {isa = PBXBuildFile; fileRef = C94C86971E2761C5008AA49F /* 火影04.png */; };
 		C94C869D1E2761C5008AA49F /* 火影05.png in Resources */ = {isa = PBXBuildFile; fileRef = C94C86981E2761C5008AA49F /* 火影05.png */; };
+		C94C86A11E28A842008AA49F /* VSRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = C94C86A01E28A842008AA49F /* VSRouter.m */; };
 		C95FBFA71E260F9E004A196C /* VSMVVMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C95FBFA61E260F9E004A196C /* VSMVVMViewController.m */; };
 		C95FBFBA1E2612C6004A196C /* VSMVVMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C95FBFB31E2612C6004A196C /* VSMVVMModel.m */; };
 		C95FBFBB1E2612C6004A196C /* VSMVVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C95FBFB61E2612C6004A196C /* VSMVVMViewModel.m */; };
@@ -104,8 +105,8 @@
 		6003F59B195388D20070C39A /* VisionUIKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionUIKit-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* VSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* VSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* VSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* VSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSViewController.m; sourceTree = "<group>"; };
+		6003F5A5195388D20070C39A /* VSHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSHomeViewController.h; sourceTree = "<group>"; };
+		6003F5A6195388D20070C39A /* VSHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSHomeViewController.m; sourceTree = "<group>"; };
 		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AE195388D20070C39A /* VisionUIKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionUIKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -177,6 +178,8 @@
 		C94C86961E2761C5008AA49F /* 火影03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "火影03.png"; sourceTree = "<group>"; };
 		C94C86971E2761C5008AA49F /* 火影04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "火影04.png"; sourceTree = "<group>"; };
 		C94C86981E2761C5008AA49F /* 火影05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "火影05.png"; sourceTree = "<group>"; };
+		C94C869F1E28A842008AA49F /* VSRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSRouter.h; sourceTree = "<group>"; };
+		C94C86A01E28A842008AA49F /* VSRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSRouter.m; sourceTree = "<group>"; };
 		C95FBFA51E260F9E004A196C /* VSMVVMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSMVVMViewController.h; sourceTree = "<group>"; };
 		C95FBFA61E260F9E004A196C /* VSMVVMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSMVVMViewController.m; sourceTree = "<group>"; };
 		C95FBFB21E2612C6004A196C /* VSMVVMModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSMVVMModel.h; sourceTree = "<group>"; };
@@ -309,8 +312,8 @@
 				6003F59D195388D20070C39A /* VSAppDelegate.m */,
 				C93344211E21107C000B0041 /* VSMyTabViewController.h */,
 				C93344221E21107C000B0041 /* VSMyTabViewController.m */,
-				6003F5A5195388D20070C39A /* VSViewController.h */,
-				6003F5A6195388D20070C39A /* VSViewController.m */,
+				6003F5A5195388D20070C39A /* VSHomeViewController.h */,
+				6003F5A6195388D20070C39A /* VSHomeViewController.m */,
 				C912E6D21E0E89710011C89E /* VSMenuViewController.h */,
 				C912E6D31E0E89710011C89E /* VSMenuViewController.m */,
 				C94C868F1E276188008AA49F /* ImageBrowser */,
@@ -395,6 +398,7 @@
 		C92C8F411E03C272002CFFF1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C94C869E1E28A820008AA49F /* Service */,
 				C92C8F511E03C2F6002CFFF1 /* Network */,
 				C92C8F421E03C295002CFFF1 /* Models */,
 				C92C8F4B1E03C295002CFFF1 /* Protocol */,
@@ -533,6 +537,15 @@
 				C94C86981E2761C5008AA49F /* 火影05.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		C94C869E1E28A820008AA49F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C94C869F1E28A842008AA49F /* VSRouter.h */,
+				C94C86A01E28A842008AA49F /* VSRouter.m */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		C95FBFA41E260F89004A196C /* MVVM */ = {
@@ -958,7 +971,7 @@
 				C95FBFA71E260F9E004A196C /* VSMVVMViewController.m in Sources */,
 				C9EE86321DEA79CF0045B889 /* VSButtonTableViewCell.m in Sources */,
 				C94A79071DF568E4003F8BFF /* VSInputManager.m in Sources */,
-				6003F5A7195388D20070C39A /* VSViewController.m in Sources */,
+				6003F5A7195388D20070C39A /* VSHomeViewController.m in Sources */,
 				C93344271E21E328000B0041 /* UITabBar+Swizzling.m in Sources */,
 				C9F9FE771DE1DEDA00339937 /* VSTextField.m in Sources */,
 				C95FBFBA1E2612C6004A196C /* VSMVVMModel.m in Sources */,
@@ -967,6 +980,7 @@
 				C9F9FE4C1DE03ED300339937 /* VSTableAdaptor.m in Sources */,
 				C95FBFBC1E2612C6004A196C /* VSMVVMView.m in Sources */,
 				C9F9FE581DE05FF700339937 /* VSBaseTableViewCell.m in Sources */,
+				C94C86A11E28A842008AA49F /* VSRouter.m in Sources */,
 				C9F9FE621DE131EF00339937 /* VSTitleDetailTableViewCell.m in Sources */,
 				C92C8F501E03C295002CFFF1 /* VSViewModel.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,

@@ -6,7 +6,7 @@ use_frameworks!
 
 def shared_private_pods
     pod 'DJMacros', '~> 0.7.12'
-    pod 'KKCategories', '~> 0.3.7'
+    pod 'KKCategories', '~> 0.3.8'
     pod 'DJDebug', '~> 0.1.1'
 #    pod 'NavyUIKit', '~> 0.1.53'
 end
@@ -52,6 +52,8 @@ def good_lib_pods
 #    pod 'Popover', '~> 1.0.1'           #微型菜单弹窗(类似QQ和微信右上角弹窗) https://github.com/lifution/Popover
 #    pod 'XMNPhoto', '~> 1.1.0'          #浏览展示一组图片或从相册选取图片
     pod 'KVOController'                 #facebook MVVM KVO
+    pod 'MGJRouter', '~> 0.9.3'         #蘑菇街路由
+    pod 'Task', '~> 1.1'                #任务流
 end
 
 target 'VisionUIKit_Example' do

@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 Deju Liu. All rights reserved.
 //
 
-#import "VSViewController.h"
+#import "VSHomeViewController.h"
 #import "VSAlertView.h"
 #import <DJMacros/DJMacro.h>
 #import <KKCategories/KKCategories.h>
@@ -27,11 +27,14 @@
 #import <RTRootNavigationController.h>
 #import "VSNetworkTableViewController.h"
 #import "VSMVVMViewController.h"
+#import <MGJRouter/MGJRouter.h>
+#import <Task/Task.h>
+#import "VSRouter.h"
 //#import <XMNPhoto/XMNPhotoBrowserController.h>
 
 #define TITLE_COLOR RGB(15, 103, 197)
 
-@interface VSViewController ()
+@interface VSHomeViewController ()
 <TTTAttributedLabelDelegate,
 DLPhotoPickerViewControllerDelegate,
 UINavigationControllerDelegate>
@@ -40,7 +43,7 @@ PP_STRONG(UIScrollView, scrollView)
 
 @end
 
-@implementation VSViewController
+@implementation VSHomeViewController
 
 - (instancetype)init
 {
@@ -62,6 +65,7 @@ PP_STRONG(UIScrollView, scrollView)
     
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:self action:@selector(showMenu)];
     self.navigationController.navigationItem.leftBarButtonItem =  item;
+    [self.scrollView setContentOffset:CGPointMake(0, 400)];
 }
 
 
@@ -228,6 +232,114 @@ PP_STRONG(UIScrollView, scrollView)
     
     [[self makeLeftButton:@"ImagesBrowser" index:11] jk_addActionHandler:^(NSInteger tag) {
         [self.navigationController pushViewController:[NSClassFromString(@"ImageBrowserViewController") new] animated:YES];
+    }];
+    
+    [[self makeLeftButton:@"MGJRouter" index:12] jk_addActionHandler:^(NSInteger tag) {
+        [VSSheetView ShowWithbuttonTitles:@[@"regist", @"open url", @"open url with user info", @"注册模糊匹配", @"打开模糊匹配"] cancelTitle:@"取消" callBlock:^(NSInteger buttonIndex) {
+            #define TEMPLATE_URL @"mgj://search/:keyword"
+            switch (buttonIndex) {
+                case 1:
+                {
+                    [MGJRouter registerURLPattern:@"mgj://服务/网页" toHandler:^(NSDictionary *routerParameters) {
+                        NSLog(@"routerParameterUserInfo:%@", routerParameters[MGJRouterParameterUserInfo]);
+                        void (^completion)() = routerParameters[MGJRouterParameterCompletion];
+                        if (completion) {
+                            completion();
+                        }
+                    }];
+                }
+                    
+                    break;
+                case 2:
+                    {
+                        NSString *url = @"mgj://服务/网页?url=http%3a%2f%2fwww.baidu.com%2f%3fa%3da&param2=helloworld";
+                        if ([MGJRouter canOpenURL:url]) {
+                            [MGJRouter openURL:url];
+                        }
+                    }
+                    break;
+                case 3:
+                {
+                    [MGJRouter openURL:@"mgj://服务/网页" withUserInfo:@{@"a":@"b"} completion:^(id result) {
+                        
+                    }];
+                }
+                    break;
+                case 4:
+                {
+                    [MGJRouter registerURLPattern:TEMPLATE_URL  toHandler:^(NSDictionary *routerParameters) {
+                        NSLog(@"routerParameters[keyword]:%@", routerParameters[@"keyword"]); // Hangzhou
+                    }];
+                }
+                    break;
+                case 5:
+                {
+                    NSString *url = [MGJRouter generateURLWithPattern:TEMPLATE_URL parameters:@[@"Hangzhou"]];
+                    [MGJRouter openURL:url];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }];
+    
+    [[self makeLeftButton:@"TaskFlow" index:13] jk_addActionHandler:^(NSInteger tag) {
+        [VSSheetView ShowWithbuttonTitles:@[@"TSKWorkflow"] cancelTitle:@"取消" callBlock:^(NSInteger buttonIndex) {
+            switch (buttonIndex) {
+                case 1:
+                {
+                    TSKWorkflow *workFlow = [[TSKWorkflow alloc] initWithName:@"my work flow"];
+                    
+                    TSKBlockTask *taskA = [[TSKBlockTask alloc] initWithName:@"A" block:^(TSKTask *task) {
+                        id result = task.anyPrerequisiteResult;
+                        NSSet *dependTasks = [task.workflow prerequisiteTasksForTask:task];
+                    }];
+                    TSKBlockTask *taskB = [[TSKBlockTask alloc] initWithName:@"B" block:^(TSKTask *task) {
+                        [task finishWithResult:@"B Finished!"];
+                    }];
+                    [workFlow addTask:taskB prerequisites: nil];
+                    [workFlow addTask:taskA prerequisites:taskB,nil];
+                    [workFlow start];
+                }
+                    break;
+                case 2:
+                {
+                    
+                }
+                    break;
+                case 3:
+                {
+                    
+                }
+                    break;
+                case 1000:
+                {
+                    
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }];
+    }];
+    
+    [[self makeLeftButton:@"VSRouter" index:14] jk_addActionHandler:^(NSInteger tag) {
+        [VSSheetView ShowWithbuttonTitles:@[@"注册任务",@"打开URL", @"注册同步任务", @"打开同步任务"] cancelTitle:@"取消" callBlock:^(NSInteger buttonIndex) {
+            if (buttonIndex == 1) {
+                [[VSRouter sharedInstance] initCommonTasks];
+            } else if(buttonIndex == 2){
+                [[VSRouter sharedInstance] initTasks];
+            } else if(buttonIndex == 3){
+                [VSRouter sync_registerServiceWithURLPattern:@"hyh://Service/sync" toHandler:^id(VSRouterParams *params) {
+                    return @"ssssss";
+                }];
+            } else if(buttonIndex == 4){
+                id obj = [VSRouter sync_openURL:@"hyh%3a%2f%2fService%2fsync%3fa%3d%e4%b8%ad%e6%96%87%26b%3dc"];
+                NSLog(@"%@", obj);
+            }
+        }];
     }];
 }
 

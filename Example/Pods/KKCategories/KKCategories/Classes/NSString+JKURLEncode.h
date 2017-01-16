@@ -46,4 +46,7 @@
  */
 - (NSDictionary *)jk_dictionaryFromURLParameters;
 
+- (NSString *)jk_urlEncodedOnlyChinese;
+- (NSString *)jk_urlDecodedOnlyChinese;
+
 @end

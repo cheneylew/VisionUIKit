@@ -50,12 +50,13 @@ PODS:
   - JHChainableAnimations (1.3.0)
   - JTNavigationController (1.0.1)
   - JYCarousel (0.0.1)
-  - KKCategories (0.3.7)
+  - KKCategories (0.3.8)
   - KVOController (1.2.0)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
   - MBProgressHUD (1.0.0)
+  - MGJRouter (0.9.3)
   - MGSwipeTableCell (1.5.6)
   - MJExtension (3.0.13)
   - PDTSimpleCalendar (0.9.1)
@@ -73,12 +74,13 @@ PODS:
   - SDWebImage/Core (3.8.2)
   - SlackTextViewController (1.9.5)
   - SVProgressHUD (2.1.2)
+  - Task (1.1)
   - Toast (3.1.0)
   - TOCropViewController (2.0.11)
   - TTTAttributedLabel (2.0.0)
   - XMAdScrollView (1.3):
     - SDWebImage
-  - ZLPhotoBrowser (2.0.2)
+  - ZLPhotoBrowser (2.0.3)
 
 DEPENDENCIES:
   - AvoidCrash
@@ -93,16 +95,18 @@ DEPENDENCIES:
   - JHChainableAnimations (~> 1.3.0)
   - JTNavigationController
   - JYCarousel
-  - KKCategories (~> 0.3.7)
+  - KKCategories (~> 0.3.8)
   - KVOController
   - MagicalRecord
   - MBProgressHUD
+  - MGJRouter (~> 0.9.3)
   - MGSwipeTableCell
   - MJExtension
   - PDTSimpleCalendar
   - ReactiveCocoa (~> 2.5)
   - RTRootNavigationController
   - SlackTextViewController
+  - Task (~> 1.1)
   - Toast (~> 3.1.0)
   - XMAdScrollView (~> 1.3)
   - ZLPhotoBrowser
@@ -122,10 +126,11 @@ SPEC CHECKSUMS:
   JHChainableAnimations: 22085fcb04ca87349e584573558e637f659fd769
   JTNavigationController: a3563e6d1adbd00301af8f049e546342fad7ffa9
   JYCarousel: 9b003d72fb93d2f10cef2978b1dc16754d6535bf
-  KKCategories: 08cdfd9bf9e6fa9a7093ea401f095a06c016740e
+  KKCategories: adac4b6cb40b83ecca54b46fab9ab8e57f7fb9a0
   KVOController: d72ace34afea42468329623b3379ab3cd1d286b6
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MGJRouter: f65821e2aeffc8f9e84b254c8f1c0dd80f048aa9
   MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
@@ -135,12 +140,13 @@ SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  Task: c6fda98296922b70de403864a297204a2787243d
   Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
   TOCropViewController: fe91aaab9e95d72ac38654d1174c8c8339585ee5
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   XMAdScrollView: 0ed2905246026cc4315f669417d47970a7ad6106
-  ZLPhotoBrowser: 1fe6c127883140e0ffe56adc2fdafbd82c309d22
+  ZLPhotoBrowser: c32ea20d26d425fe64bed43f85444c205cf6ac9b
 
-PODFILE CHECKSUM: 27cb929c3ea7b1422e519cab91cf2eb0024f629d
+PODFILE CHECKSUM: 8faa67c42f0cf5b50137d1dc0aba4b5b02b3dc82
 
 COCOAPODS: 1.2.0.beta.1

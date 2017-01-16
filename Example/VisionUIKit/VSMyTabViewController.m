@@ -8,7 +8,7 @@
 
 #import "VSMyTabViewController.h"
 #import "VSMenuViewController.h"
-#import "VSViewController.h"
+#import "VSHomeViewController.h"
 #import <KKCategories/KKCategories.h>
 
 @interface VSMyTabViewController ()
@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewControllers = @[[VSViewController new],
+    self.viewControllers = @[[VSHomeViewController new],
                              [VSMenuViewController new]];
     self.selectedIndex = 0;
 }

@@ -9,6 +9,6 @@
 @import UIKit;
 #import "VSBaseViewController.h"
 
-@interface VSViewController : VSBaseViewController
+@interface VSHomeViewController : VSBaseViewController
 
 @end

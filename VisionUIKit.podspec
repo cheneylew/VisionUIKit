@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'VisionUIKit'
-    s.version          = '0.1.42'
+    s.version          = '0.1.43'
     s.summary          = '定制化的UI控件'
 
     # This description is used to generate tags and improve search results.
@@ -71,4 +71,7 @@ Pod::Spec.new do |s|
     s.dependency 'ReactiveCocoa', '~> 2.5'
     s.dependency 'AFNetworking', '~> 3.1.0'
     s.dependency 'SDWebImage', '~> 3.8.2'
+    s.dependency 'MGJRouter', '~> 0.9.3'
+    s.dependency 'Task', '~> 1.1'
+
 end

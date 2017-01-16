@@ -66,4 +66,12 @@
     return params;
 }
 
+- (NSString *)jk_urlEncodedOnlyChinese {
+    return [self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)jk_urlDecodedOnlyChinese {
+    return [self stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
 @end
