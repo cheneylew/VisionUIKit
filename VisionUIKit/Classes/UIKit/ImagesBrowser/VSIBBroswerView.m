@@ -43,6 +43,7 @@
         self.count = self.imageArray.count;
         self.index = index;
         self.useImageURL = NO;
+        self.tapHidden = YES;
         [self setupSubViews];
     }
     return self;
@@ -98,6 +99,11 @@
 - (void)setShowNavigationBar:(BOOL)showNavigationBar {
     _showNavigationBar = showNavigationBar;
     self.customNavigationBar.hidden = !showNavigationBar;
+}
+
+- (void)setTapHidden:(BOOL)tapHidden {
+    _tapHidden = tapHidden;
+    
 }
 
 - (void)setNavigationBarTintColor:(UIColor *)navigationBarTintColor {
@@ -228,7 +234,9 @@
 #pragma mark - VSIBImageViewDelegate
 - (void)stImageViewSingleClick:(VSIBImageView *)imageView
 {
-    [self dismiss];
+    if (self.tapHidden) {
+        [self dismiss];
+    }
 }
 
 - (void)dismiss
