@@ -15,6 +15,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIImage+Bundle.h"
 #import <KKCategories/KKCategories.h>
+#import <DJMacros/DJMacro.h>
 
 @interface VSIBBroswerView ()<VSIBImageViewDelegate, UIScrollViewDelegate>
 
@@ -94,20 +95,6 @@
     self.numberLabel.hidden = _titleLabelHidden;
 }
 
-- (void)setBrowserBackgroundColor:(UIColor *)browserBackgroundColor {
-    if (_browserBackgroundColor != browserBackgroundColor) {
-        _browserBackgroundColor = browserBackgroundColor;
-    }
-    self.scrollView.backgroundColor = browserBackgroundColor;
-    WEAK_SELF;
-    [self.scrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj isKindOfClass:[VSIBImageView class]]) {
-            VSIBImageView *v = obj;
-            v.browserBackgroundColor = weakself.browserBackgroundColor;
-        }
-    }];
-}
-
 - (void)setShowNavigationBar:(BOOL)showNavigationBar {
     _showNavigationBar = showNavigationBar;
     self.customNavigationBar.hidden = !showNavigationBar;
@@ -128,7 +115,7 @@
 {
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:Screen_BOUNDS];
-        _scrollView.backgroundColor = [UIColor blackColor];
+        _scrollView.backgroundColor = HEX(0x606060);
         _scrollView.delegate = self;
         _scrollView.contentSize = CGSizeMake((Screen_W + 2*SpaceWidth) * self.count, Screen_H);
         _scrollView.contentOffset = CGPointMake(Screen_W * self.index, 0);

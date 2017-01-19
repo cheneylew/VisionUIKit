@@ -30,7 +30,6 @@ typedef void(^VSIBRightItemTouchBlock)(NSInteger currentIndex, NSString* imageUR
 @interface VSIBBroswerView : UIView
 
 @property (nonatomic, assign) BOOL      titleLabelHidden;
-@property (nonatomic, strong) UIColor*  browserBackgroundColor;
 @property (nonatomic, assign) BOOL      showNavigationBar;
 @property (nonatomic, strong) UIColor*  navigationBarTintColor;
 

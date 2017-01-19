@@ -13,7 +13,6 @@
 @interface VSIBImageView : UIImageView
 
 @property (nonatomic, assign) id<VSIBImageViewDelegate>delegate;
-@property (nonatomic, strong) UIColor *browserBackgroundColor;
 
 - (void)resetView;
 

@@ -97,7 +97,7 @@
 //        [self.broswer showInCell:cell];
 //    }
     
-    self.broswer = [[VSIBBroswerView alloc] initWithImageURLs:@[@"http://wx4.sinaimg.cn/mw690/47145978ly1fbest7m7frj22io1ogkjm.jpg",@"http://pic1.win4000.com/wallpaper/d/578ddd6bbc211.jpg",@"http://pic1.win4000.com/wallpaper/d/578ddd6bbc211.jpg",@"http://pic1.win4000.com/wallpaper/d/578ddd6bbc211.jpg",@"http://pic1.win4000.com/wallpaper/d/578ddd6bbc211.jpg",@"http://pic1.win4000.com/wallpaper/d/578ddd6bbc211.jpg",@"http://pic1.win4000.com/wallpaper/d/578ddd6bbc211.jpg",@"http://pic1.win4000.com/wallpaper/d/578ddd6bbc211.jpg"] palceHolderImage:[UIImage imageNamed:@"customerChargedIcon"] currentIndex:0];
+    self.broswer = [[VSIBBroswerView alloc] initWithImageURLs:@[@"http://wx4.sinaimg.cn/mw690/47145978ly1fbest7m7frj22io1ogkjm.jpg"] palceHolderImage:[UIImage imageNamed:@"customerChargedIcon"] currentIndex:0];
     [self.broswer showFromView:cell];
     self.broswer.showNavigationBar = YES;
     [self.broswer setRightItemTouchedBlock:^(NSInteger index, NSString* imageURL, UIImage* image) {

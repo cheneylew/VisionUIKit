@@ -8,6 +8,7 @@
 
 #import "VSIBImageView.h"
 #import "UIView+VSIBExtension.h"
+#import <DJMacros/DJMacro.h>
 
 @interface VSIBImageView()<UIGestureRecognizerDelegate>
 {
@@ -53,13 +54,6 @@
     [singleTap requireGestureRecognizerToFail:doubleTap];
 }
 
-- (void)setBrowserBackgroundColor:(UIColor *)browserBackgroundColor {
-    if (_browserBackgroundColor != browserBackgroundColor) {
-        _browserBackgroundColor = browserBackgroundColor;
-    }
-    self.scaleScrollView.backgroundColor = browserBackgroundColor;
-}
-
 #pragma mark - Getter
 - (UIScrollView *)scrollView
 {
@@ -85,7 +79,7 @@
     if (_scaleScrollView == nil) {
         _scaleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
         _scaleScrollView.bounces = NO;
-        _scaleScrollView.backgroundColor = self.browserBackgroundColor?self.browserBackgroundColor:[UIColor blackColor];
+        _scaleScrollView.backgroundColor = HEX(0x606060);
         _scaleScrollView.contentSize = self.bounds.size;
         [self addSubview:_scaleScrollView];
     }
