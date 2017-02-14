@@ -69,6 +69,7 @@
     if (_scrollImgV == nil) {
         _scrollImgV = [[UIImageView alloc] init];
         _scrollImgV.image = self.image;
+        _scrollImgV.contentMode = UIViewContentModeScaleAspectFit;
         [self.scrollView addSubview:_scrollImgV];
     }
     return _scrollImgV;
@@ -89,9 +90,14 @@
 - (UIImageView *)scaleImgV
 {
     if (_scaleImgV == nil) {
-        _scaleImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
+        CGSize imageSize = self.image.size;
+        CGFloat height = self.height;
+        if (self.image) {
+            height = (imageSize.height/imageSize.width)*self.width;
+        }
+        _scaleImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, (self.height-height)/2, self.width, height)];
         _scaleImgV.image = self.image;
-        _scaleImgV.contentMode = UIViewContentModeScaleAspectFit;
+        _scaleImgV.contentMode = UIViewContentModeScaleToFill;
         [self.scaleScrollView addSubview:_scaleImgV];
     }
     return _scaleImgV;

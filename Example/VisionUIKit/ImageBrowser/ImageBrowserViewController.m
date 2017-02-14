@@ -97,8 +97,9 @@
 //        [self.broswer showInCell:cell];
 //    }
     
-    self.broswer = [[VSIBBroswerView alloc] initWithImageURLs:@[@"http://wx4.sinaimg.cn/mw690/47145978ly1fbest7m7frj22io1ogkjm.jpg"] palceHolderImage:[UIImage imageNamed:@"customerChargedIcon"] currentIndex:0];
+    self.broswer = [[VSIBBroswerView alloc] initWithImageURLs:@[@"http://wx4.sinaimg.cn/mw690/47145978ly1fbest7m7frj22io1ogkjm.jpg", @"http://www.hyh.dev/static/images/751695/45e3710a-f6cb-4b79-9d00-aae8c4de4f70.jpg"] palceHolderImage:[UIImage imageNamed:@"customerChargedIcon"] currentIndex:0];
     [self.broswer showFromView:cell];
+    self.broswer.rightButtonHidden = YES;
     self.broswer.showNavigationBar = YES;
     [self.broswer setRightItemTouchedBlock:^(NSInteger index, NSString* imageURL, UIImage* image) {
         

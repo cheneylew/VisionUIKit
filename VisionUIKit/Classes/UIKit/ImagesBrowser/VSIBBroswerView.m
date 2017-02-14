@@ -30,6 +30,7 @@
 @property (nonatomic, strong) UIImage *placeHolderImage;
 
 @property (nonatomic, strong) UIView *customNavigationBar;
+@property (nonatomic, strong) UIButton *rightButton;
 
 @end
 
@@ -106,6 +107,11 @@
     
 }
 
+- (void)setRightButtonHidden:(BOOL)rightButtonHidden {
+    _rightButtonHidden = rightButtonHidden;
+    self.rightButton.hidden = rightButtonHidden;
+}
+
 - (void)setNavigationBarTintColor:(UIColor *)navigationBarTintColor {
     _navigationBarTintColor = navigationBarTintColor;
     [self.customNavigationBar.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -172,6 +178,8 @@
                            (NSString *)(weakself.imageURLs.count?weakself.imageURLs[weakself.index]:nil),
                            (UIImage *)(weakself.imageArray.count?weakself.imageArray[weakself.index]:nil));
         }];
+        self.rightButton = rightButton;
+        self.rightButton.hidden = self.rightButtonHidden;
         [view addSubview:rightButton];
         
         [self insertSubview:view belowSubview:self.numberLabel];

@@ -30,6 +30,8 @@
 #import <MGJRouter/MGJRouter.h>
 #import <Task/Task.h>
 #import "VSRouter.h"
+#import "NSMutableArray+Sort.h"
+#import "User.h"
 //#import <XMNPhoto/XMNPhotoBrowserController.h>
 
 #define TITLE_COLOR RGB(15, 103, 197)
@@ -569,6 +571,55 @@ PP_STRONG(UIScrollView, scrollView)
     [[self makeRightButton:@"TableView-Network" index:12] jk_addActionHandler:^(NSInteger tag) {
         VSNetworkTableViewController *tb = [[VSNetworkTableViewController alloc] init];
         [self.navigationController pushViewController:tb animated:YES];
+    }];
+    
+    [[self makeRightButton:@"各种排序" index:13] jk_addActionHandler:^(NSInteger tag) {
+        NSMutableArray<User *> *arr = [NSMutableArray array];
+        int n = 1000;
+        for (int i=0; i<n; i++) {
+            int randInt = arc4random()%n;
+            User *user = [[User alloc] initWithId:randInt];
+            [arr addObject:user];
+        }
+        {
+            NSTimeInterval s = [NSDate timeIntervalSinceReferenceDate];
+            NSMutableArray *qArr = [arr mutableCopy];
+            [VSSorter quickSort:qArr compare:^BOOL(User *obj1, User *obj2) {
+                return obj1.userId < obj2.userId;
+            }];
+            NSTimeInterval e = [NSDate timeIntervalSinceReferenceDate];
+            NSLog(@"quick耗时：%f", (double)(e-s));
+        }
+        
+        {
+            NSTimeInterval s = [NSDate timeIntervalSinceReferenceDate];
+            NSMutableArray *mArr = [arr mutableCopy];
+            [VSSorter mergeSort:mArr compare:^BOOL(User *obj1, User *obj2) {
+                return obj1.userId < obj2.userId;
+            }];
+            NSTimeInterval e = [NSDate timeIntervalSinceReferenceDate];
+            NSLog(@"merge耗时：%f", (double)(e-s));
+        }
+        
+        {
+            NSTimeInterval s = [NSDate timeIntervalSinceReferenceDate];
+            [VSSorter insertionSort:[arr mutableCopy] compare:^BOOL(User *obj1, User *obj2) {
+                return obj1.userId < obj2.userId;
+            }];
+            NSTimeInterval e = [NSDate timeIntervalSinceReferenceDate];
+            NSLog(@"insert耗时：%f", (double)(e-s));
+        }
+        
+        {
+            NSTimeInterval s = [NSDate timeIntervalSinceReferenceDate];
+            [VSSorter bubleSort:[arr mutableCopy] compare:^BOOL(User *obj1, User *obj2) {
+                return obj1.userId < obj2.userId;
+            }];
+            NSTimeInterval e = [NSDate timeIntervalSinceReferenceDate];
+            NSLog(@"buble耗时：%f", (double)(e-s));
+        }
+        
+        NSLog(@"finished");
     }];
 }
 
