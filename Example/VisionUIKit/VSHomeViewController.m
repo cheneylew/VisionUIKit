@@ -32,6 +32,7 @@
 #import "VSRouter.h"
 #import "NSMutableArray+Sort.h"
 #import "User.h"
+#import "NSString+HTML.h"
 //#import <XMNPhoto/XMNPhotoBrowserController.h>
 
 #define TITLE_COLOR RGB(15, 103, 197)
@@ -620,6 +621,16 @@ PP_STRONG(UIScrollView, scrollView)
         }
         
         NSLog(@"finished");
+    }];
+    [[self makeRightButton:@"html字符串去除" index:14] jk_addActionHandler:^(NSInteger tag) {
+        NSString *html = @"你好<a href=\"http://ynet.media.baidu.com/\" target=\"_blank\">北京青年报</a><a href=\"http://ynet.media.baidu.com/\" target=\"_blank\">北京青年报</a><a href=\"http://ynet.media.baidu.com/\" target=\"_blank\">北京青年报</a><你好>";
+        DLog(@"%@", [html kv_removeHTMLTag]);
+        
+        NSString * htmlString = @"一、项目特色&nbsp;<br />1、项目管理人为知名投资基金管理有限公司&nbsp;<br />2、在建工程及分摊面积土地、土地抵押；项目公司100%股权质押等有力风控措施。&nbsp;<br />二、项目区位：&nbsp;<br />1、顶级商圈：与人百商圈、新华集贸商圈构成省会城市“黄金三角”顶级商圈； &nbsp;<br />2、商务办公：中华商务、军创国际、尚德国际、金圆大厦、石房大厦、华海环球、国贸中心等，商务办公氛围浓厚； &nbsp;<br />3、金融服务：周边金融机构林立，人民银行、中行、工行、农行、交行、中信、光大、民生的分支机构； &nbsp;<br />4、绝佳交通：二十余条公交路线，1、3号线交叉口。<br />";
+        NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[[htmlString kv_decodeHTMLCharacterEntities] dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+        UILabel * myLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
+        myLabel.attributedText = attrStr;
+        [self.view addSubview:myLabel];
     }];
 }
 

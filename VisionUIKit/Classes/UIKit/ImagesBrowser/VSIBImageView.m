@@ -59,6 +59,7 @@
 {
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollView.backgroundColor = HEX(0x606060);
         [self addSubview:_scrollView];
     }
     return _scrollView;

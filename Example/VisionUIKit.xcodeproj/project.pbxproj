@@ -62,6 +62,7 @@
 		C97AEC081DDD73A800586B80 /* VSSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = C97AEC071DDD73A800586B80 /* VSSheetView.m */; };
 		C9ACEF4D1DF8111700F84905 /* NSMutableAttributedString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */; };
 		C9B70ED91E03EB1F003E3285 /* VSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C9B70ED81E03EB1F003E3285 /* VSConfig.m */; };
+		C9BF91D41E53F09A00504E70 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BF91D31E53F09A00504E70 /* NSString+HTML.m */; };
 		C9EE86321DEA79CF0045B889 /* VSButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C9EE86311DEA79CF0045B889 /* VSButtonTableViewCell.m */; };
 		C9F4FA8E1E36FE77008B9A9B /* VSSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F4FA8B1E36FE77008B9A9B /* VSSorter.m */; };
 		C9F4FA8F1E36FE77008B9A9B /* NSMutableArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F4FA8D1E36FE77008B9A9B /* NSMutableArray+Sort.m */; };
@@ -198,6 +199,8 @@
 		C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+Category.m"; sourceTree = "<group>"; };
 		C9B70ED71E03EB1F003E3285 /* VSConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSConfig.h; sourceTree = "<group>"; };
 		C9B70ED81E03EB1F003E3285 /* VSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSConfig.m; sourceTree = "<group>"; };
+		C9BF91D21E53F09A00504E70 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		C9BF91D31E53F09A00504E70 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
 		C9EE86301DEA79CF0045B889 /* VSButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSButtonTableViewCell.h; sourceTree = "<group>"; };
 		C9EE86311DEA79CF0045B889 /* VSButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSButtonTableViewCell.m; sourceTree = "<group>"; };
 		C9F4FA8A1E36FE77008B9A9B /* VSSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSSorter.h; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				C912E6D51E0F51B30011C89E /* MJExtension */,
 				C9ACEF4B1DF8111700F84905 /* NSMutableAttributedString+Category.h */,
 				C9ACEF4C1DF8111700F84905 /* NSMutableAttributedString+Category.m */,
+				C9BF91D21E53F09A00504E70 /* NSString+HTML.h */,
+				C9BF91D31E53F09A00504E70 /* NSString+HTML.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F59C195388D20070C39A /* VSAppDelegate.h */,
 				6003F59D195388D20070C39A /* VSAppDelegate.m */,
@@ -996,6 +1001,7 @@
 				C92C8F4D1E03C295002CFFF1 /* VSDataModel.m in Sources */,
 				C9F9FE4F1DE044C900339937 /* VSEmptyTableViewCell.m in Sources */,
 				C93344191E20F46C000B0041 /* UIImage+Bundle.m in Sources */,
+				C9BF91D41E53F09A00504E70 /* NSString+HTML.m in Sources */,
 				C9F9FE441DE03B7700339937 /* VSTableViewController.m in Sources */,
 				C912E6D81E0F51C70011C89E /* VSUser.m in Sources */,
 				C92C8F541E03C95B002CFFF1 /* VSHttpClient.m in Sources */,

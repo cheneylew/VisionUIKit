@@ -235,7 +235,7 @@
     [UIView animateWithDuration:.3 animations:^{
         self.transform = CGAffineTransformIdentity;
         self.center = window.center;
-        [window addSubview:self];
+        [window.rootViewController.view addSubview:self];
     }];
 }
 
