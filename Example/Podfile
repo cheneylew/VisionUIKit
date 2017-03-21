@@ -5,7 +5,7 @@ source 'https://github.com/cheneylew/hyh-specs.git'
 use_frameworks!
 
 def shared_private_pods
-    pod 'DJMacros', '~> 0.7.12'
+    pod 'DJMacros', '~> 0.7.15'
     pod 'KKCategories', '~> 0.3.8'
     pod 'DJDebug', '~> 0.1.1'
 #    pod 'NavyUIKit', '~> 0.1.53'
