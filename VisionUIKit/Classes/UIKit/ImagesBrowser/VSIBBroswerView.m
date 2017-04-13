@@ -122,12 +122,19 @@
     }];
 }
 
+- (void)setNavigationBarBackgroundColor:(UIColor *)navigationBarBackgroundColor {
+    if (!_navigationBarBackgroundColor) {
+        self.customNavigationBar.backgroundColor = navigationBarBackgroundColor;
+    };
+    _navigationBarBackgroundColor = navigationBarBackgroundColor;
+}
+
 #pragma mark - Getter
 - (UIScrollView *)scrollView
 {
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:Screen_BOUNDS];
-        _scrollView.backgroundColor = HEX(0x606060);
+        _scrollView.backgroundColor = HEX(0xffffff);
         _scrollView.delegate = self;
         _scrollView.contentSize = CGSizeMake((Screen_W + 2*SpaceWidth) * self.count, Screen_H);
         _scrollView.contentOffset = CGPointMake(Screen_W * self.index, 0);

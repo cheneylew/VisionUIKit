@@ -59,7 +59,7 @@
 {
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        _scrollView.backgroundColor = HEX(0x606060);
+        _scrollView.backgroundColor = HEX(0xffffff);
         [self addSubview:_scrollView];
     }
     return _scrollView;
@@ -81,7 +81,7 @@
     if (_scaleScrollView == nil) {
         _scaleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
         _scaleScrollView.bounces = NO;
-        _scaleScrollView.backgroundColor = HEX(0x606060);
+        _scaleScrollView.backgroundColor = HEX(0xffffff);
         _scaleScrollView.contentSize = self.bounds.size;
         [self addSubview:_scaleScrollView];
     }

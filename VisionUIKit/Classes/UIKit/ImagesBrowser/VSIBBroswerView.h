@@ -33,6 +33,7 @@ typedef void(^VSIBRightItemTouchBlock)(NSInteger currentIndex, NSString* imageUR
 @property (nonatomic, assign) BOOL      showNavigationBar;
 @property (nonatomic, assign) BOOL      tapHidden;
 @property (nonatomic, assign) BOOL      rightButtonHidden;
+@property (nonatomic, strong) UIColor*  navigationBarBackgroundColor;
 @property (nonatomic, strong) UIColor*  navigationBarTintColor;
 
 PP_COPY_BLOCK(VSIBRightItemTouchBlock, rightItemTouchedBlock);
