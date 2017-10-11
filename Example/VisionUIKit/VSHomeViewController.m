@@ -71,6 +71,15 @@ PP_STRONG(UIScrollView, scrollView)
     [self.scrollView setContentOffset:CGPointMake(0, 400)];
 }
 
+- (void)initPopView {
+    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+    view.backgroundColor = [UIColor clearColor];
+    [view jk_addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
+        
+    }];
+    [self.view addSubview:view];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
